@@ -1,0 +1,51 @@
+.form-control {
+    width: 50%;
+    margin-left: 130px;
+}
+
+.box {
+    width: 70%;
+    margin-left: 140px;
+    align-content: center;
+    background-color: lightgray;
+    box-shadow: 10px 5px 5px darkgrey;
+    margin-bottom: 20px;
+}
+
+small {
+    margin-left: 195px;
+}
+
+.txt {
+    margin-left: 190px;
+    color: rgb(1, 24, 99);
+}
+
+.txt1 {
+    margin-left: 215px;
+    color: rgb(1, 24, 99);
+}
+
+.txt2 {
+    margin-left: 235px;
+    color: rgb(1, 24, 99);
+}
+
+.txt3 {
+    margin-left: 220px;
+    color: rgb(1, 24, 99);
+}
+
+.txt4 {
+    margin-left: 215px;
+    color: rgb(1, 24, 99);
+}
+
+.txt5 {
+    margin-left: 190px;
+    color: rgb(1, 24, 99);
+}
+
+.btn {
+    margin-left: 187px;
+}

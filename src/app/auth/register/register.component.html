@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row row justify-content-center bg">
+        <div class="col-lg-8">
+            <div class="box">
+                <br>
+                <h1 class="txt">Register</h1>
+
+                <hr>
+                <br>
+                <form [formGroup]="registerForm" #formDirective="ngForm" (ngSubmit)="submitDetails()">
+
+                    <div class="form-group">
+                        <label class="txt1 font-weight-bold">User Name</label>
+                        <input [class.is-invalid]="registerForm.get('UserName').invalid && registerForm.get('UserName').touched" type="text font-weight-bold" class="form-control" formControlName="UserName" />
+                        <small class="text-danger" [class.d-none]="registerForm.get('UserName').valid || registerForm.get('UserName').untouched">UserName is mandatory*</small>
+                        <small class="text-danger" *ngIf="userExists">UserName is already taken</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="txt2 font-weight-bold">Role</label>
+                        <select [class.is-invalid]="registerForm.get('UserRole').invalid && registerForm.get('UserRole').touched" class="form-control justify-content-center" formControlName="UserRole">
+                        <option value="" disabled>Select a Role</option>
+            <option class="dropdown" *ngFor="let role of Roles" value={{role}}>{{role}}</option>
+            <small class="text-danger" [class.d-none]="registerForm.get('UserRole').valid || registerForm.get('UserRole').untouched">Role is mandatory*</small>
+          </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="txt3 font-weight-bold">Email Id</label>
+                        <input [class.is-invalid]="registerForm.get('UserEmail').invalid && registerForm.get('UserEmail').touched" type="email" class="form-control" formControlName="UserEmail" />
+                        <small class="text-danger" [class.d-none]="registerForm.get('UserEmail').valid || registerForm.get('UserEmail').untouched">Email is mandatory*</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="txt4 font-weight-bold">Password</label><br>
+                        <input [class.is-invalid]="registerForm.get('UserPassword').invalid && registerForm.get('UserPassword').touched" type="password" class="form-control" formControlName="UserPassword" />
+                        <small class="text-danger" [class.d-none]="registerForm.get('UserPassword').valid || registerForm.get('UserPassword').untouched">Password is mandatory*</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="txt5 font-weight-bold">Confirm Password</label><br>
+                        <input [class.is-invalid]="registerForm.errors?.mismatch && registerForm.get('confirmPassword').invalid && registerForm.get('confirmPassword').touched" type="password" class="form-control" formControlName="confirmPassword" />
+                        <small class="text-danger" *ngIf="registerForm.errors?.mismatch">Passwords does not match*</small>
+                    </div>
+                    <div class="d-flex">
+                        <div class="form-group">
+                            <button [disabled]="registerForm.invalid" class="btn text-white font-weight-bold" type="submit">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

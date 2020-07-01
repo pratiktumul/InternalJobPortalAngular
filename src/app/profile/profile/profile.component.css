@@ -1,0 +1,8 @@
+.box {
+    width: 50%;
+    margin-left: 200px;
+    align-content: center;
+    background-color: lightgray;
+    box-shadow: 10px 5px 5px darkgrey;
+    margin-bottom: 20px;
+}

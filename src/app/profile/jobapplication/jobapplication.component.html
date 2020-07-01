@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row row justify-content-center bg">
+        <div class="col-lg-8">
+
+            <h1 class="txt">Internal Job Application:2020-00005</h1>
+            <h3 class="txt">2020-00005:: Senior Dotnet Developer Customer: IBM</h3>
+            <hr>
+            <form [formGroup]="registerForm" #formDirective="ngForm" (ngSubmit)="submitDetails()">
+                <div class="form-group">
+                    <label class="txt font-weight-bold">Employee Name</label>
+                    <input [class.is-invalid]="registerForm.get('ename').invalid && registerForm.get('ename').touched" type="text font-weight-bold" class="form-control" placeholder="Enter Your Name" formControlName="ename" />
+                    <small class="text-danger" [class.d-none]="registerForm.get('ename').valid || registerForm.get('ename').untouched">Name is mandatory*</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="txt font-weight-bold">Current Location</label>
+                    <input [class.is-invalid]="registerForm.get('curLoc').invalid && registerForm.get('curLoc').touched" type="text" class="form-control" placeholder="Enter Location" formControlName="curLoc" />
+                    <small class="text-danger" [class.d-none]="registerForm.get('curLoc').valid || registerForm.get('curLoc').untouched">Location is mandatory*</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="txt font-weight-bold">Skills</label>
+                    <select [class.is-invalid]="registerForm.get('skill').invalid && registerForm.get('skill').touched" class="form-control" multiple formControlName="skill">
+            <option *ngFor="let slist of Skills" value={{slist}}>{{slist}}</option>
+            <small class="text-danger" [class.d-none]="registerForm.get('skill').valid || registerForm.get('skill').untouched">Skill is mandatory*</small>
+          </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="txt font-weight-bold">Experience</label>
+                    <div class="form-group d-flex flex-row">
+                        <select [class.is-invalid]="registerForm.get('year').invalid && registerForm.get('year').touched" class="form-control" formControlName="year">
+            <option value="" disabled>Select Years</option>
+            <option *ngFor="let slist of ExpYears" value={{slist}}>{{slist}}</option>
+          </select>
+
+                        <select [class.is-invalid]="registerForm.get('month').invalid && registerForm.get('month').touched" class="form-control" formControlName="month">
+            <option value="" disabled>Select Months</option>
+            <option *ngFor="let slist of ExpMonths" value={{slist}}>{{slist}}</option>
+          </select>
+                    </div>
+                    <small class="text-danger" [class.d-none]="registerForm.get('year').valid || registerForm.get('year').untouched">Years is mandatory*</small>
+                    <small class="text-danger" [class.d-none]="registerForm.get('month').valid || registerForm.get('month').untouched">Months is mandatory*</small>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="txt font-weight-bold">Why do you consider yourself eligible for this role?</label>
+                    <textarea class="form-control" placeholder="Your Answer..." formControlName="about" row="3"></textarea>
+                    <div *ngIf="registerForm.get('about').invalid && registerForm.get('about').touched">
+                        <small class="text-danger" *ngIf="registerForm.get('about').errors?.required">This field is mandatory*</small>
+                        <small class="text-danger" *ngIf="registerForm.get('about').errors?.maxlength">Length cannot be more than 250*</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="txt font-weight-bold">Current Customer/Project</label><br>
+                    <input [class.is-invalid]="registerForm.get('project').invalid && registerForm.get('project').touched" type="text" class="form-control" placeholder="Your Experience" formControlName="project" />
+                    <small class="text-danger" [class.d-none]="registerForm.get('project').valid || registerForm.get('project').untouched">Required*</small>
+                </div>
+
+                <div class="form-group">
+                    <label class="txt font-weight-bold">Upload Resume:</label>
+                    <input [class.is-invalid]="registerForm.get('resumeFile').invalid && registerForm.get('resumeFile').touched" type="file" class="form-control-file text-dark" formControlName="resumeFile" accept=".pdf,.png" (change)="handleFileInput($event.target.files)">
+                    <!-- <small class="text-danger" [class.d-none]="registerForm.get('resumeFile').untouched">Please select a file*</small> -->
+                </div>
+
+                <div class="form-group">
+                    <button class="btn text-white font-weight-bold" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<router-outlet>
+</router-outlet>

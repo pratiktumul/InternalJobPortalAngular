@@ -1,0 +1,26 @@
+.form-control {
+    width: 200px;
+    margin-left: 95px;
+}
+
+.box {
+    width: 50%;
+    margin-left: 200px;
+    align-content: center;
+    background-color: lightgray;
+    box-shadow: 10px 5px 5px darkgrey;
+    margin-bottom: 20px;
+}
+
+small {
+    margin-left: 120px;
+}
+
+.txt {
+    margin-left: 153px;
+    color: rgb(1, 24, 99);
+}
+
+.btn {
+    margin-left: 125px;
+}
