@@ -25,19 +25,17 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group(
       {
         UserName: ['', Validators.required],
-        UserRole: ['', Validators.required],
         UserEmail: ['', Validators.required],
         UserPassword: ['', Validators.required],
         confirmPassword: ['', Validators.required],
+        Fullname: ['', Validators.required]
       },
       { validator: PasswordValidator }
     );
   }
 
   Roles = ['Admin', 'User', 'SuperAdmin'];
-  goToHome() {
-    this.router.navigate(['/home']);
-  }
+  
   submitDetails() {
     this.rsvc.registerUser(this.registerForm.value).subscribe(
       (_data) => {

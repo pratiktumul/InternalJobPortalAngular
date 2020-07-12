@@ -3,6 +3,7 @@
         <div class="col-lg-8">
             <div class="box">
                 <br>
+                <i class="fa fa-user-circle fa-5x"></i>
                 <h1 class="txt">Register</h1>
 
                 <hr>
@@ -17,12 +18,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="txt2 font-weight-bold">Role</label>
-                        <select [class.is-invalid]="registerForm.get('UserRole').invalid && registerForm.get('UserRole').touched" class="form-control justify-content-center" formControlName="UserRole">
-                        <option value="" disabled>Select a Role</option>
-            <option class="dropdown" *ngFor="let role of Roles" value={{role}}>{{role}}</option>
-            <small class="text-danger" [class.d-none]="registerForm.get('UserRole').valid || registerForm.get('UserRole').untouched">Role is mandatory*</small>
-          </select>
+                        <label class="txt1 font-weight-bold">Fullname</label>
+                        <input [class.is-invalid]="registerForm.get('Fullname').invalid && registerForm.get('Fullname').touched" type="text font-weight-bold" class="form-control" formControlName="Fullname" />
+                        <small class="text-danger" [class.d-none]="registerForm.get('Fullname').valid || registerForm.get('Fullname').untouched">Fullname is mandatory*</small>
                     </div>
 
                     <div class="form-group">

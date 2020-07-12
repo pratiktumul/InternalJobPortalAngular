@@ -8,13 +8,11 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
   loginForm: FormGroup;
   isLoginError: boolean = false;
-  
 
   constructor(
     private fb: FormBuilder,
@@ -29,30 +27,21 @@ export class LoginComponent implements OnInit {
       UserPassword: ['', Validators.required],
     });
   }
-  goToHome(){
+  goToHome() {
     this.router.navigate(['/']);
   }
   Login() {
     const username = this.loginForm.get('UserName').value;
     const password = this.loginForm.get('UserPassword').value;
-    console.log(username);
-    console.log(password);
     this.rsvc.userLogin(username, password).subscribe(
       (data: any) => {
         localStorage.setItem('userToken', data.access_token);
         localStorage.setItem('userName', username);
-        console.log(data);
-         this.router.navigate(['/']);
+        this.router.navigate(['/']);
       },
       (error: HttpErrorResponse) => {
-        this.tstr.error("Username or Password do not match","Login Failed");
-        // this.isLoginError = true;
+        this.tstr.error('Username or Password do not match', 'Login Failed');
       }
     );
-
-    // this.rsvc.getUserClaims().subscribe((data) => {
-    //   localStorage.setItem('username', data.UserName);
-    // });
-    }
-
+  }
 }

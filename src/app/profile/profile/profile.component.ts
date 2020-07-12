@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { JobapplicationService } from '../jobapplication.service';
 import { Observable } from 'rxjs';
 import { User } from '../user';
+import * as fileSaver from 'file-saver';
+import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
@@ -14,17 +17,35 @@ export class ProfileComponent implements OnInit {
   mail: string;
   role: string;
   id: number;
-  constructor(private rsvc: JobapplicationService) {}
+  fullname: string;
+  isError: boolean;
+  constructor(
+    private rsvc: JobapplicationService,
+    private tstr: ToastrService
+  ) {}
 
   ngOnInit(): void {
-    //   this.rsvc.GetUserDetails().subscribe(emp=>
-    //     {
-    //       this.username = emp.UserName;
-    //       this.mail = emp.UserEmail;
-    //       this.role = emp.UserRole;
-    //       this.id = emp.UserId;
-    //       console.table(emp);
-    //     }
-    //     );
+    this.rsvc.GetUserDetails().subscribe((emp) => {
+      console.table(emp);
+      this.username = emp.UserName;
+      this.mail = emp.UserEmail;
+      this.role = emp.UserRole;
+      this.id = emp.UserId;
+      this.fullname = emp.Fullname;
+    });
+  }
+  download() {
+    this.rsvc.downloadFile().subscribe(
+      (response) => {
+        let blob: any = new Blob([response], { type: 'application/pdf' });
+        // const url = window.URL.createObjectURL(blob);
+        // window.open(url);
+        fileSaver.saveAs(blob, 'resume.pdf');
+      },
+      (error: any) => {
+        // console.log(error);
+        this.tstr.error('You have not uploaded the resume', 'Resume Not Found');
+      }
+    );
   }
 }

@@ -1,21 +1,10 @@
-<!-- <button type="button" (click)="viewDetails()">click me</button>  -->
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="box">
-                {{id}}  {{mail}} {{role}} {{username}}
-            </div>
-        </div>
-    </div>
-</div> -->
-
 <div class="card" style="width:400px">
-    <i class="fas fa-user" style="width:100%"></i>
-    <!-- <img class="card-img-top" src="img_avatar1.png" alt="Card image" > -->
+    <i class="fa fa-user fa-4x"></i>
     <div class="card-body">
-        <h4 class="card-title">Mark</h4>
-        <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-        <a href="#" class="btn btn-primary">See Profile</a>
+        <h4 class="card-title">{{fullname | uppercase}}</h4>
+        <p class="card-text">Username: {{username}}</p>
+        <p class="card-text">Email: {{mail}}</p>
+        <small class="text-danger" *ngIf="isError">You have not uploaded resume</small>
+        <input class="btn" type="button" (click)="download()" value="Download Resume" />
     </div>
 </div>

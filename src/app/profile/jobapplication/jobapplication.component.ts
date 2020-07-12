@@ -18,7 +18,7 @@ export class JobapplicationComponent implements OnInit {
     private fb: FormBuilder,
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.registerForm = this.fb.group({
       ename: ['', Validators.required],
       curLoc: ['', Validators.required],

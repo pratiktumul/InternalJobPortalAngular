@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Http, ResponseContentType } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Rx';
 import { User } from './user';
 
 @Injectable({
@@ -12,6 +13,21 @@ export class JobapplicationService {
   webapiservice = 'https://localhost:44325/api/employeejobapplication';
   constructor(private _http: HttpClient) {}
 
+  downloadFile(): Observable<any> {
+    return this._http
+      .get('https://localhost:44325/api/UserDetails', {
+        responseType: 'blob' as 'json',
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+        }),
+      })
+      .catch((error: any) =>{
+        if (error.status === 404) {
+            return Observable.throw(new Error(error.status));
+        }
+    });
+  }
+  
   GetUserDetails(): Observable<User> {
     return this._http.get<User>(this.webapiservice, {
       headers: new HttpHeaders({

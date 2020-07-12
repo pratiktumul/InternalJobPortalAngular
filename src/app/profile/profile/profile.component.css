@@ -1,8 +1,26 @@
-.box {
-    width: 50%;
-    margin-left: 200px;
-    align-content: center;
-    background-color: lightgray;
-    box-shadow: 10px 5px 5px darkgrey;
-    margin-bottom: 20px;
+.fa {
+    text-align: center;
+    /* margin-left: 42%; */
+    margin-top: 5px;
+}
+
+.card {
+    margin-left: 35%;
+    margin-bottom: 5px;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-text {
+    text-align: center;
+}
+
+.btn {
+    text-align: center;
 }

@@ -3,6 +3,11 @@
     margin-left: 95px;
 }
 
+.fa {
+    text-align: center;
+    margin-left: 165px;
+}
+
 .box {
     width: 50%;
     margin-left: 200px;
@@ -18,6 +23,11 @@ small {
 
 .txt {
     margin-left: 153px;
+    color: rgb(1, 24, 99);
+}
+
+.txtlog {
+    margin-left: 161px;
     color: rgb(1, 24, 99);
 }
 
