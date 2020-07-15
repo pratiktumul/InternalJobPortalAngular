@@ -18,4 +18,15 @@ export class JobserviceService {
     let url = `https://localhost:44325/api/JobOpening/search?title=${title}&location=${location}`;
     return this.http.get<Jobs[]>(url);
   }
+  roleMatch(allowedRoles): boolean {
+    var isMatch = false;
+    var userRoles: string[] = JSON.parse(localStorage.getItem('role'));
+    allowedRoles.forEach(element => {
+      if (userRoles.indexOf(element) > -1) {
+        isMatch = true;
+        return false;
+      }
+    });
+    return isMatch;
+  }
 }

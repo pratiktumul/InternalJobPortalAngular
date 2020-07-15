@@ -7,9 +7,10 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile/profile.component';
 import { JobapplicationComponent } from './jobapplication/jobapplication.component';
 import { JobapplicationService } from './jobapplication.service';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 
 @NgModule({
-  declarations: [ProfileComponent, JobapplicationComponent],
+  declarations: [ProfileComponent, JobapplicationComponent, AdminPanelComponent],
   imports: [
     CommonModule,
     ProfileRoutingModule,
