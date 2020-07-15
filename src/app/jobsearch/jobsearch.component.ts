@@ -12,6 +12,7 @@ export class JobsearchComponent implements OnInit {
   data: any;
   joblist: Jobs[];
   time: number;
+  totalJobs: Number;
   constructor(private route: ActivatedRoute, private serve: JobserviceService) {}
 
   ngOnInit(): void {
@@ -22,6 +23,7 @@ export class JobsearchComponent implements OnInit {
         .getJobsBySearch(this.data.title, this.data.location)
         .subscribe((data) => {
           this.joblist = data;
+          this.totalJobs = data.length;
           console.log(this.joblist);
         });
     });

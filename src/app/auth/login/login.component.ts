@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
     this.rsvc.userLogin(username, password).subscribe(
       (data: any) => {
         localStorage.setItem('userToken', data.access_token);
-        localStorage.setItem('userName', username);
+        localStorage.setItem('role', data.role);
         this.router.navigate(['/']);
       },
       (error: HttpErrorResponse) => {
