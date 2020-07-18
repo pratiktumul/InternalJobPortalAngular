@@ -1,1 +1,87 @@
-<p>admin-panel works!</p>
+<div class="container">
+    <h4>Add A New Job</h4>
+    <div class="row">
+        <form [formGroup]="jobForm" (ngSubmit)="addJob()">
+            <table>
+                <tr>
+                    <td>
+                        <div class="form-group">
+                            <input [class.is-invalid]="jobForm.get('JobTitle').invalid && jobForm.get('JobTitle').touched" type="text font-weight-bold" class="form-control" formControlName="JobTitle" placeholder="Job Title" />
+                            <small class="text-danger" [class.d-none]="jobForm.get('JobTitle').valid || jobForm.get('JobTitle').untouched">Job Title is mandatory*</small>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input [class.is-invalid]="jobForm.get('CompanyName').invalid && jobForm.get('CompanyName').touched" type="text font-weight-bold" class="form-control" formControlName="CompanyName" placeholder="Company Name" />
+                            <small class="text-danger" [class.d-none]="jobForm.get('CompanyName').valid || jobForm.get('CompanyName').untouched">Job Title is mandatory*</small>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input [class.is-invalid]="jobForm.get('Location').invalid && jobForm.get('Location').touched" type="text font-weight-bold" class="form-control" formControlName="Location" placeholder="Location" />
+                            <small class="text-danger" [class.d-none]="jobForm.get('Location').valid || jobForm.get('Location').untouched">Job Title is mandatory*</small>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <input [class.is-invalid]="jobForm.get('JobType').invalid && jobForm.get('JobType').touched" type="text font-weight-bold" class="form-control" formControlName="JobType" placeholder="Job Type" />
+                            <small class="text-danger" [class.d-none]="jobForm.get('JobType').valid || jobForm.get('JobType').untouched">Job Title is mandatory*</small>
+                        </div>
+                    </td>
+                    <td>
+                        <button class="btn1" type="submit">Add</button>
+                    </td>
+                    <td>
+                        <button class="btn3" type="button" (click)="resetAll()">Reset</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <div class="row">
+        <table class="table table-striped table-responsive-md btn-table">
+            <thead>
+                <tr>
+                    <th>Job Title</th>
+                    <th>Company Name</th>
+                    <th>Location</th>
+                    <th>Job Type</th>
+                    <th>Create Date</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of allJobs | paginate: {
+                    id:'joblist',
+                    itemsPerPage: 5,
+                    currentPage: page,
+                    totalItems: totalRecord}">
+                    <td>{{data.JobTitle}}</td>
+                    <td>{{data.CompanyName}}</td>
+                    <td>{{data.Location}}</td>
+                    <td>{{data.JobType}}</td>
+                    <td>{{data.CreateDate | date:'medium'}}</td>
+                    <td>
+                        <button type="button" class="btn2" (click)="deleteJob(data.JobId)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination-area pb-115 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="single-wrap d-flex justify-content-center">
+                        <nav aria-label="Page navigation example">
+                            <pagination-controls id="joblist" (pageChange)="page=$event" previousLabel="" nextLabel=""></pagination-controls>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="row">
+        
+    </div> -->
+</div>

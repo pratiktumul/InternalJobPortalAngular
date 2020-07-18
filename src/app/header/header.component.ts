@@ -9,27 +9,16 @@ import { JobserviceService } from '../jobservice.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  //UserName:string;
   constructor(
     public auth: AuthService,
     private router: Router,
     public job: JobserviceService
-  ) {
-    //this.UserName = localStorage.getItem('userName');
-  }
+  ) {}
 
-  ngOnInit(): void {
-    // if (localStorage.getItem('userToken') != null) {
-    //   this.auth.getUserClaims().subscribe((data) => {
-    //     // console.log(data.UserName);
-    //     this.userClaim = data;
-    //   });
-    // }
-  }
+  ngOnInit(): void {}
 
   logout() {
     localStorage.removeItem('userToken');
-    localStorage.removeItem('userName');
     localStorage.clear();
     this.router.navigate(['/']);
   }
