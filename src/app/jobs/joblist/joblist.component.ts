@@ -11,14 +11,15 @@ import { JobserviceService } from 'src/app/jobservice.service';
 export class JoblistComponent implements OnInit {
   jobs: Jobs[];
   totalJobs: Number;
+  ttlrecords: number;
+  page: number = 1;
   constructor(private service: JobserviceService) {}
 
   ngOnInit(): void {
     this.service.getJobs().subscribe((data) => {
       this.jobs = data;
       this.totalJobs = data.length;
-      console.log(this.jobs);
-      // console.log(data);
+      this.ttlrecords = data.length;
     });
   }
 }

@@ -1,19 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Jobs } from '../jobs';
-import {JobserviceService} from '../jobservice.service';
+import { JobserviceService } from '../jobservice.service';
 
 @Component({
   selector: 'app-jobsearch',
   templateUrl: './jobsearch.component.html',
-  styleUrls: ['./jobsearch.component.css']
+  styleUrls: ['./jobsearch.component.css'],
 })
 export class JobsearchComponent implements OnInit {
   data: any;
   joblist: Jobs[];
   time: number;
-  totalJobs: Number;
-  constructor(private route: ActivatedRoute, private serve: JobserviceService) {}
+  totalJobs: number;
+  ttlrecords: number;
+  page: number = 1;
+  constructor(
+    private route: ActivatedRoute,
+    private serve: JobserviceService
+  ) {}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((param) => {
@@ -24,7 +29,7 @@ export class JobsearchComponent implements OnInit {
         .subscribe((data) => {
           this.joblist = data;
           this.totalJobs = data.length;
-          console.log(this.joblist);
+          this.ttlrecords = data.length;
         });
     });
   }

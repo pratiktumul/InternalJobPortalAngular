@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 import { JobsRoutingModule } from './jobs-routing.module';
 import { JoblistComponent } from './joblist/joblist.component';
@@ -9,7 +10,8 @@ import { JoblistComponent } from './joblist/joblist.component';
   declarations: [JoblistComponent],
   imports: [
     CommonModule,
-    JobsRoutingModule
+    JobsRoutingModule,
+    NgxPaginationModule
   ]
 })
 export class JobsModule { }
