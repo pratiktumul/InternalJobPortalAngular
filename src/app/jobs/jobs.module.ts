@@ -4,14 +4,16 @@ import {NgxPaginationModule} from 'ngx-pagination';
 
 import { JobsRoutingModule } from './jobs-routing.module';
 import { JoblistComponent } from './joblist/joblist.component';
+import { OrderByPipe } from '../pipe/order-by.pipe';
 
 
 @NgModule({
-  declarations: [JoblistComponent],
+  declarations: [JoblistComponent, ],
   imports: [
     CommonModule,
     JobsRoutingModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    // OrderByPipe
   ]
 })
 export class JobsModule { }

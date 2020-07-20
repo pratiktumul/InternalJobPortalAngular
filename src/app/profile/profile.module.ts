@@ -8,12 +8,14 @@ import { ProfileComponent } from './profile/profile.component';
 import { JobapplicationComponent } from './jobapplication/jobapplication.component';
 import { JobapplicationService } from './jobapplication.service';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { OrderByPipe } from '../pipe/order-by.pipe';
 
 @NgModule({
   declarations: [
     ProfileComponent,
     JobapplicationComponent,
     AdminPanelComponent,
+    OrderByPipe
   ],
   imports: [
     CommonModule,

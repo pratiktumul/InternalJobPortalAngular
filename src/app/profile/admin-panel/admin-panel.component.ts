@@ -15,6 +15,12 @@ export class AdminPanelComponent implements OnInit {
   jobForm: FormGroup;
   totalRecord: number;
   page: number = 1;
+  sort: any[] = [
+    { id: '1', value: 'Ascending' },
+    { id: '2', value: 'Descending' },
+    { id: '3', value: 'ByDate' },
+  ];
+  sortVal: string = 'ByDate';
   constructor(
     private service: AdminpanelService,
     private tstr: ToastrService,
@@ -53,7 +59,11 @@ export class AdminPanelComponent implements OnInit {
     });
   }
 
-  resetAll(){
+  resetAll() {
     this.jobForm.reset();
+  }
+  capture(val: string) {
+    this.sortVal = val;
+    console.log(this.sortVal);
   }
 }
