@@ -79,13 +79,14 @@
                         </div>
                         <!-- Select job items start -->
                         <div class="select-job-items2">
-                            <select name="select">
+                            <input type="text" [(ngModel)]="filterVal" />
+                            <!-- <select name="select">
                                 <option value="">Anywhere</option>
                                 <option value="">Category 1</option>
                                 <option value="">Category 2</option>
                                 <option value="">Category 3</option>
                                 <option value="">Category 4</option>
-                            </select>
+                            </select> -->
                         </div>
                         <!--  Select job items End-->
                         <!-- select-Categories start -->
@@ -199,11 +200,11 @@
                         </div>
                         <!-- Count of Job list End -->
                         <!-- single-job-content -->
-                        <div class="single-job-items mb-30" *ngFor="let data of jobs | order:sortVal | paginate: {
+                        <div class="single-job-items mb-30" *ngFor="let data of (jobs | filter:filterVal | order:sortVal | paginate: {
                             id:'joblist',
                             itemsPerPage: 7,
                             currentPage: page,
-                            totalItems: ttlrecords}">
+                            totalItems: ttlrecords})">
                             <div class="job-items">
                                 <div class="company-img">
                                     <a href="#"><img src="assets/img/icon/job-list1.png" alt=""></a>

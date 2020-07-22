@@ -13,6 +13,7 @@ export class JoblistComponent implements OnInit {
   totalJobs: Number;
   ttlrecords: number;
   page: number = 1;
+  filterVal: any;
   sort: any[] = [
     { id: '1', value: 'Ascending' },
     { id: '2', value: 'Descending' },
