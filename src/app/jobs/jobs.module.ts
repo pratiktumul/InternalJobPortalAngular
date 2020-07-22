@@ -1,19 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { JobsRoutingModule } from './jobs-routing.module';
 import { JoblistComponent } from './joblist/joblist.component';
-import { OrderByPipe } from '../pipe/order-by.pipe';
-
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
-  declarations: [JoblistComponent, ],
-  imports: [
-    CommonModule,
-    JobsRoutingModule,
-    NgxPaginationModule,
-    // OrderByPipe
-  ]
+  declarations: [JoblistComponent,],
+  imports: [CommonModule, JobsRoutingModule, NgxPaginationModule, PipesModule],
 })
-export class JobsModule { }
+export class JobsModule {}

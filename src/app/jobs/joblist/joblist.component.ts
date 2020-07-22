@@ -13,6 +13,12 @@ export class JoblistComponent implements OnInit {
   totalJobs: Number;
   ttlrecords: number;
   page: number = 1;
+  sort: any[] = [
+    { id: '1', value: 'Ascending' },
+    { id: '2', value: 'Descending' },
+    { id: '3', value: 'ByDate' },
+  ];
+  sortVal: string = 'ByDate';
   constructor(private service: JobserviceService) {}
 
   ngOnInit(): void {
@@ -21,5 +27,8 @@ export class JoblistComponent implements OnInit {
       this.totalJobs = data.length;
       this.ttlrecords = data.length;
     });
+  }
+  capture(val: string) {
+    this.sortVal = val;
   }
 }

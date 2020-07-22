@@ -1,9 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'orderBy',
+  name: 'sort',
 })
-export class OrderByPipe implements PipeTransform {
+export class SortPipe implements PipeTransform {
   transform(value: any[], args?: any): any {
     let originalArray: any[] = value;
     if (value !== undefined && value !== null && args !== '') {
@@ -34,11 +34,16 @@ export class OrderByPipe implements PipeTransform {
         });
       }
     }
-    return value.sort((a, b) => {
-      if (a.CreateDate < b.CreateDate) {
-        return -1;
-      }
-      return 0;
-    }).reverse();
+    if (args === '') {
+      return value
+        .sort((a, b) => {
+          if (a.CreateDate < b.CreateDate) {
+            return -1;
+          }
+          return 0;
+        })
+        .reverse();
+    }
+    return value;
   }
 }
