@@ -4,6 +4,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { JobapplicationComponent } from './jobapplication/jobapplication.component';
 import { AuthGuard } from '../Guards/auth.guard';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,12 @@ const routes: Routes = [
   {
     path: 'applicationform',
     component: JobapplicationComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['User'] },
+  },
+  {
+    path: 'dashboard',
+    component: UserdashboardComponent,
     canActivate: [AuthGuard],
     data: { role: ['User'] },
   },

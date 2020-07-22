@@ -47,8 +47,21 @@
                     <select name="select" (change)="capture($event.target.value)">
                         <option value="">None</option>
                         <option *ngFor="let data of sort" value={{data.id}}>{{data.value}}</option>
-                        <!-- <option value="asc" (click)="capture(asc)">Asc</option> -->
                     </select>
+                </div>
+                <!--  Select job items End-->
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="count-job mb-35">
+                <!-- Select job items start -->
+                <div class="select-job-items">
+                    <span>Filter by</span>
+                    <input type="text" [(ngModel)]="filterVal" />
+                    <!-- <select name="select" (change)="capture($event.target.value)">
+                        <option value="">None</option>
+                        <option *ngFor="let data of sort" value={{data.id}}>{{data.value}}</option>
+                    </select> -->
                 </div>
                 <!--  Select job items End-->
             </div>
@@ -67,11 +80,11 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let data of allJobs | sort:sortVal | paginate: {
+                <tr *ngFor="let data of (allJobs | filter:filterVal | sort:sortVal  | paginate: {
                     id:'joblist',
                     itemsPerPage: 5,
                     currentPage: page,
-                    totalItems: totalRecord}">
+                    totalItems: totalRecord})">
                     <td>{{data.JobTitle}}</td>
                     <td>{{data.CompanyName}}</td>
                     <td>{{data.Location}}</td>

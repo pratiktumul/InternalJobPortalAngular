@@ -21,6 +21,7 @@ export class AdminPanelComponent implements OnInit {
     { id: '3', value: 'ByDate' },
   ];
   sortVal: string = 'ByDate';
+  filterVal: any;
   constructor(
     private service: AdminpanelService,
     private tstr: ToastrService,

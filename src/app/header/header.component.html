@@ -47,7 +47,8 @@
                                                 <ul class="submenu">
                                                     <li *ngIf="job.roleMatch(['User'])"><a routerLink="/profile" routerLinkActive="active"><i class="fas fa-user-circle"></i>Your Profile</a></li>
                                                     <li *ngIf="job.roleMatch(['User'])"><a routerLink="/applicationform" routerLinkActive="active"><i class="fas fa-briefcase"></i>Apply for Job</a></li>
-                                                    <li *ngIf="job.roleMatch(['Admin'])"><a routerLink="/adminpanel" routerLinkActive="active"><i class="fas fa-briefcase"></i>Admin Panel</a></li>
+                                                    <li *ngIf="job.roleMatch(['User'])"><a routerLink="/dashboard" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
+                                                    <li *ngIf="job.roleMatch(['Admin'])"><a routerLink="/adminpanel" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i>Admin Panel</a></li>
                                                 </ul>
                                             </li>
                                         </ul>

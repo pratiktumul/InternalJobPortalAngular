@@ -4,8 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'sort',
 })
 export class SortPipe implements PipeTransform {
-  transform(value: any[], args?: any): any {
-    let originalArray: any[] = value;
+  transform(value: any[], args?: any): any[] {
     if (value !== undefined && value !== null && args !== '') {
       if (args === '1') {
         return value.sort((a, b) => {
@@ -31,7 +30,7 @@ export class SortPipe implements PipeTransform {
             return -1;
           }
           return 0;
-        });
+        }).reverse();
       }
     }
     if (args === '') {
@@ -41,8 +40,7 @@ export class SortPipe implements PipeTransform {
             return -1;
           }
           return 0;
-        })
-        .reverse();
+        });
     }
     return value;
   }
