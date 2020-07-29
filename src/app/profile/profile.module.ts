@@ -10,6 +10,9 @@ import { JobapplicationService } from './jobapplication.service';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { PipesModule } from '../pipes/pipes.module';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
+import { DashboardService } from './dashboard.service';
+import { AdminpanelService } from './adminpanel.service';
+import { TotalappliedjobsComponent } from './totalappliedjobs/totalappliedjobs.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,7 @@ import { UserdashboardComponent } from './userdashboard/userdashboard.component'
     JobapplicationComponent,
     AdminPanelComponent,
     UserdashboardComponent,
+    TotalappliedjobsComponent,
   ],
   imports: [
     CommonModule,
@@ -27,6 +31,6 @@ import { UserdashboardComponent } from './userdashboard/userdashboard.component'
     NgxPaginationModule,
     PipesModule,
   ],
-  providers: [JobapplicationService],
+  providers: [JobapplicationService, DashboardService, AdminpanelService],
 })
 export class ProfileModule {}

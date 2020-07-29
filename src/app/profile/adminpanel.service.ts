@@ -12,7 +12,6 @@ export class AdminpanelService {
   constructor(private http: HttpClient) {}
 
   getAllJobs(): Observable<Jobs[]> {
-    let httpOptions = new HttpHeaders();
     return this.http.get<Jobs[]>(this.uri + '/getalljobs', {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),

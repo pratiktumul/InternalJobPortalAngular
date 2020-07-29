@@ -1,0 +1,50 @@
+.box {
+    width: 300px;
+    height: 300px;
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 10%;
+    background-color: lightgray;
+    text-align: center;
+}
+
+.dash {
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000;
+    color: white;
+    text-align: center;
+    width: 250px;
+    height: 500px;
+    background-color: rgb(49, 53, 53);
+}
+
+i {
+    margin-right: 5px;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 150px;
+    margin-top: 10%;
+}
+
+.txt {
+    color: white;
+}
+
+.dash-head {
+    height: auto;
+    background-color: rgba(250, 246, 3, 0.774);
+    color: white;
+}

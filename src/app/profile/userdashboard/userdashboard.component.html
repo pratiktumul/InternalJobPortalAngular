@@ -1,1 +1,37 @@
-<p>userdashboard works!</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="dash">
+            <div>
+                <h3 class="txt"><i class="fas fa-user-circle"></i> Hi, {{userName}}</h3>
+                <hr>
+            </div>
+            <h6 class="txt">Last Login On: {{lastLogin | date: 'longDate'}}</h6>
+            <hr>
+            <ul>
+                <li>
+                    <a class="pointer" routerLink="/appliedjobs" routerLinkActive="active"><i class="fas fa-briefcase"></i>Applied Jobs</a>
+                </li>
+            </ul>
+        </div>
+        <!-- <div class="col-lg-6">
+            <h6>Hi, {{userName}}</h6>
+        </div>
+        <div class="col-lg-6">
+            <h6>Last Login On: {{lastLogin | date: 'longDate'}}</h6>
+        </div> -->
+        <div class="box">
+            <h3>Total Jobs Applied</h3>
+            <a class="pointer" routerLink="/appliedjobs" routerLinkActive="active">
+                <h1>{{ttlJobs}}</h1>
+                <P>see all jobs</P>
+            </a>
+        </div>
+        <div class="box">
+            <h3>Status</h3>
+            <a class="pointer" (click)="getJobs()">
+                <h1>1</h1>
+                <P>see status</P>
+            </a>
+        </div>
+    </div>
+</div>

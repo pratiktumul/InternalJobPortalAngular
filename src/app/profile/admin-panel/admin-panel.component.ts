@@ -22,11 +22,12 @@ export class AdminPanelComponent implements OnInit {
   ];
   sortVal: string = 'ByDate';
   filterVal: any;
+
   constructor(
     private service: AdminpanelService,
     private tstr: ToastrService,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.jobForm = this.fb.group({
@@ -37,7 +38,9 @@ export class AdminPanelComponent implements OnInit {
     });
     this.loadAllJobs();
   }
-
+  companyName = ["Microsoft", "Apple", "Dell", "IBM", "SAP"];
+  Location = ["Bangalore", "Manila", "Carmel"];
+  JobType = ["Full Time","Part Time","Freelancer", "Remote"];
   loadAllJobs() {
     this.service.getAllJobs().subscribe((data) => {
       this.allJobs = data;

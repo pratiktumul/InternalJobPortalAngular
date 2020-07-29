@@ -22,11 +22,10 @@ export class ProfileComponent implements OnInit {
   constructor(
     private rsvc: JobapplicationService,
     private tstr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.rsvc.GetUserDetails().subscribe((emp) => {
-      console.table(emp);
       this.username = emp.UserName;
       this.mail = emp.UserEmail;
       this.role = emp.UserRole;

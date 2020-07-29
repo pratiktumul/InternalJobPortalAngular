@@ -4149,18 +4149,17 @@ hr {
     background-color: #1f2b7b
 }
 
-
-/* .breadcam_bg {
-    background-image: url(../img/banner/bradcam.png)
+.breadcam_bg {
+    background-image: url(/src/assets/img/banner/bradcam.png)
 }
 
 .breadcam_bg_1 {
-    background-image: url(../img/banner/bradcam2.png)
+    background-image: url(/src/assets/img/banner/bradcam2.png)
 }
 
 .breadcam_bg_2 {
-    background-image: url(../img/banner/bradcam3.png)
-} */
+    background-image: url(/src/assets/img/banner/bradcam3.png)
+}
 
 .bradcam_area {
     background-size: cover;
@@ -4406,7 +4405,8 @@ hr {
     align-items: center;
     -webkit-box-pack: start;
     -ms-flex-pack: start;
-    justify-content: start
+    /* justify-content: start; */
+    display: flex;
 }
 
 .overlay::before {

@@ -1,0 +1,41 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="dash">
+            <h3 class="txt"><i class="fas fa-user-circle"></i> Hi, {{userName}}</h3>
+            <hr>
+            <h6 class="txt">Last Login On: {{lastLogin | date:'longDate'}}</h6>
+            <hr>
+            <ul>
+                <li>
+                    <a class="pointer" routerLink="/dashboard" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <table class="table table-striped table-responsive-md btn-table">
+                <thead>
+                    <tr>
+                        <th>Application Id</th>
+                        <th>Employee Name</th>
+                        <th>Current Location</th>
+                        <th>Experience</th>
+                        <th>About</th>
+                        <th>Project</th>
+                        <th>Skills</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of jobApplied">
+                        <td>{{data.Id}}</td>
+                        <td>{{data.Ename}}</td>
+                        <td>{{data.Curloc}}</td>
+                        <td>{{data.Experience}}</td>
+                        <td>{{data.About}}</td>
+                        <td>{{data.Project}}</td>
+                        <td>{{data.Skill}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

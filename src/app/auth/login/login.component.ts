@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private rsvc: AuthService,
     private tstr: ToastrService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -37,6 +37,8 @@ export class LoginComponent implements OnInit {
       (data: any) => {
         localStorage.setItem('userToken', data.access_token);
         localStorage.setItem('role', data.role);
+        localStorage.setItem('lastlogin', data.LastLogg);
+        localStorage.setItem('userName', data.username);
         this.router.navigate(['/']);
       },
       (error: HttpErrorResponse) => {

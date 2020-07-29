@@ -5,6 +5,7 @@ import { JobapplicationComponent } from './jobapplication/jobapplication.compone
 import { AuthGuard } from '../Guards/auth.guard';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
+import { TotalappliedjobsComponent } from './totalappliedjobs/totalappliedjobs.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,12 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: UserdashboardComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['User'] },
+  },
+  {
+    path: 'appliedjobs',
+    component: TotalappliedjobsComponent,
     canActivate: [AuthGuard],
     data: { role: ['User'] },
   },
