@@ -12,7 +12,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class AdminPanelComponent implements OnInit {
   allJobs: Jobs[];
-  jobForm: FormGroup;
+
   totalRecord: number;
   page: number = 1;
   sort: any[] = [
@@ -22,37 +22,22 @@ export class AdminPanelComponent implements OnInit {
   ];
   sortVal: string = 'ByDate';
   filterVal: any;
+  userName: string;
 
   constructor(
     private service: AdminpanelService,
     private tstr: ToastrService,
-    private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    this.jobForm = this.fb.group({
-      JobTitle: ['', Validators.required],
-      CompanyName: ['', Validators.required],
-      Location: ['', Validators.required],
-      JobType: ['', Validators.required],
-    });
     this.loadAllJobs();
   }
-  companyName = ["Microsoft", "Apple", "Dell", "IBM", "SAP"];
-  Location = ["Bangalore", "Manila", "Carmel"];
-  JobType = ["Full Time","Part Time","Freelancer", "Remote"];
+
   loadAllJobs() {
+    this.userName = localStorage.getItem('userName');
     this.service.getAllJobs().subscribe((data) => {
       this.allJobs = data;
       this.totalRecord = data.length;
-    });
-  }
-
-  addJob() {
-    this.service.addNewJob(this.jobForm.value).subscribe(() => {
-      this.resetAll();
-      this.tstr.success('New Job Added Successfully');
-      this.loadAllJobs();
     });
   }
 
@@ -63,9 +48,6 @@ export class AdminPanelComponent implements OnInit {
     });
   }
 
-  resetAll() {
-    this.jobForm.reset();
-  }
   capture(val: string) {
     this.sortVal = val;
     console.log(this.sortVal);

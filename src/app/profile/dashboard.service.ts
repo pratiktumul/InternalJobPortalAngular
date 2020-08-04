@@ -8,6 +8,7 @@ import { Userdashboard } from './userdashboard';
 })
 export class DashboardService {
   uri = 'https://localhost:44325/api/userdashboard';
+  uri2 = 'https://localhost:44325/api/jobsuggestion';
 
   constructor(private http: HttpClient) { }
 
@@ -25,5 +26,11 @@ export class DashboardService {
       }),
     })
   }
-
+  getSuggestedJobs(): Observable<any>{
+    return this.http.get<any>(this.uri2, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    })
+  }
 }

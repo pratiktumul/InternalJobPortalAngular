@@ -18,7 +18,6 @@ export class UserdashboardComponent implements OnInit {
     });
     this.lastLogin = localStorage.getItem('lastlogin');
     this.userName = localStorage.getItem('userName');
-
   }
 
   getJobs() {

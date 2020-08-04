@@ -1,52 +1,5 @@
 <div class="container">
-    <h4>Add A New Job</h4>
-    <div class="row">
-        <form [formGroup]="jobForm" (ngSubmit)="addJob()">
-            <table>
-                <tr>
-                    <td>
-                        <div class="form-group">
-                            <input [class.is-invalid]="jobForm.get('JobTitle').invalid && jobForm.get('JobTitle').touched" type="text font-weight-bold" class="form-control" formControlName="JobTitle" placeholder="Job Title" />
-                            <small class="text-danger" [class.d-none]="jobForm.get('JobTitle').valid || jobForm.get('JobTitle').untouched">Job Title is mandatory*</small>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <select [class.is-invalid]="jobForm.get('CompanyName').invalid && jobForm.get('CompanyName').touched" class="form-control" formControlName="CompanyName">
-                                <option value="" disabled>Select Company Name</option>
-                                <option *ngFor="let slist of companyName" value={{slist}}>{{slist}}</option>
-                            </select>
-                            <small class="text-danger" [class.d-none]="jobForm.get('CompanyName').valid || jobForm.get('CompanyName').untouched">*Select a company name</small>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <select [class.is-invalid]="jobForm.get('Location').invalid && jobForm.get('Location').touched" class="form-control" formControlName="Location">
-                                <option value="" disabled>Select Location</option>
-                                <option *ngFor="let slist of Location" value={{slist}}>{{slist}}</option>
-                            </select>
-                            <small class="text-danger" [class.d-none]="jobForm.get('Location').valid || jobForm.get('Location').untouched">*Select a Location</small>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-group">
-                            <select [class.is-invalid]="jobForm.get('JobType').invalid && jobForm.get('JobType').touched" class="form-control" formControlName="JobType">
-                                <option value="" disabled>Select Job Type</option>
-                                <option *ngFor="let slist of JobType" value={{slist}}>{{slist}}</option>
-                            </select>
-                            <small class="text-danger" [class.d-none]="jobForm.get('JobType').valid || jobForm.get('JobType').untouched">*Select a job type</small>
-                        </div>
-                    </td>
-                    <td>
-                        <button class="btn1" type="submit">Add</button>
-                    </td>
-                    <td>
-                        <button class="btn3" type="button" (click)="resetAll()">Reset</button>
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </div>
+    <hr>
     <div class="row">
         <div class="col-lg-6">
             <div class="count-job mb-35">
@@ -66,7 +19,7 @@
                 <!-- Select job items start -->
                 <div class="select-job-items">
                     <span>Filter by Location </span>
-                    <input type="text" [(ngModel)]="filterVal" placeholder="enter City Name" />
+                    <input type="text" [(ngModel)]="filterVal" placeholder="Enter City Name" />
                     <!-- <select name="select" (change)="capture($event.target.value)">
                         <option value="">None</option>
                         <option *ngFor="let data of sort" value={{data.id}}>{{data.value}}</option>

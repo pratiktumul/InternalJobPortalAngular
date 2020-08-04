@@ -13,6 +13,8 @@ import { UserdashboardComponent } from './userdashboard/userdashboard.component'
 import { DashboardService } from './dashboard.service';
 import { AdminpanelService } from './adminpanel.service';
 import { TotalappliedjobsComponent } from './totalappliedjobs/totalappliedjobs.component';
+import { AddjobsComponent } from './addjobs/addjobs.component';
+import { SuggestedjobsComponent } from './suggestedjobs/suggestedjobs.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { TotalappliedjobsComponent } from './totalappliedjobs/totalappliedjobs.c
     AdminPanelComponent,
     UserdashboardComponent,
     TotalappliedjobsComponent,
+    AddjobsComponent,
+    SuggestedjobsComponent,
   ],
   imports: [
     CommonModule,

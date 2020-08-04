@@ -9,16 +9,18 @@
             <hr>
             <ul>
                 <li>
+                    <a class="pointer" routerLink="/dashboard" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                </li>
+                <hr>
+                <li>
                     <a class="pointer" routerLink="/appliedjobs" routerLinkActive="active"><i class="fas fa-briefcase"></i>Applied Jobs</a>
+                </li>
+                <hr>
+                <li>
+                    <a class="pointer" routerLink="/suggestedjobs" routerLinkActive="active"><i class="fas fa-briefcase"></i>Suggested Jobs</a>
                 </li>
             </ul>
         </div>
-        <!-- <div class="col-lg-6">
-            <h6>Hi, {{userName}}</h6>
-        </div>
-        <div class="col-lg-6">
-            <h6>Last Login On: {{lastLogin | date: 'longDate'}}</h6>
-        </div> -->
         <div class="box">
             <h3>Total Jobs Applied</h3>
             <a class="pointer" routerLink="/appliedjobs" routerLinkActive="active">

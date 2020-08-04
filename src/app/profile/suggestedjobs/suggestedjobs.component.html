@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="dash">
+            <div>
+                <h3 class="txt"><i class="fas fa-user-circle"></i> Hi, {{userName}}</h3>
+                <hr>
+            </div>
+            <h6 class="txt">Last Login On: {{lastLogin | date: 'longDate'}}</h6>
+            <hr>
+            <ul>
+                <li>
+                    <a class="pointer" routerLink="/dashboard" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                </li>
+                <hr>
+                <li>
+                    <a class="pointer" routerLink="/appliedjobs" routerLinkActive="active"><i class="fas fa-briefcase"></i>Applied Jobs</a>
+                </li>
+                <hr>
+                <li>
+                    <a class="pointer" routerLink="/suggestedjobs" routerLinkActive="active"><i class="fas fa-briefcase"></i>Suggested Jobs</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xl-9 col-lg-9 col-md-8">
+            <div class="single-job-items mb-30" *ngFor="let data of suggestedJobs | paginate: {
+            id:'joblist',
+            itemsPerPage: 3,
+            currentPage: page,
+            totalItems: ttlrecords}">
+                <div class="job-items">
+                    <div class="company-img">
+                        <a href="#"><img src="assets/img/icon/company_img.jpg" alt=""></a>
+                    </div>
+                    <div class="job-tittle job-tittle2">
+                        <a href="#">
+                            <h4>{{data.JobTitle}}</h4>
+                        </a>
+                        <ul>
+                            <li>{{data.CompanyName}}</li>
+                            <li><i class="fas fa-map-marker-alt"></i>{{data.Location}}</li>
+                            <li>$3500 - $4000</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="items-link items-link2 f-right">
+                    <a href="#">{{data.JobType}}</a>
+                    <span>{{data.TimeDiff}} hours ago</span>
+                </div>
+            </div>
+            <div class="pagination-area pb-115 text-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="single-wrap d-flex justify-content-center">
+                                <nav aria-label="Page navigation example">
+                                    <pagination-controls id="joblist" (pageChange)="page=$event" previousLabel="" nextLabel=""></pagination-controls>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

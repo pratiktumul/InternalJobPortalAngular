@@ -6,6 +6,8 @@ import { AuthGuard } from '../Guards/auth.guard';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 import { TotalappliedjobsComponent } from './totalappliedjobs/totalappliedjobs.component';
+import { AddjobsComponent } from './addjobs/addjobs.component';
+import { SuggestedjobsComponent } from './suggestedjobs/suggestedjobs.component';
 
 const routes: Routes = [
   {
@@ -33,8 +35,20 @@ const routes: Routes = [
     data: { role: ['User'] },
   },
   {
+    path: 'suggestedjobs',
+    component: SuggestedjobsComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['User'] },
+  },
+  {
     path: 'adminpanel',
     component: AdminPanelComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['Admin'] },
+  },
+  {
+    path: 'addjobs',
+    component: AddjobsComponent,
     canActivate: [AuthGuard],
     data: { role: ['Admin'] },
   },
