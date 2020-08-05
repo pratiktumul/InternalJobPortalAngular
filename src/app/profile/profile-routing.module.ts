@@ -24,19 +24,21 @@ const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: UserdashboardComponent,
-    canActivate: [AuthGuard],
-    data: { role: ['User'] },
-  },
-  {
-    path: 'appliedjobs',
-    component: TotalappliedjobsComponent,
-    canActivate: [AuthGuard],
-    data: { role: ['User'] },
-  },
-  {
-    path: 'suggestedjobs',
-    component: SuggestedjobsComponent,
+    children: [
+      {path:'', component:UserdashboardComponent},
+      {
+        path: 'appliedjobs',
+        component: TotalappliedjobsComponent,
+        canActivate: [AuthGuard],
+        data: { role: ['User'] },
+      },
+      {
+        path: 'suggestedjobs',
+        component: SuggestedjobsComponent,
+        canActivate: [AuthGuard],
+        data: { role: ['User'] },
+      },
+    ],
     canActivate: [AuthGuard],
     data: { role: ['User'] },
   },
