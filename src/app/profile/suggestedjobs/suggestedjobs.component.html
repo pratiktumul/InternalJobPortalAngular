@@ -21,7 +21,10 @@
                 </li>
             </ul>
         </div>
-        <div class="col-xl-9 col-lg-9 col-md-8">
+        <div *ngIf="errorMessage" class="col-xl-9 col-lg-9 col-md-8">
+            <h3>You have not added any skills set</h3>
+        </div>
+        <div *ngIf="!errorMessage" class="col-xl-9 col-lg-9 col-md-8">
             <div class="single-job-items mb-30" *ngFor="let data of suggestedJobs | paginate: {
             id:'joblist',
             itemsPerPage: 3,
@@ -47,7 +50,7 @@
                     <span>{{data.TimeDiff}} hours ago</span>
                 </div>
             </div>
-            <div class="pagination-area pb-115 text-center">
+            <div *ngIf="!errorMessage" class="pagination-area pb-115 text-center">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-12">

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw'
 
 @Injectable({
   providedIn: 'root',
@@ -19,13 +20,8 @@ export class AuthService {
       .post<any>(this.apiUrl + '/api/register', regForm, httpOption)
       .catch(this.handleError);
   }
-  private handleError(error: any) {
-    let errMsg = error.message
-      ? error.message
-      : error.status
-      ? `${error.status} - ${error.statusText}`
-      : 'Server error';
-    return Observable.throw(error);
+  private handleError(error: HttpErrorResponse) {
+    return Observable.throw(error.message || "Server Error");
   }
 
   userLogin(username, password) {

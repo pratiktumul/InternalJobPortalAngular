@@ -22,7 +22,6 @@ export class TotalappliedjobsComponent implements OnInit {
   getAppliedJobs() {
     const name: string = localStorage.getItem('userName');
     this.dashboard.getAppliedJobList(name).subscribe((data) => {
-      console.log(data);
       this.jobApplied = data;
     });
   }

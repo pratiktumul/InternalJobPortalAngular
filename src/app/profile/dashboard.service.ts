@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Userdashboard } from './userdashboard';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +33,10 @@ export class DashboardService {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),
-    })
+    }).catch(this.handleError);
   }
+  private handleError(error: HttpErrorResponse) {
+    return Observable.throw(error.message || "Server Error");
+  }
+  
 }

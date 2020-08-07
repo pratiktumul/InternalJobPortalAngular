@@ -12,12 +12,17 @@ export class SuggestedjobsComponent implements OnInit {
   suggestedJobs: any[];
   ttlrecords: number;
   page: number = 1;
+  errorMessage: boolean = false;
+
   constructor(private _udsv: DashboardService) { }
 
   ngOnInit(): void {
     this.lastLogin = localStorage.getItem('lastlogin');
     this.userName = localStorage.getItem('userName');
-    this._udsv.getSuggestedJobs().subscribe(data=>this.suggestedJobs = data);
+    this._udsv.getSuggestedJobs().subscribe(
+      data => this.suggestedJobs = data,
+      (error) => { this.errorMessage = true; }
+    );
   }
 
 }
