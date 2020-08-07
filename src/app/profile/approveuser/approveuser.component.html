@@ -1,0 +1,30 @@
+<div class="container">
+    <form #RegisterApproval="ngForm">
+        <table class="table table-striped table-responsive-md btn-table">
+            <thead>
+                <tr>
+                    <th>Fullname</th>
+                    <th>Username</th>
+                    <th>User Email</th>
+                    <th>Applied Role</th>
+                    <th>Approve</th>
+                    <th>Reject</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of usersArray">
+                    <td>{{item.Fullname}}</td>
+                    <td>{{item.UserName}}</td>
+                    <td>{{item.UserEmail}}</td>
+                    <td>{{item.RoleName}}</td>
+                    <td>
+                        <button type="button" class="btn1" (click)="onApprove(item.UserId)">Approve</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn2" (click)="onReject(item.UserId)">Reject</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

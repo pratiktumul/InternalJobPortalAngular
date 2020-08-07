@@ -50,6 +50,7 @@
                                                     <li *ngIf="job.roleMatch(['User'])"><a routerLink="/dashboard" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
                                                     <li *ngIf="job.roleMatch(['Admin'])"><a routerLink="/adminpanel" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i>Admin Panel</a></li>
                                                     <li *ngIf="job.roleMatch(['Admin'])"><a routerLink="/addjobs" routerLinkActive="active"><i class="fas fa-briefcase"></i>Add A Job</a></li>
+                                                    <li *ngIf="job.roleMatch(['Admin'])"><a routerLink="/approveusers" routerLinkActive="active"><i class="fas fa-briefcase"></i>Approve Users</a></li>
                                                 </ul>
                                             </li>
                                         </ul>

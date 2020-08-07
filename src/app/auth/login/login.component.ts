@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       },
       (error: HttpErrorResponse) => {
-        this.tstr.error('Username or Password do not match', 'Login Failed');
+        this.tstr.error(`${error.error.error_description}`, 'Login Failed');
       }
     );
   }

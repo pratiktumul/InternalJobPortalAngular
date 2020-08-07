@@ -8,8 +8,8 @@ import { Jobs } from '../jobs';
 })
 export class AdminpanelService {
   uri = 'https://localhost:44325/api/jobs';
-
-  constructor(private http: HttpClient) {}
+  uri2 = 'https://localhost:44325/api/RequestApproval';
+  constructor(private http: HttpClient) { }
 
   getAllJobs(): Observable<Jobs[]> {
     return this.http.get<Jobs[]>(this.uri + '/getalljobs', {
@@ -32,5 +32,19 @@ export class AdminpanelService {
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),
     });
+  }
+  getAllApplication(): Observable<any[]> {
+    return this.http.get<any[]>(this.uri2, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    })
+  }
+  approveUser(regForm: any, id: number):Observable<any>{
+    return this.http.put<any>(this.uri2+'/'+ id, regForm ,{
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    })
   }
 }

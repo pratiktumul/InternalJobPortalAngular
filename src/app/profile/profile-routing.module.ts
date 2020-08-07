@@ -8,6 +8,7 @@ import { UserdashboardComponent } from './userdashboard/userdashboard.component'
 import { TotalappliedjobsComponent } from './totalappliedjobs/totalappliedjobs.component';
 import { AddjobsComponent } from './addjobs/addjobs.component';
 import { SuggestedjobsComponent } from './suggestedjobs/suggestedjobs.component';
+import { ApproveuserComponent } from './approveuser/approveuser.component';
 
 const routes: Routes = [
   {
@@ -51,6 +52,12 @@ const routes: Routes = [
   {
     path: 'addjobs',
     component: AddjobsComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['Admin'] },
+  },
+  {
+    path: 'approveusers',
+    component: ApproveuserComponent,
     canActivate: [AuthGuard],
     data: { role: ['Admin'] },
   },
