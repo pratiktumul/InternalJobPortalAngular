@@ -25,5 +25,4 @@ export class TotalappliedjobsComponent implements OnInit {
       this.jobApplied = data;
     });
   }
-
 }

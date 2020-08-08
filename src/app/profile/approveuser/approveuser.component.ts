@@ -35,7 +35,9 @@ export class ApproveuserComponent implements OnInit {
     const obj = {
       status: '2'
     }
-    this.asp.approveUser(obj, id).subscribe(() => {this.loadAllApplications();
-      this.tstr.error("Rejected");});
+    this.asp.approveUser(obj, id).subscribe(() => {
+      this.loadAllApplications();
+      this.tstr.error("Rejected");
+    });
   }
 }

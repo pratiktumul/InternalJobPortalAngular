@@ -16,6 +16,7 @@ import { TotalappliedjobsComponent } from './totalappliedjobs/totalappliedjobs.c
 import { AddjobsComponent } from './addjobs/addjobs.component';
 import { SuggestedjobsComponent } from './suggestedjobs/suggestedjobs.component';
 import { ApproveuserComponent } from './approveuser/approveuser.component';
+import { ApproveadminComponent } from './approveadmin/approveadmin.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ApproveuserComponent } from './approveuser/approveuser.component';
     AddjobsComponent,
     SuggestedjobsComponent,
     ApproveuserComponent,
+    ApproveadminComponent,
   ],
   imports: [
     CommonModule,

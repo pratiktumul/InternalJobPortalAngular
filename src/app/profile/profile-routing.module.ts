@@ -9,6 +9,7 @@ import { TotalappliedjobsComponent } from './totalappliedjobs/totalappliedjobs.c
 import { AddjobsComponent } from './addjobs/addjobs.component';
 import { SuggestedjobsComponent } from './suggestedjobs/suggestedjobs.component';
 import { ApproveuserComponent } from './approveuser/approveuser.component';
+import { ApproveadminComponent } from './approveadmin/approveadmin.component';
 
 const routes: Routes = [
   {
@@ -60,6 +61,12 @@ const routes: Routes = [
     component: ApproveuserComponent,
     canActivate: [AuthGuard],
     data: { role: ['Admin'] },
+  },
+  {
+    path: 'approveadmin',
+    component: ApproveadminComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['Superadmin'] },
   },
 ];
 
