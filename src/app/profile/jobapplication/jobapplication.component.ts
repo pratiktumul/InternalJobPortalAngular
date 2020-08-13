@@ -16,9 +16,10 @@ export class JobapplicationComponent implements OnInit {
   constructor(
     private jobservice: JobapplicationService,
     private fb: FormBuilder,
-  ) {}
+    private tstr: ToastrService
+  ) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.registerForm = this.fb.group({
       ename: ['', Validators.required],
       curLoc: ['', Validators.required],
@@ -67,7 +68,7 @@ export class JobapplicationComponent implements OnInit {
       )
       .subscribe(
         (_data: any) => {
-          alert('Submitted Successfully');
+          this.tstr.success("Job Application Submitted Successfully", "congratulation");
           this.registerForm.reset();
         },
         (_error: any) => alert('Sorry, Some Error Occurerd!')

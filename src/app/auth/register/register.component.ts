@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
   submitDetails() {
     this.rsvc.registerUser(this.registerForm.value).subscribe(
       (_data) => {
-        this.tstr.success("Registered Successfully", "Congratulations");
+        this.tstr.success("Application Submitted Successfully", "Congratulations");
         this.registerForm.reset();
         this.userExists = false;
         this.router.navigate(['/login']);

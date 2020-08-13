@@ -24,3 +24,18 @@
 .btn {
     text-align: center;
 }
+
+.imgStyle {
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.img {
+    text-align: center;
+}
+
+.form-control-file {
+    margin-left: 20%;
+}

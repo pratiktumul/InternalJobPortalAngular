@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Http, ResponseContentType } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs/Rx';
 import { User } from './user';
+import { forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JobapplicationService {
   webapiservice = 'https://localhost:44325/api/employeejobapplication';
-  constructor(private _http: HttpClient) {}
+  requestURL = 'https://localhost:44325/api/User_Image';
+  constructor(private _http: HttpClient) { }
 
   downloadFile(): Observable<any> {
     return this._http
@@ -21,20 +23,34 @@ export class JobapplicationService {
           Authorization: 'Bearer ' + localStorage.getItem('userToken'),
         }),
       })
-      .catch((error: any) =>{
+      .catch((error: any) => {
         if (error.status === 404) {
-            return Observable.throw(new Error(error.status));
+          return Observable.throw(new Error(error.status));
         }
-    });
+      });
   }
-  
-  GetUserDetails(): Observable<User> {
-    return this._http.get<User>(this.webapiservice, {
+
+  GetUserDetails(): Observable<any> {
+    return this._http.get<any>(this.webapiservice, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),
     });
   }
+
+  GetUserImage(): Observable<any> {
+    return this._http.get(this.requestURL, {
+      responseType: 'blob',
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      })
+    }).catch(this.handleError);
+  }
+  
+  private handleError(error: HttpErrorResponse) {
+    return Observable.throw(error.message || "Server Error");
+  }
+  
 
   AddEmployeeDetails(
     name: string,
@@ -56,6 +72,16 @@ export class JobapplicationService {
     formData.append('Project', project);
     formData.append('Resume', fileUpload, fileUpload.name);
     return this._http.post(this.webapiservice, formData, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    });
+  }
+
+  uploadImage(fileUpload: File){
+    const formData: FormData = new FormData();
+    formData.append('ProfileImage', fileUpload, fileUpload.name);
+    return this._http.post(this.requestURL, formData, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),

@@ -1,10 +1,23 @@
 <div class="card" style="width:400px">
-    <i class="fa fa-user fa-4x"></i>
+    <div class="img">
+        <i *ngIf="errorCheck" class="fa fa-user fa-4x"></i>
+        <img *ngIf="!errorCheck" [src]="imageToShow" class="imgStyle" alt="Place image title">
+    </div>
     <div class="card-body">
         <h4 class="card-title">{{fullname | uppercase}}</h4>
         <p class="card-text">Username: {{username}}</p>
         <p class="card-text">Email: {{mail}}</p>
         <small class="text-danger" *ngIf="isError">You have not uploaded resume</small>
         <input class="btn" type="button" (click)="download()" value="Download Resume" />
+        <br>
+        <br>
+        <form [formGroup]="imageForm" (ngSubmit)="submitDetails()">
+            <div class="form-group">
+                <input type="file" class="form-control-file text-dark" formContolName="imageFile" (change)="handleImageUpload($event.target.files)" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn">Upload Image</button>
+            </div>
+        </form>
     </div>
 </div>
