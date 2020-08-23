@@ -13,7 +13,8 @@ import { ToastrService } from 'ngx-toastr';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   userExists: boolean = false;
-
+  unamePattern = "^[a-z0-9_-]{8,15}$";
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   constructor(
     private fb: FormBuilder,
     private rsvc: AuthService,
@@ -25,7 +26,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group(
       {
         UserName: ['', Validators.required],
-        UserEmail: ['', Validators.required],
+        UserEmail: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
         UserPassword: ['', Validators.required],
         RoleId: ['', Validators.required],
         confirmPassword: ['', Validators.required],
@@ -49,6 +50,10 @@ export class RegisterComponent implements OnInit {
         this.userExists = true;
       }
     );
+  }
+
+  get UserEmail() {
+    return this.registerForm.get('UserEmail');
   }
 
 }

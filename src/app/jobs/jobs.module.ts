@@ -6,9 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { JobsRoutingModule } from './jobs-routing.module';
 import { JoblistComponent } from './joblist/joblist.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { JobdetailComponent } from './jobdetail/jobdetail.component';
 
 @NgModule({
-  declarations: [JoblistComponent,],
+  declarations: [JoblistComponent, JobdetailComponent,],
   imports: [CommonModule, JobsRoutingModule, NgxPaginationModule, PipesModule, FormsModule],
 })
 export class JobsModule { }

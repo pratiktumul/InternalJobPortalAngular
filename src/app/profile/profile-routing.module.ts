@@ -19,7 +19,7 @@ const routes: Routes = [
     data: { role: ['User'] },
   },
   {
-    path: 'applicationform',
+    path: 'applicationform/:id',
     component: JobapplicationComponent,
     canActivate: [AuthGuard],
     data: { role: ['User'] },

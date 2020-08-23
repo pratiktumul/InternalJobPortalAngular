@@ -221,7 +221,7 @@
                                 </div>
                             </div>
                             <div class="items-link items-link2 f-right">
-                                <a href="#">{{data.JobType}}</a>
+                                <a (click)="getJobDetails(data.JobId)">{{data.JobType}}</a>
                                 <span>{{data.TimeDiff}} hours ago</span>
                             </div>
                         </div>

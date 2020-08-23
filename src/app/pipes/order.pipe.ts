@@ -41,7 +41,6 @@ export class OrderPipe implements PipeTransform {
         return 0;
       }).reverse();
     }
-    return value;
-     
+    return value; 
   }
 }

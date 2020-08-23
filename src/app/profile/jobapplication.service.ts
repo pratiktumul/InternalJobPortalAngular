@@ -60,7 +60,8 @@ export class JobapplicationService {
     month: string,
     about: string,
     project: string,
-    fileUpload: File
+    fileUpload: File,
+    JobId: string
   ) {
     const formData: FormData = new FormData();
     formData.append('Ename', name);
@@ -71,6 +72,7 @@ export class JobapplicationService {
     formData.append('About', about);
     formData.append('Project', project);
     formData.append('Resume', fileUpload, fileUpload.name);
+    formData.append('JobId', JobId);
     return this._http.post(this.webapiservice, formData, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),

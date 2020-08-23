@@ -38,7 +38,7 @@
                     <th>Location</th>
                     <th>Job Type</th>
                     <th>Create Date</th>
-                    <th>Delete</th>
+                    <th>Expire</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,7 +53,7 @@
                     <td>{{data.JobType}}</td>
                     <td>{{data.CreateDate | date:'medium'}}</td>
                     <td>
-                        <button type="button" class="btn2" (click)="deleteJob(data.JobId)">Delete</button>
+                        <button type="button" class="btn2" (click)="expireJob(data.JobId)">Expire</button>
                     </td>
                 </tr>
             </tbody>

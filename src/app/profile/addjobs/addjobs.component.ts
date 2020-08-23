@@ -20,13 +20,17 @@ export class AddjobsComponent implements OnInit {
       CompanyName: ['', Validators.required],
       Location: ['', Validators.required],
       JobType: ['', Validators.required],
-      JobDescription: ['', Validators.required]
+      JobDescription: ['', Validators.required],
+      Salary: ['', Validators.required],
+      LastApplyDate: [Validators.required],
+      Vacancy: ['', Validators.required]
     });
   }
   companyName = ["Microsoft", "Apple", "Dell", "IBM", "SAP"];
   Location = ["Bangalore", "Manila", "Carmel"];
   JobType = ["Full Time", "Part Time", "Freelancer", "Remote"];
   addJob() {
+    console.log(this.jobForm.value);
     this.service.addNewJob(this.jobForm.value).subscribe(() => {
       this.resetAll();
       this.tstr.success('New Job Added Successfully');

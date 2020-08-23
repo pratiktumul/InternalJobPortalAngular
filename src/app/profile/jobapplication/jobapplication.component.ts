@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobapplicationService } from '../jobapplication.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -12,14 +12,16 @@ import { ToastrService } from 'ngx-toastr';
 export class JobapplicationComponent implements OnInit {
   registerForm: FormGroup;
   fileUpload: File = null;
-
+  jobId: string;
   constructor(
     private jobservice: JobapplicationService,
     private fb: FormBuilder,
-    private tstr: ToastrService
+    private tstr: ToastrService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    
     this.registerForm = this.fb.group({
       ename: ['', Validators.required],
       curLoc: ['', Validators.required],
@@ -30,6 +32,11 @@ export class JobapplicationComponent implements OnInit {
       project: ['', Validators.required],
       resumeFile: [null, Validators.required],
     });
+    this.route.paramMap.subscribe((params) => {
+      this.jobId = JSON.parse(atob(params.get('id')));
+      console.log(this.jobId);
+    }
+  );
   }
   Skills = [
     '.NET',
@@ -64,7 +71,8 @@ export class JobapplicationComponent implements OnInit {
         month,
         about,
         project,
-        this.fileUpload
+        this.fileUpload,
+        this.jobId
       )
       .subscribe(
         (_data: any) => {

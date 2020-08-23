@@ -24,10 +24,9 @@
                 <thead>
                     <tr>
                         <th>Application Id</th>
-                        <th>Employee Name</th>
+                        <th>Company Name</th>
                         <th>Current Location</th>
                         <th>Experience</th>
-                        <th>About</th>
                         <th>Project</th>
                         <th>Skills</th>
                     </tr>
@@ -35,10 +34,9 @@
                 <tbody>
                     <tr *ngFor="let data of jobApplied">
                         <td>{{data.Id}}</td>
-                        <td>{{data.Ename}}</td>
+                        <td>{{data.CompanyName}}</td>
                         <td>{{data.Curloc}}</td>
                         <td>{{data.Experience}}</td>
-                        <td>{{data.About}}</td>
                         <td>{{data.Project}}</td>
                         <td>{{data.Skill}}</td>
                     </tr>

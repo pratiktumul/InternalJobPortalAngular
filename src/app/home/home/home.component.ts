@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
   }
   onSubmit() {
     this.data = this.form.value;
-    console.log(this.data);
     this.router.navigate(['/jobsearch'], {
       queryParams: { data: btoa(JSON.stringify(this.data)) },
     });

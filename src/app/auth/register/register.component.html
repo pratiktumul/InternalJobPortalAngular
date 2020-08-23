@@ -27,6 +27,9 @@
                         <label class="txt3 font-weight-bold">Email Id</label>
                         <input [class.is-invalid]="registerForm.get('UserEmail').invalid && registerForm.get('UserEmail').touched" type="email" class="form-control" formControlName="UserEmail" />
                         <small class="text-danger" [class.d-none]="registerForm.get('UserEmail').valid || registerForm.get('UserEmail').untouched">Email is mandatory*</small>
+                        <div class="text-danger" *ngIf="UserEmail.errors?.pattern">
+                            <small style="text-align: center;">User name not valid.</small>
+                        </div>
                     </div>
 
                     <div class="form-group">

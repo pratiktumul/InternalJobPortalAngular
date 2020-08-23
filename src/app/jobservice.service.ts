@@ -9,16 +9,16 @@ import { Jobs } from './jobs';
 export class JobserviceService {
   url1 = 'https://localhost:44325/api/JobOpening';
   url2 = 'https://localhost:44325/api/JobOpening/search';
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getJobs(): Observable<Jobs[]> {
     return this.http.get<Jobs[]>(this.url1);
   }
-  getJobsBySearch(title:string, location:string): Observable<Jobs[]> {
+  getJobsBySearch(title: string, location: string): Observable<Jobs[]> {
     let url = `https://localhost:44325/api/JobOpening/search?title=${title}&location=${location}`;
     return this.http.get<Jobs[]>(url);
   }
-  roleMatch(allowedRoles): boolean {
+  roleMatch(allowedRoles: any[]): boolean {
     var isMatch = false;
     var userRoles: string[] = JSON.parse(localStorage.getItem('role'));
     allowedRoles.forEach(element => {

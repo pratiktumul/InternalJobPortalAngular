@@ -24,7 +24,7 @@
                                                 <li><a href="blog.html">Blog</a></li>
                                                 <li><a href="single-blog.html">Blog Details</a></li>
                                                 <li><a href="elements.html">Elements</a></li>
-                                                <li><a href="job_details.html">job Details</a></li>
+                                                <li><a routerLink='/jobdetails'>job Details</a></li>
                                             </ul>
                                         </li>
                                         <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
@@ -46,7 +46,7 @@
                                                 </a>
                                                 <ul class="submenu">
                                                     <li *ngIf="job.roleMatch(['User'])"><a routerLink="/profile" routerLinkActive="active"><i class="fas fa-user-circle"></i>Your Profile</a></li>
-                                                    <li *ngIf="job.roleMatch(['User'])"><a routerLink="/applicationform" routerLinkActive="active"><i class="fas fa-briefcase"></i>Apply for Job</a></li>
+                                                    <!-- <li *ngIf="job.roleMatch(['User'])"><a routerLink="/applicationform" routerLinkActive="active"><i class="fas fa-briefcase"></i>Apply for Job</a></li> -->
                                                     <li *ngIf="job.roleMatch(['User'])"><a routerLink="/dashboard" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
                                                     <li *ngIf="job.roleMatch(['Admin'])"><a routerLink="/adminpanel" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i>Admin Panel</a></li>
                                                     <li *ngIf="job.roleMatch(['Admin'])"><a routerLink="/addjobs" routerLinkActive="active"><i class="fas fa-briefcase"></i>Add A Job</a></li>

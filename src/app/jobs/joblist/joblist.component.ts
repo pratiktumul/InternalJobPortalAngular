@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Jobs } from 'src/app/jobs';
 import { JobserviceService } from 'src/app/jobservice.service';
 
@@ -20,7 +20,7 @@ export class JoblistComponent implements OnInit {
     { id: '3', value: 'ByDate' },
   ];
   sortVal: string = 'ByDate';
-  constructor(private service: JobserviceService) {}
+  constructor(private service: JobserviceService, private router: Router) { }
 
   ngOnInit(): void {
     this.service.getJobs().subscribe((data) => {
@@ -31,5 +31,8 @@ export class JoblistComponent implements OnInit {
   }
   capture(val: string) {
     this.sortVal = val;
+  }
+  getJobDetails(id: number) {
+    this.router.navigate(['/job', btoa(JSON.stringify(id))]);
   }
 }

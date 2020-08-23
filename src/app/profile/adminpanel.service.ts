@@ -26,8 +26,8 @@ export class AdminpanelService {
       }),
     });
   }
-  deleteJobById(jobid: number): Observable<any> {
-    return this.http.delete<any>(this.uri + '/' + jobid, {
+  expireJobById(expiryStatus: any, id: number): Observable<any> {
+    return this.http.put<any>(this.uri +'/'+ id, expiryStatus, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),
@@ -40,8 +40,8 @@ export class AdminpanelService {
       }),
     })
   }
-  approveUser(regForm: any, id: number):Observable<any>{
-    return this.http.put<any>(this.uri2+'/'+ id, regForm ,{
+  approveUser(regForm: any, id: number): Observable<any> {
+    return this.http.put<any>(this.uri2 + '/' + id, regForm, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),

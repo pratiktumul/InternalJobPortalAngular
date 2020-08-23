@@ -41,8 +41,11 @@ export class AdminPanelComponent implements OnInit {
     });
   }
 
-  deleteJob(jobid: number) {
-    this.service.deleteJobById(jobid).subscribe(() => {
+  expireJob(jobid: number) {
+    const obj = {
+      isExpired: true
+    }
+    this.service.expireJobById(obj, jobid).subscribe(() => {
       this.loadAllJobs();
       this.tstr.success('Deleted Successfully');
     });
