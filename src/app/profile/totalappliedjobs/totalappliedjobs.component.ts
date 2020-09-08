@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
 import { Observable } from 'rxjs';
+import { AppliedJobsModel } from './applied-jobs-model';
 
 @Component({
   selector: 'app-totalappliedjobs',
@@ -8,9 +9,13 @@ import { Observable } from 'rxjs';
   styleUrls: ['./totalappliedjobs.component.css']
 })
 export class TotalappliedjobsComponent implements OnInit {
-  jobApplied: Observable<any[]>;
+  jobApplied: AppliedJobsModel[];
   lastLogin: string;
   userName: string;
+  ttlrecords: number;
+  page: number = 1;
+  errorMessage: boolean = false;
+  isNavbarCollapsed: boolean = true;
   constructor(private dashboard: DashboardService) { }
 
   ngOnInit(): void {
@@ -23,6 +28,7 @@ export class TotalappliedjobsComponent implements OnInit {
     const name: string = localStorage.getItem('userName');
     this.dashboard.getAppliedJobList(name).subscribe((data) => {
       this.jobApplied = data;
-    });
+    },
+      error => this.errorMessage = true);
   }
 }

@@ -3,6 +3,7 @@ import { JobapplicationService } from '../jobapplication.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-jobapplication',
@@ -21,7 +22,7 @@ export class JobapplicationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+
     this.registerForm = this.fb.group({
       ename: ['', Validators.required],
       curLoc: ['', Validators.required],
@@ -34,9 +35,8 @@ export class JobapplicationComponent implements OnInit {
     });
     this.route.paramMap.subscribe((params) => {
       this.jobId = JSON.parse(atob(params.get('id')));
-      console.log(this.jobId);
     }
-  );
+    );
   }
   Skills = [
     '.NET',
@@ -61,7 +61,6 @@ export class JobapplicationComponent implements OnInit {
     const month: string = this.registerForm.controls['month'].value;
     const about: string = this.registerForm.controls['about'].value;
     const project: string = this.registerForm.controls['project'].value;
-    console.log(this.registerForm.value);
     this.jobservice
       .AddEmployeeDetails(
         name,
@@ -79,7 +78,9 @@ export class JobapplicationComponent implements OnInit {
           this.tstr.success("Job Application Submitted Successfully", "congratulation");
           this.registerForm.reset();
         },
-        (_error: any) => alert('Sorry, Some Error Occurerd!')
+        (_error: HttpErrorResponse) => {
+          this.tstr.error('You have already applied for this Job');
+        }
       );
   }
 }

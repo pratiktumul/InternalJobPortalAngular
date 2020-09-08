@@ -20,10 +20,10 @@
                         "tsConfig": "tsconfig.app.json",
                         "aot": true,
                         "assets": [
-                            "src/favicon.ico",
                             "src/assets"
                         ],
                         "styles": [
+                            "node_modules/bootstrap/dist/css/bootstrap.min.css",
                             "node_modules/ngx-toastr/toastr.css",
                             "node_modules/owl.carousel/dist/assets/owl.carousel.min.css",
                             "src/styles.css"

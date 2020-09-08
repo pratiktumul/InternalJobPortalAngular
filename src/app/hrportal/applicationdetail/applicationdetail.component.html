@@ -1,0 +1,156 @@
+<div class="container emp-profile">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-img">
+                <i *ngIf="errorCheck" class="fa fa-user fa-4x"></i>
+                <img *ngIf="!errorCheck" [src]="imageToShow" alt="" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="profile-head">
+                <h5>
+                    {{applicationDetails?.Ename}}
+                </h5>
+                <br>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a class="profile-edit-btn" name="btnAddMore" (click)="downloadResume()">View Resume</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-work">
+                <p>SKILLS</p>
+                <li *ngFor="let skill of skills">{{skill}}</li><br/>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="tab-content profile-tab" id="myTabContent">
+                <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Application ID</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{applicationDetails?.Id}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Employee Name</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{applicationDetails?.Ename}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Current Location</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{applicationDetails?.Curloc}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Current/Past Project</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{applicationDetails?.Project}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Company Applied For</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{applicationDetails?.CompanyName}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Job Title</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{applicationDetails?.JobTitle}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Experience</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{applicationDetails?.Year}} Year, {{applicationDetails?.Month}} Month</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Company Location</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{applicationDetails?.Location}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Job Type</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{applicationDetails?.JobType}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Availability</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>6 months</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Job Description</label>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{applicationDetails?.JobDescription}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Why do you consider yourself eligible for this role?</label><br/>
+                            <p>{{applicationDetails?.About}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container emp-profile">
+        <form [formGroup]="approvalForm" (ngSubmit)="scheduleInterview()">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <input class="form-control" type="date" formControlName="InterviewDate">
+                        <small class="text-danger" [class.d-none]="approvalForm.get('InterviewDate').valid || approvalForm.get('InterviewDate').untouched">Interview Date is Required*</small>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="profile-head">
+                        <button [disabled]="approvalForm.invalid" type="submit" class="btn">Schedule Interview</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="profile-head">
+                        <button type="button" class="btn" (click)="rejectApplication()">Reject</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

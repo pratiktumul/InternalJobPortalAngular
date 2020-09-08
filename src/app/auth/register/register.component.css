@@ -1,56 +1,66 @@
-.form-control {
-    width: 50%;
-    margin-left: 130px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.box {
-    width: 70%;
-    margin-left: 140px;
-    align-content: center;
-    background-color: lightgray;
-    box-shadow: 10px 5px 5px darkgrey;
-    margin-bottom: 20px;
+html {
+    height: 100%;
 }
 
-.fa {
+body {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    height: 100%;
+}
+
+.wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fafafa;
+}
+
+.register-form {
+    width: 500px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    padding: 2rem;
+    background: #cecbcb;
+}
+
+.form-input {
+    background: #fafafa;
+    border: 1px solid #eeeeee;
+    padding: 12px;
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-button {
+    background: #fb246a;
+    border: 1px solid #ddd;
+    color: #ffffff;
+    padding: 10px;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+.form-button:hover {
+    background: #fb246a;
+}
+
+.form-header {
     text-align: center;
-    margin-left: 230px;
+    margin-bottom: 2rem;
 }
 
-small {
-    margin-left: 195px;
-}
-
-.txt {
-    margin-left: 190px;
-    color: rgb(1, 24, 99);
-}
-
-.txt1 {
-    margin-left: 215px;
-    color: rgb(1, 24, 99);
-}
-
-.txt2 {
-    margin-left: 235px;
-    color: rgb(1, 24, 99);
-}
-
-.txt3 {
-    margin-left: 220px;
-    color: rgb(1, 24, 99);
-}
-
-.txt4 {
-    margin-left: 215px;
-    color: rgb(1, 24, 99);
-}
-
-.txt5 {
-    margin-left: 190px;
-    color: rgb(1, 24, 99);
-}
-
-.btn {
-    margin-left: 187px;
+.form-footer {
+    text-align: center;
 }

@@ -1,39 +1,82 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="dash">
-            <div>
-                <h3 class="txt"><i class="fas fa-user-circle"></i> Hi, {{userName}}</h3>
-                <hr>
+<nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+    <button class="navbar-toggler navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed">
+        <ul class="navbar-nav navbar-sidenav">
+            <li class="nav-item">
+                <a class="nav-link sidefrst">
+                    <span class="textside"><i class="fas fa-user-circle"></i> Hi, {{userName}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidefrst">
+                    <span class="textside"> {{lastLogin | date}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidefrst" routerLink="/dashboard" routerLinkActive="active">
+                    <span class="textside"><i class="fas fa-tachometer-alt"></i> Dasboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link sidesecnd" routerLink="./appliedjobs" routerLinkActive="active">
+                    <span class="textside"><i class="fas fa-briefcase"></i> Applied Jobs</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidesthrd" routerLink="./suggestedjobs" routerLinkActive="active">
+                    <span class="textside"><i class="fas fa-briefcase"></i> Suggested Jobs</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Icon Cards-->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+                <div class="inforide">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-4 rideone">
+                            <!-- <img src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620"> -->
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                            <h4>Total Jobs</h4>
+                            <h2>{{ttlJobs}}</h2>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h6 class="txt">Last Login On: {{lastLogin | date: 'longDate'}}</h6>
-            <hr>
-            <ul>
-                <li>
-                    <a class="pointer" routerLink="/dashboard" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                </li>
-                <hr>
-                <li>
-                    <a class="pointer" routerLink="./appliedjobs" routerLinkActive="active"><i class="fas fa-briefcase"></i>Applied Jobs</a>
-                </li>
-                <hr>
-                <li>
-                    <a class="pointer" routerLink="./suggestedjobs" routerLinkActive="active"><i class="fas fa-briefcase"></i>Suggested Jobs</a>
-                </li>
-            </ul>
-        </div>
-        <div class="box">
-            <h3>Total Jobs Applied</h3>
-            <a class="pointer" routerLink="./appliedjobs" routerLinkActive="active">
-                <h1>{{ttlJobs}}</h1>
-                <P>see all jobs</P>
-            </a>
-        </div>
-        <div class="box">
-            <h3>Status</h3>
-            <a class="pointer" (click)="getJobs()">
-                <h1>1</h1>
-                <P>see status</P>
-            </a>
+
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+                <div class="inforide">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridetwo">
+                            <!-- <img src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620"> -->
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                            <h4>Approved</h4>
+                            <h2>{{ttlApproved}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+                <div class="inforide">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridethree">
+                            <!-- <img src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620"> -->
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                            <h4>Rejected</h4>
+                            <h2>{{ttlRejected}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -64,15 +64,15 @@ export class ProfileComponent implements OnInit {
         fileSaver.saveAs(blob, 'resume.pdf');
       },
       (error: any) => {
-        // console.log(error);
         this.tstr.error('You have not uploaded the resume', 'Resume Not Found');
       }
     );
   }
   handleImageUpload(file: FileList) {
     this.fileUpload = file.item(0);
+    this.uploadImage();
   }
-  submitDetails() {
+  uploadImage() {
     this.rsvc.uploadImage(this.fileUpload).subscribe((_data: any) => {
       this.tstr.success("Image Uploaded");
       this.getUserImage();

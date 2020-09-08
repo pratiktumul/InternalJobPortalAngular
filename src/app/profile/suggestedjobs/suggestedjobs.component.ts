@@ -13,7 +13,7 @@ export class SuggestedjobsComponent implements OnInit {
   ttlrecords: number;
   page: number = 1;
   errorMessage: boolean = false;
-
+  isNavbarCollapsed: boolean = true;
   constructor(private _udsv: DashboardService) { }
 
   ngOnInit(): void {

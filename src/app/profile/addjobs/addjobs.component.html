@@ -1,63 +1,69 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="box">
-            <h2>Add A New Job</h2>
+<div class="wrap">
+    <form class="job-form" [formGroup]="jobForm" (ngSubmit)="addJob()">
+        <div class="form-header">
+            <h3>Add Job Details Here</h3>
             <hr>
-            <form [formGroup]="jobForm" (ngSubmit)="addJob()">
-                <div class="form-group">
-                    <label class="txt3 font-weight-bold">Job Title</label>
-                    <input [class.is-invalid]="jobForm.get('JobTitle').invalid && jobForm.get('JobTitle').touched" type="text" class="form-control" formControlName="JobTitle" />
-                    <small class="text-danger" [class.d-none]="jobForm.get('JobTitle').valid || jobForm.get('JobTitle').untouched">*Job Title is mandatory</small>
-                </div>
-                <div class="form-group">
-                    <label class="txt3 font-weight-bold">Company Name</label>
-                    <select [class.is-invalid]="jobForm.get('CompanyName').invalid && jobForm.get('CompanyName').touched" class="form-control" formControlName="CompanyName">
+        </div>
+
+        <div class="form-group">
+            <label class="txt3 font-weight-bold">Job Title</label>
+            <input [class.is-invalid]="jobForm.get('JobTitle').invalid && jobForm.get('JobTitle').touched" type="text" class="form-control" formControlName="JobTitle" />
+            <small class="text-danger" [class.d-none]="jobForm.get('JobTitle').valid || jobForm.get('JobTitle').untouched">*Job Title is mandatory</small>
+        </div>
+
+        <div class="form-group">
+            <label class="txt3 font-weight-bold">Company Name</label>
+            <select [class.is-invalid]="jobForm.get('CompanyName').invalid && jobForm.get('CompanyName').touched" class="form-control" formControlName="CompanyName">
                                 <option value="" disabled>Select Company Name</option>
                                 <option *ngFor="let slist of companyName" value={{slist}}>{{slist}}</option>
                             </select>
-                    <small class="text-danger" [class.d-none]="jobForm.get('CompanyName').valid || jobForm.get('CompanyName').untouched">*Select a company name</small>
-                </div>
-                <div class="form-group">
-                    <label class="txt3 font-weight-bold">Location</label>
-                    <select [class.is-invalid]="jobForm.get('Location').invalid && jobForm.get('Location').touched" class="form-control" formControlName="Location">
+            <small class="text-danger" [class.d-none]="jobForm.get('CompanyName').valid || jobForm.get('CompanyName').untouched">*Select a company name</small>
+        </div>
+
+        <div class="form-group">
+            <label class="txt3 font-weight-bold">Location</label>
+            <select [class.is-invalid]="jobForm.get('Location').invalid && jobForm.get('Location').touched" class="form-control" formControlName="Location">
                                 <option value="" disabled>Select Location</option>
                                 <option *ngFor="let slist of Location" value={{slist}}>{{slist}}</option>
                             </select>
-                    <small class="text-danger" [class.d-none]="jobForm.get('Location').valid || jobForm.get('Location').untouched">*Select a Location</small>
-                </div>
-                <div class="form-group">
-                    <label class="txt3 font-weight-bold">Job Type</label>
-                    <select [class.is-invalid]="jobForm.get('JobType').invalid && jobForm.get('JobType').touched" class="form-control" formControlName="JobType">
+            <small class="text-danger" [class.d-none]="jobForm.get('Location').valid || jobForm.get('Location').untouched">*Select a Location</small>
+        </div>
+
+        <div class="form-group">
+            <label class="txt3 font-weight-bold">Job Type</label>
+            <select [class.is-invalid]="jobForm.get('JobType').invalid && jobForm.get('JobType').touched" class="form-control" formControlName="JobType">
                                 <option value="" disabled>Select Job Type</option>
                                 <option *ngFor="let slist of JobType" value={{slist}}>{{slist}}</option>
                             </select>
-                    <small class="text-danger" [class.d-none]="jobForm.get('JobType').valid || jobForm.get('JobType').untouched">*Select a job type</small>
-                </div>
-                <div class="form-group">
-                    <label class="txt3 font-weight-bold">Job Description</label>
-                    <textarea [class.is-invalid]="jobForm.get('JobDescription').invalid && jobForm.get('JobDescription').touched" type="text font-weight-bold" class="form-control" formControlName="JobDescription"></textarea>
-                    <small class="text-danger" [class.d-none]="jobForm.get('JobDescription').valid || jobForm.get('JobDescription').untouched">*Job Description is mandatory</small>
-                </div>
-                <div class="form-group">
-                    <label class="txt3 font-weight-bold">Salary</label>
-                    <input [class.is-invalid]="jobForm.get('Salary').invalid && jobForm.get('Salary').touched" type="text" class="form-control" formControlName="Salary" />
-                    <small class="text-danger" [class.d-none]="jobForm.get('Salary').valid || jobForm.get('Salary').untouched">*Salary is mandatory</small>
-                </div>
-                <div class="form-group">
-                    <label class="txt3 font-weight-bold">Last Date To Apply</label>
-                    <input [class.is-invalid]="jobForm.get('LastApplyDate').invalid && jobForm.get('LastApplyDate').touched" type="date" class="form-control" formControlName="LastApplyDate" />
-                    <small class="text-danger" [class.d-none]="jobForm.get('LastApplyDate').valid || jobForm.get('LastApplyDate').untouched">*Job Title is mandatory</small>
-                </div>
-                <div class="form-group">
-                    <label class="txt3 font-weight-bold">Total Vacancy</label>
-                    <input [class.is-invalid]="jobForm.get('Vacancy').invalid && jobForm.get('Vacancy').touched" type="number" class="form-control" formControlName="Vacancy" />
-                    <small class="text-danger" [class.d-none]="jobForm.get('Vacancy').valid || jobForm.get('Vacancy').untouched">*Job Title is mandatory</small>
-                </div>
-                <div class="form-group">
-                    <button class="btn1" type="submit">Add</button>
-                    <button class="btn3" type="button" (click)="resetAll()">Reset</button>
-                </div>
-            </form>
+            <small class="text-danger" [class.d-none]="jobForm.get('JobType').valid || jobForm.get('JobType').untouched">*Select a job type</small>
         </div>
-    </div>
+
+        <div class="form-group">
+            <label class="txt3 font-weight-bold">Job Description</label>
+            <textarea [class.is-invalid]="jobForm.get('JobDescription').invalid && jobForm.get('JobDescription').touched" type="text font-weight-bold" class="form-control" formControlName="JobDescription"></textarea>
+            <small class="text-danger" [class.d-none]="jobForm.get('JobDescription').valid || jobForm.get('JobDescription').untouched">*Job Description is mandatory</small>
+        </div>
+        <div class="form-group">
+            <label class="txt3 font-weight-bold">Salary</label>
+            <input [class.is-invalid]="jobForm.get('Salary').invalid && jobForm.get('Salary').touched" type="text" class="form-control" formControlName="Salary" />
+            <small class="text-danger" [class.d-none]="jobForm.get('Salary').valid || jobForm.get('Salary').untouched">*Salary is mandatory</small>
+        </div>
+        <div class="form-group">
+            <label class="txt3 font-weight-bold">Last Date To Apply</label>
+            <input [class.is-invalid]="jobForm.get('LastApplyDate').invalid && jobForm.get('LastApplyDate').touched" type="date" class="form-control" formControlName="LastApplyDate" />
+            <small class="text-danger" [class.d-none]="jobForm.get('LastApplyDate').valid || jobForm.get('LastApplyDate').untouched">*Job Title is mandatory</small>
+        </div>
+        <div class="form-group">
+            <label class="txt3 font-weight-bold">Total Vacancy</label>
+            <input [class.is-invalid]="jobForm.get('Vacancy').invalid && jobForm.get('Vacancy').touched" type="number" class="form-control" formControlName="Vacancy" />
+            <small class="text-danger" [class.d-none]="jobForm.get('Vacancy').valid || jobForm.get('Vacancy').untouched">*Job Title is mandatory</small>
+        </div>
+        <div class="form-group">
+            <button [disabled]="jobForm.invalid" class="form-button" type="submit">Add</button>
+            <button class="form-button" type="button" (click)="resetAll()">Reset</button>
+        </div>
+        <!-- <div class="form-footer">
+            Don't have an account? <a href="#">Sign Up</a>
+        </div> -->
+    </form>
 </div>

@@ -19,6 +19,8 @@ import { AuthGuard } from './Guards/auth.guard';
 import { AuthInterceptor } from './Guards/auth.interceptor';
 import { JobsearchComponent } from './jobsearch/jobsearch.component';
 import { JobserviceService } from './jobservice.service';
+import { HrportalModule } from './hrportal/hrportal.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { JobserviceService } from './jobservice.service';
     HomeModule,
     JobsModule,
     ProfileModule,
+    HrportalModule,
     StaticPagesModule,
     HttpClientModule,
     NgxPaginationModule,
@@ -43,6 +46,7 @@ import { JobserviceService } from './jobservice.service';
       preventDuplicates: true,
     }),
     BrowserAnimationsModule,
+    NgbModule,
   ],
   providers: [
     AuthGuard,

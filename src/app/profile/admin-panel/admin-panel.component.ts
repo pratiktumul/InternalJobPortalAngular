@@ -47,7 +47,7 @@ export class AdminPanelComponent implements OnInit {
     }
     this.service.expireJobById(obj, jobid).subscribe(() => {
       this.loadAllJobs();
-      this.tstr.success('Deleted Successfully');
+      this.tstr.success('Expired Successfully');
     });
   }
 

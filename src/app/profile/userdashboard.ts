@@ -1,3 +1,5 @@
 export class Userdashboard {
-    public totalJobs:number;
+    public TotalJobs:number;
+    public TotalApproved:number;
+    public TotalRejected:number;
 }

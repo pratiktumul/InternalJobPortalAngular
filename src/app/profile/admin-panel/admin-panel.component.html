@@ -5,7 +5,7 @@
             <div class="count-job mb-35">
                 <!-- Select job items start -->
                 <div class="select-job-items">
-                    <span>Sort by </span>
+                    <span>Sort By: </span>
                     <select name="select" (change)="capture($event.target.value)">
                         <option value="">None</option>
                         <option *ngFor="let data of sort" value={{data.id}}>{{data.value}}</option>
@@ -18,7 +18,7 @@
             <div class="count-job mb-35">
                 <!-- Select job items start -->
                 <div class="select-job-items">
-                    <span>Filter by Location </span>
+                    <span>Filter by Location: </span>
                     <input type="text" [(ngModel)]="filterVal" placeholder="Enter City Name" />
                     <!-- <select name="select" (change)="capture($event.target.value)">
                         <option value="">None</option>
@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="row">
-        <table class="table table-striped table-responsive-md btn-table">
+        <table class="table table-striped table-responsive-lg btn-table">
             <thead>
                 <tr>
                     <th>Job Title</th>

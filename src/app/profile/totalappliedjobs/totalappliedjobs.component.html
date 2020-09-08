@@ -1,47 +1,81 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="dash">
-            <h3 class="txt"><i class="fas fa-user-circle"></i> Hi, {{userName}}</h3>
-            <hr>
-            <h6 class="txt">Last Login On: {{lastLogin | date:'longDate'}}</h6>
-            <hr>
-            <ul>
-                <li>
-                    <a class="pointer" routerLink="/dashboard" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                </li>
-                <hr>
-                <li>
-                    <a class="pointer" routerLink="/appliedjobs" routerLinkActive="active"><i class="fas fa-briefcase"></i>Applied Jobs</a>
-                </li>
-                <hr>
-                <li>
-                    <a class="pointer" routerLink="../suggestedjobs" routerLinkActive="active"><i class="fas fa-briefcase"></i>Suggested Jobs</a>
-                </li>
-            </ul>
+<nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+    <button class="navbar-toggler navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed">
+        <ul class="navbar-nav navbar-sidenav">
+            <li class="nav-item">
+                <a class="nav-link sidefrst">
+                    <span class="textside"><i class="fas fa-user-circle"></i> Hi, {{userName}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidefrst">
+                    <span class="textside">{{lastLogin | date}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidefrst" routerLink="/dashboard" routerLinkActive="active">
+                    <span class="textside"><i class="fas fa-tachometer-alt"></i> Dasboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link sidesecnd" routerLink="../appliedjobs" routerLinkActive="active">
+                    <span class="textside"><i class="fas fa-briefcase"></i> Applied Jobs</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidesthrd" routerLink="../suggestedjobs" routerLinkActive="active">
+                    <span class="textside"><i class="fas fa-briefcase"></i> Suggested Jobs</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <table class="table table-striped table-responsive-md btn-table">
+                    <thead>
+                        <tr>
+                            <th>Application Id</th>
+                            <th>Job Title</th>
+                            <th>Company Name</th>
+                            <th>Experience</th>
+                            <th>Skills</th>
+                            <th>Application Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of jobApplied | paginate: {
+                            id:'joblist',
+                            itemsPerPage: 6,
+                            currentPage: page,
+                            totalItems: ttlrecords}">
+                            <td>{{data.Id}}</td>
+                            <td>{{data.JobTitle}}</td>
+                            <td>{{data.CompanyName}}</td>
+                            <td>{{data.Year}} Year, {{data.Month}} Month</td>
+                            <td>{{data.Skill}}</td>
+                            <td>{{data.Status}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div>
-            <table class="table table-striped table-responsive-md btn-table">
-                <thead>
-                    <tr>
-                        <th>Application Id</th>
-                        <th>Company Name</th>
-                        <th>Current Location</th>
-                        <th>Experience</th>
-                        <th>Project</th>
-                        <th>Skills</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let data of jobApplied">
-                        <td>{{data.Id}}</td>
-                        <td>{{data.CompanyName}}</td>
-                        <td>{{data.Curloc}}</td>
-                        <td>{{data.Experience}}</td>
-                        <td>{{data.Project}}</td>
-                        <td>{{data.Skill}}</td>
-                    </tr>
-                </tbody>
-            </table>
+        <div *ngIf="!errorMessage" class="pagination-area pb-115 text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="single-wrap d-flex justify-content-center">
+                            <nav aria-label="Page navigation example">
+                                <pagination-controls id="joblist" (pageChange)="page=$event" previousLabel="" nextLabel=""></pagination-controls>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

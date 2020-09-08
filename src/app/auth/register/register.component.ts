@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { PasswordValidator } from './password.validator';
 import { ToastrService } from 'ngx-toastr';
 
-@Component({
+@Component({ 
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']

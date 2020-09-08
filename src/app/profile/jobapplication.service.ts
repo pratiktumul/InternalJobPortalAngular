@@ -46,11 +46,21 @@ export class JobapplicationService {
       })
     }).catch(this.handleError);
   }
-  
+
+  GetUserImageById(id: number): Observable<any> {
+    return this._http.get(this.requestURL + '/' + id, {
+      responseType: 'blob',
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      })
+    }).catch(this.handleError);
+  }
+
   private handleError(error: HttpErrorResponse) {
     return Observable.throw(error.message || "Server Error");
   }
-  
+
+
 
   AddEmployeeDetails(
     name: string,
@@ -80,7 +90,7 @@ export class JobapplicationService {
     });
   }
 
-  uploadImage(fileUpload: File){
+  uploadImage(fileUpload: File) {
     const formData: FormData = new FormData();
     formData.append('ProfileImage', fileUpload, fileUpload.name);
     return this._http.post(this.requestURL, formData, {

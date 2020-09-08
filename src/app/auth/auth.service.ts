@@ -24,7 +24,7 @@ export class AuthService {
     return Observable.throw(error.message || "Server Error");
   }
 
-  userLogin(username, password) {
+  userLogin(username: string, password: string) {
     let data =
       'username=' + username + '&password=' + password + '&grant_type=password';
     let reqHeader = new HttpHeaders({

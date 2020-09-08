@@ -1,63 +1,80 @@
-<div class="container-fluid">
-    <div class="row">
-        <div class="dash">
-            <div>
-                <h3 class="txt"><i class="fas fa-user-circle"></i> Hi, {{userName}}</h3>
-                <hr>
-            </div>
-            <h6 class="txt">Last Login On: {{lastLogin | date: 'longDate'}}</h6>
-            <hr>
-            <ul>
-                <li>
-                    <a class="pointer" routerLink="/dashboard" routerLinkActive="active"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                </li>
-                <hr>
-                <li>
-                    <a class="pointer" routerLink="../appliedjobs" routerLinkActive="active"><i class="fas fa-briefcase"></i>Applied Jobs</a>
-                </li>
-                <hr>
-                <li>
-                    <a class="pointer" routerLink="/suggestedjobs" routerLinkActive="active"><i class="fas fa-briefcase"></i>Suggested Jobs</a>
-                </li>
-            </ul>
-        </div>
-        <div *ngIf="errorMessage" class="col-xl-9 col-lg-9 col-md-8">
-            <h3>You have not added any skills set</h3>
-        </div>
-        <div *ngIf="!errorMessage" class="col-xl-9 col-lg-9 col-md-8">
-            <div class="single-job-items mb-30" *ngFor="let data of suggestedJobs | paginate: {
-            id:'joblist',
-            itemsPerPage: 3,
-            currentPage: page,
-            totalItems: ttlrecords}">
-                <div class="job-items">
-                    <div class="company-img">
-                        <a href="#"><img src="assets/img/icon/company_img.jpg" alt=""></a>
-                    </div>
-                    <div class="job-tittle job-tittle2">
-                        <a href="#">
-                            <h4>{{data.JobTitle}}</h4>
-                        </a>
-                        <ul>
-                            <li>{{data.CompanyName}}</li>
-                            <li><i class="fas fa-map-marker-alt"></i>{{data.Location}}</li>
-                            <li>$3500 - $4000</li>
-                        </ul>
-                    </div>
+<nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+    <button class="navbar-toggler navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed">
+        <ul class="navbar-nav navbar-sidenav">
+            <li class="nav-item">
+                <a class="nav-link sidefrst">
+                    <span class="textside"><i class="fas fa-user-circle"></i> Hi, {{userName}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidefrst">
+                    <span class="textside">{{lastLogin | date}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidefrst" routerLink="/dashboard" routerLinkActive="active">
+                    <span class="textside"><i class="fas fa-tachometer-alt"></i> Dasboard</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link sidesecnd" routerLink="../appliedjobs" routerLinkActive="active">
+                    <span class="textside"><i class="fas fa-briefcase"></i> Applied Jobs</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link sidesthrd" routerLink="/suggestedjobs" routerLinkActive="active">
+                    <span class="textside"><i class="fas fa-briefcase"></i> Suggested Jobs</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-4 mt-4">
+                <div *ngIf="errorMessage" class="col-xl-12 col-lg-12 col-md-12">
+                    <h3>You have not added any skills set</h3>
                 </div>
-                <div class="items-link items-link2 f-right">
-                    <a href="#">{{data.JobType}}</a>
-                    <span>{{data.TimeDiff}} hours ago</span>
-                </div>
-            </div>
-            <div *ngIf="!errorMessage" class="pagination-area pb-115 text-center">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="single-wrap d-flex justify-content-center">
-                                <nav aria-label="Page navigation example">
-                                    <pagination-controls id="joblist" (pageChange)="page=$event" previousLabel="" nextLabel=""></pagination-controls>
-                                </nav>
+                <div *ngIf="!errorMessage" class="col-xl-12 col-lg-12 col-md-12">
+                    <div class="single-job-items mb-30" *ngFor="let data of suggestedJobs | paginate: {
+                        id:'joblist',
+                        itemsPerPage: 3,
+                        currentPage: page,
+                        totalItems: ttlrecords}">
+                        <div class="job-items">
+                            <div class="company-img">
+                                <a href="#"><img src="assets/img/icon/company_img.jpg" alt=""></a>
+                            </div>
+                            <div class="job-tittle job-tittle2">
+                                <a href="#">
+                                    <h4>{{data.JobTitle}}</h4>
+                                </a>
+                                <ul>
+                                    <li>{{data.CompanyName}}</li>
+                                    <li><i class="fas fa-map-marker-alt"></i>{{data.Location}}</li>
+                                    <li>$3500 - $4000</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="items-link items-link2 f-right">
+                            <a href="#">{{data.JobType}}</a>
+                            <span>{{data.TimeDiff}} hours ago</span>
+                        </div>
+                    </div>
+                    <div *ngIf="!errorMessage" class="pagination-area pb-115 text-center">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="single-wrap d-flex justify-content-center">
+                                        <nav aria-label="Page navigation example">
+                                            <pagination-controls id="joblist" (pageChange)="page=$event" previousLabel="" nextLabel=""></pagination-controls>
+                                        </nav>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,64 +1,57 @@
-<div class="container">
-    <div class="row row justify-content-center bg">
-        <div class="col-lg-8">
-            <div class="box">
-                <br>
-                <i class="fa fa-user-circle fa-5x"></i>
-                <h1 class="txt">Register</h1>
+<div class="wrap">
+    <form class="register-form" [formGroup]="registerForm" #formDirective="ngForm" (ngSubmit)="submitDetails()">
+        <div class="form-header">
+            <h3>Register</h3>
+            <hr>
+        </div>
 
-                <hr>
-                <br>
-                <form [formGroup]="registerForm" #formDirective="ngForm" (ngSubmit)="submitDetails()">
+        <div class="form-group">
+            <label class="txt1 font-weight-bold">User Name</label>
+            <input [class.is-invalid]="registerForm.get('UserName').invalid && registerForm.get('UserName').touched" type="text font-weight-bold" class="form-input" formControlName="UserName" />
+            <small class="text-danger" [class.d-none]="registerForm.get('UserName').valid || registerForm.get('UserName').untouched">UserName is mandatory*</small>
+            <small class="text-danger" *ngIf="userExists">UserName is already taken</small>
+        </div>
 
-                    <div class="form-group">
-                        <label class="txt1 font-weight-bold">User Name</label>
-                        <input [class.is-invalid]="registerForm.get('UserName').invalid && registerForm.get('UserName').touched" type="text font-weight-bold" class="form-control" formControlName="UserName" />
-                        <small class="text-danger" [class.d-none]="registerForm.get('UserName').valid || registerForm.get('UserName').untouched">UserName is mandatory*</small>
-                        <small class="text-danger" *ngIf="userExists">UserName is already taken</small>
-                    </div>
+        <div class="form-group">
+            <label class="txt1 font-weight-bold">Fullname</label>
+            <input [class.is-invalid]="registerForm.get('Fullname').invalid && registerForm.get('Fullname').touched" type="text font-weight-bold" class="form-input" formControlName="Fullname" />
+            <small class="text-danger" [class.d-none]="registerForm.get('Fullname').valid || registerForm.get('Fullname').untouched">Fullname is mandatory*</small>
+        </div>
 
-                    <div class="form-group">
-                        <label class="txt1 font-weight-bold">Fullname</label>
-                        <input [class.is-invalid]="registerForm.get('Fullname').invalid && registerForm.get('Fullname').touched" type="text font-weight-bold" class="form-control" formControlName="Fullname" />
-                        <small class="text-danger" [class.d-none]="registerForm.get('Fullname').valid || registerForm.get('Fullname').untouched">Fullname is mandatory*</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="txt3 font-weight-bold">Email Id</label>
-                        <input [class.is-invalid]="registerForm.get('UserEmail').invalid && registerForm.get('UserEmail').touched" type="email" class="form-control" formControlName="UserEmail" />
-                        <small class="text-danger" [class.d-none]="registerForm.get('UserEmail').valid || registerForm.get('UserEmail').untouched">Email is mandatory*</small>
-                        <div class="text-danger" *ngIf="UserEmail.errors?.pattern">
-                            <small style="text-align: center;">User name not valid.</small>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="txt3 font-weight-bold">Your Role</label>
-                        <select [class.is-invalid]="registerForm.get('RoleId').invalid && registerForm.get('RoleId').touched" class="form-control" formControlName="RoleId">
-                            <option value="" disabled>Select Role</option>
-                            <option *ngFor="let slist of Roles" value={{slist.roleid}}>{{slist.role}}</option>
-                        </select>
-                        <small class="text-danger" [class.d-none]="registerForm.get('RoleId').valid || registerForm.get('RoleId').untouched">Select a role*</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="txt4 font-weight-bold">Password</label><br>
-                        <input [class.is-invalid]="registerForm.get('UserPassword').invalid && registerForm.get('UserPassword').touched" type="password" class="form-control" formControlName="UserPassword" />
-                        <small class="text-danger" [class.d-none]="registerForm.get('UserPassword').valid || registerForm.get('UserPassword').untouched">Password is mandatory*</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="txt5 font-weight-bold">Confirm Password</label><br>
-                        <input [class.is-invalid]="registerForm.errors?.mismatch && registerForm.get('confirmPassword').invalid && registerForm.get('confirmPassword').touched" type="password" class="form-control" formControlName="confirmPassword" />
-                        <small class="text-danger" *ngIf="registerForm.errors?.mismatch">Passwords does not match*</small>
-                    </div>
-                    <div class="d-flex">
-                        <div class="form-group">
-                            <button [disabled]="registerForm.invalid" class="btn text-white font-weight-bold" type="submit">Submit</button>
-                        </div>
-                    </div>
-                </form>
+        <div class="form-group">
+            <label class="txt3 font-weight-bold">Email Id</label>
+            <input [class.is-invalid]="registerForm.get('UserEmail').invalid && registerForm.get('UserEmail').touched" type="email" class="form-input" formControlName="UserEmail" />
+            <small class="text-danger" [class.d-none]="registerForm.get('UserEmail').valid || registerForm.get('UserEmail').untouched">Email is mandatory*</small>
+            <div class="text-danger" *ngIf="UserEmail.errors?.pattern">
+                <small>User name not valid.</small>
             </div>
         </div>
-    </div>
+        <div class="form-group">
+            <label class="txt3 font-weight-bold">Your Role</label>
+            <select [class.is-invalid]="registerForm.get('RoleId').invalid && registerForm.get('RoleId').touched" class="form-input" formControlName="RoleId">
+                <option value="" disabled>Select Role</option>
+                <option *ngFor="let slist of Roles" value={{slist.roleid}}>{{slist.role}}</option>
+            </select>
+            <small class="text-danger" [class.d-none]="registerForm.get('RoleId').valid || registerForm.get('RoleId').untouched">Select a role*</small>
+        </div>
+        <div class="form-group">
+            <label class="txt4 font-weight-bold">Password</label><br>
+            <input [class.is-invalid]="registerForm.get('UserPassword').invalid && registerForm.get('UserPassword').touched" type="password" class="form-input" formControlName="UserPassword" />
+            <small class="text-danger" [class.d-none]="registerForm.get('UserPassword').valid || registerForm.get('UserPassword').untouched">Password is mandatory*</small>
+        </div>
+
+        <div class="form-group">
+            <label class="txt5 font-weight-bold">Confirm Password</label><br>
+            <input [class.is-invalid]="registerForm.errors?.mismatch && registerForm.get('confirmPassword').invalid && registerForm.get('confirmPassword').touched" type="password" class="form-input" formControlName="confirmPassword" />
+            <small class="text-danger" [class.d-none]="registerForm.get('confirmPassword').valid || registerForm.get('confirmPassword').untouched">Confirm Password is mandatory*</small>
+            <small class="text-danger" *ngIf="registerForm.errors?.mismatch">Passwords does not match*</small>
+        </div>
+        <!--Register Button-->
+        <div class="form-group">
+            <button [disabled]="registerForm.invalid" class="form-button" type="submit">Register</button>
+        </div>
+        <!-- <div class="form-footer">
+            Don't have an account? <a href="#">Sign Up</a>
+        </div> -->
+    </form>
 </div>
