@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Jobs } from './jobs';
 
@@ -16,8 +16,11 @@ export class JobserviceService {
   }
   getJobsBySearch(title: string, location: string): Observable<Jobs[]> {
     let url = `https://localhost:44325/api/JobOpening/search?title=${title}&location=${location}`;
-    return this.http.get<Jobs[]>(url);
+    return this.http.get<Jobs[]>(url).catch(this.handleError);
   }
+  private handleError(error: HttpErrorResponse) {
+    return Observable.throw(error.message || "Server Error");
+  } 
   roleMatch(allowedRoles: any[]): boolean {
     var isMatch = false;
     var userRoles: string[] = JSON.parse(localStorage.getItem('role'));

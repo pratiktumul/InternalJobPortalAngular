@@ -226,7 +226,9 @@
                                 <span>{{data.TimeDiff}} hours ago</span>
                             </div>
                         </div>
-
+                        <div *ngIf="errorMessage" class="single-job-items mb-30">
+                            <h3>Sorry, No Jobs Found</h3>
+                        </div>
                     </div>
                 </section>
                 <!-- Featured_job_end -->

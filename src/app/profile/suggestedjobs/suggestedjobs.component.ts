@@ -22,7 +22,7 @@ export class SuggestedjobsComponent implements OnInit {
     this._udsv.getSuggestedJobs().subscribe(
       data => this.suggestedJobs = data,
       (error) => { this.errorMessage = true; }
-    );
+    ); 
   }
 
 }

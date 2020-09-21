@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   userExists: boolean = false;
   unamePattern = "^[a-z0-9_-]{8,15}$";
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  emailPattern = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$";
   constructor(
     private fb: FormBuilder,
     private rsvc: AuthService,
@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.fb.group(
       {
-        UserName: ['', Validators.required],
+        UserName: ['', Validators.required, Validators.pattern(this.unamePattern)],
         UserEmail: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
         UserPassword: ['', Validators.required],
         RoleId: ['', Validators.required],
@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  Roles = [{ roleid: '1', role: 'Admin' }, { roleid: '2', role: 'User' }];
+  Roles = [{ roleid: '1', role: 'Admin' }, { roleid: '2', role: 'User' },{ roleid: '4', role: 'HR' }];
 
   submitDetails() {
     this.rsvc.registerUser(this.registerForm.value).subscribe(

@@ -15,6 +15,7 @@ export class JobsearchComponent implements OnInit {
   totalJobs: number;
   ttlrecords: number;
   page: number = 1;
+  errorMessage: boolean;
   constructor(
     private route: ActivatedRoute,
     private serve: JobserviceService
@@ -30,7 +31,8 @@ export class JobsearchComponent implements OnInit {
           this.joblist = data;
           this.totalJobs = data.length;
           this.ttlrecords = data.length;
-        });
+        },
+        (error) => { this.errorMessage = true; });
     });
   }
 }

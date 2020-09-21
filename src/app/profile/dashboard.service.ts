@@ -34,7 +34,7 @@ export class DashboardService {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),
-    }).catch(this.handleError);
+    }).catch(this.handleError); 
   }
   private handleError(error: HttpErrorResponse) {
     return Observable.throw(error.message || "Server Error");

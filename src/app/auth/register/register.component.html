@@ -10,6 +10,9 @@
             <input [class.is-invalid]="registerForm.get('UserName').invalid && registerForm.get('UserName').touched" type="text font-weight-bold" class="form-input" formControlName="UserName" />
             <small class="text-danger" [class.d-none]="registerForm.get('UserName').valid || registerForm.get('UserName').untouched">UserName is mandatory*</small>
             <small class="text-danger" *ngIf="userExists">UserName is already taken</small>
+            <!-- <div class="text-danger" *ngIf="UserName.errors?.pattern">
+                <small>User name not valid.</small>
+            </div> -->
         </div>
 
         <div class="form-group">
@@ -23,7 +26,7 @@
             <input [class.is-invalid]="registerForm.get('UserEmail').invalid && registerForm.get('UserEmail').touched" type="email" class="form-input" formControlName="UserEmail" />
             <small class="text-danger" [class.d-none]="registerForm.get('UserEmail').valid || registerForm.get('UserEmail').untouched">Email is mandatory*</small>
             <div class="text-danger" *ngIf="UserEmail.errors?.pattern">
-                <small>User name not valid.</small>
+                <small>EmailId not valid.</small>
             </div>
         </div>
         <div class="form-group">
