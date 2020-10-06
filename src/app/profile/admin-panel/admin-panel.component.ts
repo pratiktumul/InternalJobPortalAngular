@@ -16,9 +16,11 @@ export class AdminPanelComponent implements OnInit {
   totalRecord: number;
   page: number = 1;
   sort: any[] = [
-    { id: '1', value: 'Ascending' },
-    { id: '2', value: 'Descending' },
-    { id: '3', value: 'ByDate' },
+    { id: '1', value: 'Ascending-By Company' },
+    { id: '2', value: 'Descending-By Company' },
+    { id: '3', value: 'Ascending-By Job Title' },
+    { id: '4', value: 'Descending-By Job Title' },
+    { id: '5', value: 'ByDate' },
   ];
   sortVal: string = 'ByDate';
   filterVal: any;
@@ -42,17 +44,18 @@ export class AdminPanelComponent implements OnInit {
   }
 
   expireJob(jobid: number) {
-    const obj = {
-      isExpired: true
+    if (confirm('Do you want to delete this jop?')) {
+      const obj = {
+        isExpired: true
+      }
+      this.service.expireJobById(obj, jobid).subscribe(() => {
+        this.loadAllJobs();
+        this.tstr.success('Expired Successfully');
+      });
     }
-    this.service.expireJobById(obj, jobid).subscribe(() => {
-      this.loadAllJobs();
-      this.tstr.success('Expired Successfully');
-    });
   }
 
   capture(val: string) {
     this.sortVal = val;
-    console.log(this.sortVal);
   }
 }

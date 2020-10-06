@@ -64,6 +64,7 @@ export class JobapplicationService {
 
   AddEmployeeDetails(
     name: string,
+    empid:string,
     loc: string,
     skill: string,
     year: string,
@@ -75,6 +76,7 @@ export class JobapplicationService {
   ) {
     const formData: FormData = new FormData();
     formData.append('Ename', name);
+    formData.append('EmpId',empid);
     formData.append('Curloc', loc);
     formData.append('Skill', skill);
     formData.append('Year', year);

@@ -134,20 +134,31 @@
     <div class="container emp-profile">
         <form [formGroup]="approvalForm" (ngSubmit)="scheduleInterview()">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <div class="profile-img">
                         <input class="form-control" type="date" formControlName="InterviewDate">
                         <small class="text-danger" [class.d-none]="approvalForm.get('InterviewDate').valid || approvalForm.get('InterviewDate').untouched">Interview Date is Required*</small>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-sm-4">
                     <div class="profile-head">
                         <button [disabled]="approvalForm.invalid" type="submit" class="btn">Schedule Interview</button>
                     </div>
                 </div>
-                <div class="col-md-4">
+            </div>
+        </form>
+        <br>
+        <form [formGroup]="rejectionForm" (ngSubmit)="rejectApplication()">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="profile-img">
+                        <textarea class="form-control" type="text" formControlName="RejectionReason"></textarea>
+                        <small class="text-danger" [class.d-none]="rejectionForm.get('RejectionReason').valid || rejectionForm.get('RejectionReason').untouched">Rejection Reason is Required*</small>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
                     <div class="profile-head">
-                        <button type="button" class="btn" (click)="rejectApplication()">Reject</button>
+                        <button [disabled]="rejectionForm.invalid" type="submit" class="btn">Reject Application</button>
                     </div>
                 </div>
             </div>

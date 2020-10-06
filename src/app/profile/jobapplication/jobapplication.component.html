@@ -9,9 +9,13 @@
                 <div class="form-group">
                     <label class="txt font-weight-bold">Employee Name</label>
                     <input [class.is-invalid]="registerForm.get('ename').invalid && registerForm.get('ename').touched" type="text font-weight-bold" class="form-control" placeholder="Enter Your Name" formControlName="ename" />
-                    <small class="text-danger" [class.d-none]="registerForm.get('ename').valid || registerForm.get('ename').untouched">Name is mandatory*</small>
+                    <small class="text-danger" [class.d-none]="registerForm.get('ename').valid || registerForm.get('ename').untouched">Employee Name is mandatory*</small>
                 </div>
-
+                <div class="form-group">
+                    <label class="txt font-weight-bold">Employee Number</label>
+                    <input [class.is-invalid]="registerForm.get('empid').invalid && registerForm.get('empid').touched" type="text font-weight-bold" class="form-control" placeholder="Enter Your Employee Number" formControlName="empid" />
+                    <small class="text-danger" [class.d-none]="registerForm.get('empid').valid || registerForm.get('empid').untouched">Employee Number is mandatory*</small>
+                </div>
                 <div class="form-group">
                     <label class="txt font-weight-bold">Current Location</label>
                     <input [class.is-invalid]="registerForm.get('curLoc').invalid && registerForm.get('curLoc').touched" type="text" class="form-control" placeholder="Enter Location" formControlName="curLoc" />
@@ -56,7 +60,7 @@
                 <div class="form-group">
                     <label class="txt font-weight-bold">Current Customer/Project</label><br>
                     <input [class.is-invalid]="registerForm.get('project').invalid && registerForm.get('project').touched" type="text" class="form-control" placeholder="Your Experience" formControlName="project" />
-                    <small class="text-danger" [class.d-none]="registerForm.get('project').valid || registerForm.get('project').untouched">Required*</small>
+                    <small class="text-danger" [class.d-none]="registerForm.get('project').valid || registerForm.get('project').untouched">Current Customer/Project is mandatory*</small>
                 </div>
 
                 <div class="form-group">

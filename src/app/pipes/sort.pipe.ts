@@ -26,6 +26,24 @@ export class SortPipe implements PipeTransform {
       }
       if (args === '3') {
         return value.sort((a, b) => {
+          if (a.JobTitle.toLowerCase() < b.JobTitle.toLowerCase()) {
+            return -1;
+          }
+          return 0;
+        });
+      }
+      if (args === '4') {
+        return value
+          .sort((a, b) => {
+            if (a.JobTitle.toLowerCase() < b.JobTitle.toLowerCase()) {
+              return -1;
+            }
+            return 0;
+          })
+          .reverse();
+      }
+      if (args === '5') {
+        return value.sort((a, b) => {
           if (a.CreateDate < b.CreateDate) {
             return -1;
           }

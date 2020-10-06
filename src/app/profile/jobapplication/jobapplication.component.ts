@@ -25,6 +25,7 @@ export class JobapplicationComponent implements OnInit {
 
     this.registerForm = this.fb.group({
       ename: ['', Validators.required],
+      empid: ['', Validators.required],
       curLoc: ['', Validators.required],
       skill: ['', Validators.required],
       year: ['', Validators.required],
@@ -54,6 +55,7 @@ export class JobapplicationComponent implements OnInit {
   }
   submitDetails() {
     const name: string = this.registerForm.controls['ename'].value;
+    const empid: string = this.registerForm.controls['empid'].value;
     const location: string = this.registerForm.controls['curLoc'].value;
     const skillSet: string[] = this.registerForm.controls['skill'].value;
     const skill: string = skillSet.join();
@@ -61,9 +63,12 @@ export class JobapplicationComponent implements OnInit {
     const month: string = this.registerForm.controls['month'].value;
     const about: string = this.registerForm.controls['about'].value;
     const project: string = this.registerForm.controls['project'].value;
+    if(confirm('Are you sure you want to submit?'))
+    {
     this.jobservice
       .AddEmployeeDetails(
         name,
+        empid,
         location,
         skill,
         year,
@@ -82,5 +87,6 @@ export class JobapplicationComponent implements OnInit {
           this.tstr.error('You have already applied for this Job');
         }
       );
+    }
   }
 }

@@ -30,13 +30,16 @@ export class AddjobsComponent implements OnInit {
   Location = ["Bangalore", "Manila", "Carmel"];
   JobType = ["Full Time", "Part Time", "Freelancer", "Remote"];
   addJob() {
-    console.log(this.jobForm.value);
-    this.service.addNewJob(this.jobForm.value).subscribe(() => {
-      this.resetAll();
-      this.tstr.success('New Job Added Successfully');
-    });
+    if (confirm('Add New Job?')) {
+      this.service.addNewJob(this.jobForm.value).subscribe(() => {
+        this.resetAll();
+        this.tstr.success('New Job Added Successfully');
+      });
+    }
   }
   resetAll() {
+    if (confirm('Are you sure you want to reset the form?')) {
     this.jobForm.reset();
+    }
   }
 }

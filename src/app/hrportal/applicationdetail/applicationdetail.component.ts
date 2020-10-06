@@ -22,6 +22,7 @@ export class ApplicationdetailComponent implements OnInit {
   errorCheck: boolean = false;
   userId: number;
   approvalForm: FormGroup;
+  rejectionForm: FormGroup;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -39,9 +40,14 @@ export class ApplicationdetailComponent implements OnInit {
     });
     this.approvalForm = this.fb.group(
       {
-        InterviewDate: ['', Validators.required]
-      }
+        InterviewDate: ['', Validators.required],
+      },
     );
+    this.rejectionForm = this.fb.group(
+      {
+        RejectionReason: ['', Validators.required]
+      }
+    )
     this.loadAllApplications();
   }
 
@@ -78,25 +84,30 @@ export class ApplicationdetailComponent implements OnInit {
 
   scheduleInterview() {
     let interviewSlot = this.approvalForm.controls['InterviewDate'].value;
-    console.log(interviewSlot);
-    const obj = {
-      Status: '3',
-      InterviewDate: interviewSlot
+    if (confirm("Are you sure you want schedule the interview?")) {
+      console.log(interviewSlot);
+      const obj = {
+        Status: '3',
+        InterviewDate: interviewSlot
+      }
+      this.hrService.updateApplicationStatus(this.applicationId, obj).subscribe(() => {
+        this.tstr.success("Approved");
+        this.router.navigate(['/HRPanel']);
+        this.loadAllApplications();
+      });
     }
-    this.hrService.updateApplicationStatus(this.applicationId, obj).subscribe(() => {
-      this.tstr.success("Approved");
-      this.router.navigate(['/HRPanel']);
-      this.loadAllApplications();
-    });
   }
   rejectApplication() {
-    const obj = {
-      Status: '2',
-      InterviewDate: null
+    if (confirm("Are you sure you want reject?")) {
+      const obj = {
+        Status: '2',
+        InterviewDate: null,
+        RejectReason: this.rejectionForm.controls['RejectionReason'].value
+      }
+      this.hrService.updateApplicationStatus(this.applicationId, obj).subscribe(() => {
+        this.tstr.success("Rejected"); this.router.navigate(['/HRPanel']);
+        this.loadAllApplications();
+      });
     }
-    this.hrService.updateApplicationStatus(this.applicationId, obj).subscribe(() => {
-      this.tstr.success("Rejected");this.router.navigate(['/HRPanel']);
-      this.loadAllApplications();
-    });
   }
 }
