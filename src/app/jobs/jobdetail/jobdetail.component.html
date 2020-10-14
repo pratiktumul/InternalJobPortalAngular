@@ -1,6 +1,7 @@
 <main>
     <div class="slider-area ">
-        <div class="single-slider section-overly slider-height2 d-flex align-items-center" style="background-image: url('assets/img/hero/about.jpg')">
+        <div class="single-slider section-overly slider-height2 d-flex align-items-center"
+            style="background-image: url('assets/img/hero/about.jpg')">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -91,8 +92,14 @@
                             <li>Salary : <span>{{JobDetails?.Salary | currency:'USD':'symbol':'3.0'}} yearly</span></li>
                             <li>Application date : <span>{{JobDetails?.ApplicationDate | date:'mediumDate'}}</span></li>
                         </ul>
-                        <div *ngIf="!auth.isLoggedIn()" class="apply-btn2">
-                            <a *ngIf="job.roleMatch(['User'])" (click)="goToApplication()" class="btn">Apply Now</a>
+                        <div class="form-group">
+                            <div *ngIf="!auth.isLoggedIn()" class="apply-btn2">
+                                <a *ngIf="job.roleMatch(['User'])" (click)="goToApplication()" class="btn">Apply Now</a>
+                            </div>
+                            <br>
+                            <div *ngIf="!auth.isLoggedIn()" class="apply-btn2">
+                                <a (click)="router.navigate(['/referraljobapplication']);" class="btn">For referral</a>
+                            </div>
                         </div>
                     </div>
                     <div class="post-details4  mb-50">
@@ -101,7 +108,8 @@
                             <h4>Company Information</h4>
                         </div>
                         <span>{{JobDetails?.CompanyName}}</span>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                        <p>It is a long established fact that a reader will be distracted by the readable content of a
+                            page when looking at its layout.</p>
                         <ul>
                             <li>Name: <span>Colorlib </span></li>
                             <li>Web : <span> colorlib.com</span></li>

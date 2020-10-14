@@ -4,6 +4,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { JobService } from 'src/app/jobs/job.service';
+import { Job } from 'src/app/jobs/job';
 
 @Component({
   selector: 'app-jobapplication',
@@ -14,11 +16,14 @@ export class JobapplicationComponent implements OnInit {
   registerForm: FormGroup;
   fileUpload: File = null;
   jobId: string;
+  JobId: number;
+  JobDetails: Job;
   constructor(
     private jobservice: JobapplicationService,
     private fb: FormBuilder,
     private tstr: ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private js: JobService
   ) { }
 
   ngOnInit(): void {
@@ -29,15 +34,26 @@ export class JobapplicationComponent implements OnInit {
       curLoc: ['', Validators.required],
       skill: ['', Validators.required],
       year: ['', Validators.required],
+      // AppType: ['',Validators.required],
       month: ['', Validators.required],
       about: ['', [Validators.required, Validators.maxLength(250)]],
       project: ['', Validators.required],
       resumeFile: [null, Validators.required],
+
     });
     this.route.paramMap.subscribe((params) => {
       this.jobId = JSON.parse(atob(params.get('id')));
     }
     );
+    this.route.paramMap.subscribe((params) => {
+      let id = parseInt(JSON.parse(atob(params.get('id'))));
+      this.JobId = id;
+      this.js.getJobById(this.JobId).subscribe(
+        (data: Job) => {
+          this.JobDetails = data;
+        }
+      );
+    });
   }
   Skills = [
     '.NET',
@@ -48,6 +64,7 @@ export class JobapplicationComponent implements OnInit {
     'Oracle',
     'Other MS Technologies',
   ];
+  
   ExpYears = ['1', '2', '3', '4', '5'];
   ExpMonths = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'];
   handleFileInput(file: FileList) {

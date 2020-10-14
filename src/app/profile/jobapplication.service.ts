@@ -101,4 +101,28 @@ export class JobapplicationService {
       }),
     });
   }
+
+   url = "ENTER YOUR URL HERE";
+  SubmitRefApplication(
+    pname: string,
+    pemail:string,
+    pphonum: string,
+    pjobloc: string,
+    pjobname: string,
+    pskillset: string    
+  ){
+    const formData: FormData = new FormData();
+    formData.append('pName', pname);
+    formData.append('pEmail',pemail);
+    formData.append('pPhoneNo', pphonum);
+    formData.append('pJobLoc', pjobloc);
+    formData.append('pJobName', pjobname);
+    formData.append('pSkillSet', pskillset);
+ 
+    return this._http.post(this.url, formData, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    });
+  }
 }
