@@ -32,6 +32,7 @@ export class ReferraljobapplicationComponent implements OnInit {
       
     });
   }
+  //This method is for calling the service
   submitReferralDetails(){
     const Pname: string = this.registerRefForm.controls['pname'].value;
     const Emailid: string = this.registerRefForm.controls['email'].value;
@@ -43,13 +44,13 @@ export class ReferraljobapplicationComponent implements OnInit {
     {
     this.jobservice
       .SubmitRefApplication(
-        Pname,
-        Emailid,
-        PhoneNo,
-        JobLoacation,
-        JobName,
-        skillSet,
-       
+        // Pname,
+        // Emailid,
+        // PhoneNo,
+        // JobLoacation,
+        // JobName,
+        // skillSet,
+        this.registerRefForm.value
       )
       .subscribe(
         (_data: any) => {
