@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row row justify-content-center bg">
+        <div class="col-lg-8">
+            <!-- <h1 class="txt">Internal Job Application:2020-00{{JobDetails?.JobId}}</h1>
+            <h3 class="txt">2020-00{{JobDetails?.JobId}}:: {{JobDetails?.JobTitle}}: {{JobDetails?.CompanyName}}</h3> -->
+            <br>
+            <form [formGroup]="registerRefForm" #formDirective="ngForm" (ngSubmit)="submitReferralDetails()">
+                <div class="form-group">
+                    <label class="txt font-weight-bold"> Name</label>
+                    <input
+                        [class.is-invalid]="registerRefForm.get('pname').invalid && registerRefForm.get('pname').touched"
+                        type="text font-weight-bold" class="form-control" placeholder="Enter Your Name"
+                        formControlName="pname" />
+                    <small class="text-danger"
+                        [class.d-none]="registerRefForm.get('pname').valid || registerRefForm.get('pname').untouched">
+                        Name is mandatory*</small>
+                </div>
+                <div class="form-group">
+                    <label class="txt font-weight-bold">Email</label>
+                    <input
+                        [class.is-invalid]="registerRefForm.get('email').invalid && registerRefForm.get('email').touched"
+                        type="text font-weight-bold" class="form-control" placeholder="Enter Email id"
+                        formControlName="email" />
+                    <small class="text-danger"
+                        [class.d-none]="registerRefForm.get('email').valid || registerRefForm.get('email').untouched">Email
+                        is mandatory*</small>
+                </div>
+                <div class="form-group">
+                    <label class="txt font-weight-bold">Phone Number: </label>
+                    <input
+                        [class.is-invalid]="registerRefForm.get('phonum').invalid && registerRefForm.get('phonum').touched"
+                        type="text" class="form-control" placeholder="Enter phone number" formControlName="phonum" />
+                    <small class="text-danger"
+                        [class.d-none]="registerRefForm.get('phonum').valid || registerRefForm.get('phonum').untouched">phone
+                        number
+                        is mandatory*</small>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="txt font-weight-bold">Job profile Name</label>
+                    <input
+                        [class.is-invalid]="registerRefForm.get('jobname').invalid && registerRefForm.get('jobname').touched"
+                        type="text" class="form-control" placeholder="Enter Job Name" formControlName="jobname" />
+                    <small class="text-danger"
+                        [class.d-none]="registerRefForm.get('jobname').valid || registerRefForm.get('jobname').untouched">Job
+                        name
+                        is mandatory*</small>
+                </div>
+                <div class="form-group">
+                    <label class="txt font-weight-bold">Job Location</label>
+                    <input
+                        [class.is-invalid]="registerRefForm.get('joblocation').invalid && registerRefForm.get('joblocation').touched"
+                        type="text" class="form-control" placeholder="Enter Job Location"
+                        formControlName="joblocation" />
+                    <small class="text-danger"
+                        [class.d-none]="registerRefForm.get('joblocation').valid || registerRefForm.get('joblocation').untouched">Job
+                        name
+                        is mandatory*</small>
+                </div>
+               
+                <div class="form-group">
+                    <label class="txt font-weight-bold">Skills set</label>
+                    <input
+                        [class.is-invalid]="registerRefForm.get('skillset').invalid && registerRefForm.get('skillset').touched"
+                        type="text" class="form-control" placeholder="Enter skill set" formControlName="skillset" />
+                    <small class="text-danger"
+                        [class.d-none]="registerRefForm.get('skillset').valid || registerRefForm.get('skillset').untouched">skills
+                        is mandatory*</small>
+                </div>
+
+
+
+
+
+
+
+                <button class="btn text-white font-weight-bold" type="submit">Submit</button> &nbsp;
+                <br><br>
+                <br><br>
+              
+            </form>
+
+        </div>
+    </div>
+</div>

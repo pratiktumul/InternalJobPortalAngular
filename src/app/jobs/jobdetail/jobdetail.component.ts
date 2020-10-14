@@ -13,7 +13,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class JobdetailComponent implements OnInit {
   JobId: number;
   JobDetails: Job;
-  constructor(private router: Router, private route: ActivatedRoute, public auth: AuthService, private js: JobService, public job: JobserviceService) { }
+  constructor(public router: Router, private route: ActivatedRoute, public auth: AuthService, private js: JobService, public job: JobserviceService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -29,5 +29,9 @@ export class JobdetailComponent implements OnInit {
   goToApplication() {
     let id = this.JobId;
     this.router.navigate(['applicationform', btoa(JSON.stringify(id))])
+  }
+  goToRefApplication() {
+    let id = this.JobId;
+    this.router.navigate(['referraljobapplication'])
   }
 }

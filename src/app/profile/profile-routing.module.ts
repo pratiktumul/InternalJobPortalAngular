@@ -10,6 +10,7 @@ import { AddjobsComponent } from './addjobs/addjobs.component';
 import { SuggestedjobsComponent } from './suggestedjobs/suggestedjobs.component';
 import { ApproveuserComponent } from './approveuser/approveuser.component';
 import { ApproveadminComponent } from './approveadmin/approveadmin.component';
+import { ReferraljobapplicationComponent } from './referraljobapplication/referraljobapplication.component';
 
 const routes: Routes = [
   {
@@ -68,6 +69,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { role: ['Superadmin'] },
   },
+  {
+    path: 'referraljobapplication',
+    component: ReferraljobapplicationComponent,
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
