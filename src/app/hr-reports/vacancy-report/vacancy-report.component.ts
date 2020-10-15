@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vacancy-report.component.css']
 })
 export class VacancyReportComponent implements OnInit {
-
+  isNavbarCollapsed:boolean = true;
+  userName:string;
+  currDate:Date
   constructor() { }
 
   ngOnInit(): void {
+    this.userName = localStorage.getItem('userName');
+    this.currDate = new Date();
   }
-
+ 
 }

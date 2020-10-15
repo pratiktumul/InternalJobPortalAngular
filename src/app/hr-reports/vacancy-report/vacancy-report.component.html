@@ -1,1 +1,84 @@
-<p>vacancy-report works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark" id="mainNav">
+    <button class="navbar-toggler navbar-toggler" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" [ngbCollapse]="isNavbarCollapsed">
+        <ul class="navbar-nav navbar-sidenav">
+            <li class="nav-item">
+                <a class="nav-link sidefrst">
+                    <span class="textside"><i class="fas fa-user-circle"></i> Hi, {{userName}}</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link sidefrst">
+                    <span class="textside">Date: {{currDate | date}}</span>
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link sidefrst" routerLink="/reports" routerLinkActive="active">
+                    <span class="textside"><i class="fas fa-tachometer-alt"></i> General Report</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link sidesecnd" routerLink="./vacancyreports" routerLinkActive="active">
+                    <span class="textside"><i class="fas fa-chart-bar"></i> Vacancy Report</span>
+                </a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link sidesthrd" routerLink="./suggestedjobs" routerLinkActive="active">
+                    <span class="textside"><i class="fas fa-briefcase"></i> Suggested Jobs</span>
+                </a>
+            </li> -->
+        </ul>
+    </div>
+</nav>
+
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Icon Cards-->
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+                <div class="inforide">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-4 rideone">
+                            <!-- <img src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620"> -->
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                            <h4>Total Employees</h4>
+                            <h2></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+                <div class="inforide">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridetwo">
+                            <!-- <img src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620"> -->
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                            <h4>Total Vacancies</h4>
+                            <h2></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-2 mt-4">
+                <div class="inforide">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridethree">
+                            <!-- <img src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620"> -->
+                        </div>
+                        <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+                            <h4>Total Jobs Applied</h4>
+                            <h2></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
