@@ -13,6 +13,7 @@ import { forkJoin } from 'rxjs';
 export class JobapplicationService {
   webapiservice = 'https://localhost:44325/api/employeejobapplication';
   requestURL = 'https://localhost:44325/api/User_Image';
+  refURL = "https://localhost:44325/api/JobReferal"
   constructor(private _http: HttpClient) { }
 
   downloadFile(): Observable<any> {
@@ -60,11 +61,9 @@ export class JobapplicationService {
     return Observable.throw(error.message || "Server Error");
   }
 
-
-
   AddEmployeeDetails(
     name: string,
-    empid:string,
+    empid: string,
     loc: string,
     skill: string,
     year: string,
@@ -76,7 +75,7 @@ export class JobapplicationService {
   ) {
     const formData: FormData = new FormData();
     formData.append('Ename', name);
-    formData.append('EmpId',empid);
+    formData.append('EmpId', empid);
     formData.append('Curloc', loc);
     formData.append('Skill', skill);
     formData.append('Year', year);
@@ -102,7 +101,6 @@ export class JobapplicationService {
     });
   }
 
-   url = "ENTER YOUR URL HERE";
   SubmitRefApplication(
     // pname: string,
     // pemail:string,
@@ -110,17 +108,18 @@ export class JobapplicationService {
     // pjobloc: string,
     // pjobname: string,
     // pskillset: string   
-    refForm:any 
-  ){
-    const formData: FormData = new FormData();
+    refForm: any
+  ) {
+    console.log(refForm);
+    //const formData: FormData = new FormData();
     // formData.append('pName', pname);
     // formData.append('pEmail',pemail);
     // formData.append('pPhoneNo', pphonum);
     // formData.append('pJobLoc', pjobloc);
     // formData.append('pJobName', pjobname);
     // formData.append('pSkillSet', pskillset);
- 
-    return this._http.post(this.url, refForm, {
+
+    return this._http.post(this.refURL, refForm, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),

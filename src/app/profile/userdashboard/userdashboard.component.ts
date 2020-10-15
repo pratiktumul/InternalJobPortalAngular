@@ -10,7 +10,7 @@ export class UserdashboardComponent implements OnInit {
   lastLogin: string;
   userName: string;
   ttlJobs: number;
-  ttlApproved: number;
+  ttlApproved: number; 
   ttlRejected: number;
   isNavbarCollapsed:boolean = true;
   constructor(private dashboardService: DashboardService) { }

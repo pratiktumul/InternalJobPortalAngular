@@ -8,30 +8,30 @@
                 <div class="form-group">
                     <label class="txt font-weight-bold"> Name</label>
                     <input
-                        [class.is-invalid]="registerRefForm.get('pname').invalid && registerRefForm.get('pname').touched"
+                        [class.is-invalid]="registerRefForm.get('pName').invalid && registerRefForm.get('pName').touched"
                         type="text font-weight-bold" class="form-control" placeholder="Enter Your Name"
-                        formControlName="pname" />
+                        formControlName="pName" />
                     <small class="text-danger"
-                        [class.d-none]="registerRefForm.get('pname').valid || registerRefForm.get('pname').untouched">
+                        [class.d-none]="registerRefForm.get('pName').valid || registerRefForm.get('pName').untouched">
                         Name is mandatory*</small>
                 </div>
                 <div class="form-group">
                     <label class="txt font-weight-bold">Email</label>
                     <input
-                        [class.is-invalid]="registerRefForm.get('email').invalid && registerRefForm.get('email').touched"
+                        [class.is-invalid]="registerRefForm.get('pEmailId').invalid && registerRefForm.get('pEmailId').touched"
                         type="text font-weight-bold" class="form-control" placeholder="Enter Email id"
-                        formControlName="email" />
+                        formControlName="pEmailId" />
                     <small class="text-danger"
-                        [class.d-none]="registerRefForm.get('email').valid || registerRefForm.get('email').untouched">Email
+                        [class.d-none]="registerRefForm.get('pEmailId').valid || registerRefForm.get('pEmailId').untouched">Email
                         is mandatory*</small>
                 </div>
                 <div class="form-group">
                     <label class="txt font-weight-bold">Phone Number: </label>
                     <input
-                        [class.is-invalid]="registerRefForm.get('phonum').invalid && registerRefForm.get('phonum').touched"
-                        type="text" class="form-control" placeholder="Enter phone number" formControlName="phonum" />
+                        [class.is-invalid]="registerRefForm.get('pPhoneNo').invalid && registerRefForm.get('pPhoneNo').touched"
+                        type="text" class="form-control" placeholder="Enter phone number" formControlName="pPhoneNo" />
                     <small class="text-danger"
-                        [class.d-none]="registerRefForm.get('phonum').valid || registerRefForm.get('phonum').untouched">phone
+                        [class.d-none]="registerRefForm.get('pPhoneNo').valid || registerRefForm.get('pPhoneNo').untouched">phone
                         number
                         is mandatory*</small>
                 </div>
@@ -40,32 +40,31 @@
                 <div class="form-group">
                     <label class="txt font-weight-bold">Job profile Name</label>
                     <input
-                        [class.is-invalid]="registerRefForm.get('jobname').invalid && registerRefForm.get('jobname').touched"
-                        type="text" class="form-control" placeholder="Enter Job Name" formControlName="jobname" />
+                        [class.is-invalid]="registerRefForm.get('pJobName').invalid && registerRefForm.get('pJobName').touched"
+                        type="text" class="form-control" placeholder="Enter Job Name" formControlName="pJobName" />
                     <small class="text-danger"
-                        [class.d-none]="registerRefForm.get('jobname').valid || registerRefForm.get('jobname').untouched">Job
+                        [class.d-none]="registerRefForm.get('pJobName').valid || registerRefForm.get('pJobName').untouched">Job
                         name
                         is mandatory*</small>
                 </div>
                 <div class="form-group">
                     <label class="txt font-weight-bold">Job Location</label>
                     <input
-                        [class.is-invalid]="registerRefForm.get('joblocation').invalid && registerRefForm.get('joblocation').touched"
-                        type="text" class="form-control" placeholder="Enter Job Location"
-                        formControlName="joblocation" />
-                    <small class="text-danger"
-                        [class.d-none]="registerRefForm.get('joblocation').valid || registerRefForm.get('joblocation').untouched">Job
+                        [class.is-invalid]="registerRefForm.get('pLocation').invalid && registerRefForm.get('pLocation').touched"
+                        type="text" class="form-control" placeholder="Enter Job Location" formControlName="pLocation" />
+                    <small class="text-danger" 
+                        [class.d-none]="registerRefForm.get('pLocation').valid || registerRefForm.get('pLocation').untouched">Job
                         name
                         is mandatory*</small>
                 </div>
-               
+
                 <div class="form-group">
                     <label class="txt font-weight-bold">Skills set</label>
                     <input
-                        [class.is-invalid]="registerRefForm.get('skillset').invalid && registerRefForm.get('skillset').touched"
-                        type="text" class="form-control" placeholder="Enter skill set" formControlName="skillset" />
+                        [class.is-invalid]="registerRefForm.get('pSkillSet').invalid && registerRefForm.get('pSkillSet').touched"
+                        type="text" class="form-control" placeholder="Enter skill set" formControlName="pSkillSet" />
                     <small class="text-danger"
-                        [class.d-none]="registerRefForm.get('skillset').valid || registerRefForm.get('skillset').untouched">skills
+                        [class.d-none]="registerRefForm.get('pSkillSet').valid || registerRefForm.get('pSkillSet').untouched">skills
                         is mandatory*</small>
                 </div>
 
@@ -78,7 +77,7 @@
                 <button class="btn text-white font-weight-bold" type="submit">Submit</button> &nbsp;
                 <br><br>
                 <br><br>
-              
+
             </form>
 
         </div>

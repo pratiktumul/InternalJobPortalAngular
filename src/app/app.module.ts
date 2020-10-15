@@ -21,6 +21,8 @@ import { JobsearchComponent } from './jobsearch/jobsearch.component';
 import { JobserviceService } from './jobservice.service';
 import { HrportalModule } from './hrportal/hrportal.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HRReportsModule } from './hr-reports/hr-reports.module';
+import { ReportService } from './hr-reports/report.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     JobsModule,
     ProfileModule,
     HrportalModule,
+    HRReportsModule,
     StaticPagesModule,
     HttpClientModule,
     NgxPaginationModule,
@@ -51,6 +54,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   providers: [
     AuthGuard,
     JobserviceService,
+    ReportService
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

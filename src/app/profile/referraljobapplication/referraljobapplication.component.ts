@@ -14,55 +14,40 @@ import { JobapplicationService } from '../jobapplication.service';
 export class ReferraljobapplicationComponent implements OnInit {
   registerRefForm: FormGroup;
 
-  constructor( private fb: FormBuilder,
-   // private fb: FormBuilder,
+  constructor(private fb: FormBuilder,
+    // private fb: FormBuilder,
     private tstr: ToastrService,
     private route: ActivatedRoute,
     private js: JobService,
     private jobservice: JobapplicationService,) { }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     this.registerRefForm = this.fb.group({
-      pname: ['', Validators.required],
-      email: ['', Validators.required],
-      phonum: ['', Validators.required],
-      jobname: ['', Validators.required],
-      joblocation: ['',Validators.required],
-      skillset: ['',Validators.required]
-      
+      pName: ['', Validators.required],
+      pEmailId: ['', Validators.required],
+      pPhoneNo: ['', Validators.required],
+      pJobName: ['', Validators.required],
+      pLocation: ['', Validators.required],
+      pSkillSet: ['', Validators.required]
+
     });
   }
   //This method is for calling the service
-  submitReferralDetails(){
-    const Pname: string = this.registerRefForm.controls['pname'].value;
-    const Emailid: string = this.registerRefForm.controls['email'].value;
-    const PhoneNo: string = this.registerRefForm.controls['phonum'].value;
-    const JobLoacation: string = this.registerRefForm.controls['joblocation'].value;
-    const JobName: string = this.registerRefForm.controls['jobname'].value;
-    const skillSet: string = this.registerRefForm.controls['skillset'].value;
-    if(confirm('Are you sure you want to submit?'))
-    {
-    this.jobservice
-      .SubmitRefApplication(
-        // Pname,
-        // Emailid,
-        // PhoneNo,
-        // JobLoacation,
-        // JobName,
-        // skillSet,
-        this.registerRefForm.value
-      )
-      .subscribe(
-        (_data: any) => {
-          this.tstr.success("Job Application Submitted Successfully", "congratulation");
-          this.registerRefForm.reset();
-        },
-        (_error: HttpErrorResponse) => {
-          this.tstr.error('You have already applied for this Job');
-        }
-      );
+  submitReferralDetails() {
+    if (confirm('Are you sure you want to submit?')) {
+      this.jobservice
+        .SubmitRefApplication(
+          this.registerRefForm.value
+        )
+        .subscribe(
+          (_data: any) => {
+            this.tstr.success("Job Application Submitted Successfully", "congratulation");
+            this.registerRefForm.reset();
+          },
+          (_error: HttpErrorResponse) => {
+            this.tstr.error('You have already applied for this Job');
+          }
+        );
     }
-
   }
-
-}
+} 
