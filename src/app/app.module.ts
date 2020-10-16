@@ -23,6 +23,7 @@ import { HrportalModule } from './hrportal/hrportal.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HRReportsModule } from './hr-reports/hr-reports.module';
 import { ReportService } from './hr-reports/report.service';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { ReportService } from './hr-reports/report.service';
     JobsearchComponent,
   ],
   imports: [
+    ChartsModule,
     BrowserModule,
     AppRoutingModule,
     AuthModule,

@@ -7,7 +7,7 @@ import { VacancyReportComponent } from './vacancy-report/vacancy-report.componen
 import { ReportsDashboardComponent } from './reports-dashboard/reports-dashboard.component';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ReportService } from './report.service';
-
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [VacancyReportComponent, ReportsDashboardComponent],
@@ -15,7 +15,8 @@ import { ReportService } from './report.service';
     CommonModule,
     HRReportsRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [
     ReportService
