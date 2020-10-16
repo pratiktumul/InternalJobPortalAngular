@@ -7,10 +7,11 @@ import { VacancyReportComponent } from './vacancy-report/vacancy-report.componen
 import { ReportsDashboardComponent } from './reports-dashboard/reports-dashboard.component';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ReportService } from './report.service';
+import { CompanyReportComponent } from './company-report/company-report.component';
 
 
 @NgModule({
-  declarations: [VacancyReportComponent, ReportsDashboardComponent],
+  declarations: [VacancyReportComponent, ReportsDashboardComponent, CompanyReportComponent],
   imports: [
     CommonModule,
     HRReportsRoutingModule,

@@ -23,6 +23,7 @@
     "@angular/router": "~9.1.11",
     "@ng-bootstrap/ng-bootstrap": "^6.2.0",
     "bootstrap": "^4.4.0",
+    "chart.js": "^2.9.3",
     "file-saver": "^2.0.2",
     "ngx-pagination": "^5.0.0",
     "ngx-toastr": "^12.1.0",
@@ -34,7 +35,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.9",
-    "@angular/cli": "~9.1.9",
+    "@angular/cli": "^9.1.12",
     "@angular/compiler-cli": "~9.1.11",
     "@types/file-saver": "^2.0.1",
     "@types/jasmine": "~3.5.0",

@@ -1,34 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { VacancyReport } from '../Models/vacancy-report';
-import { Chart } from 'chart.js';  
+import { CompanyReport } from '../Models/company-report';
 import { ReportService } from '../report.service';
+import { Chart } from 'chart.js';  
 
 @Component({
-  selector: 'app-vacancy-report',
-  templateUrl: './vacancy-report.component.html',
-  styleUrls: ['./vacancy-report.component.css']
+  selector: 'app-company-report',
+  templateUrl: './company-report.component.html',
+  styleUrls: ['./company-report.component.css']
 })
-export class VacancyReportComponent implements OnInit {
+export class CompanyReportComponent implements OnInit {
 
-  data: VacancyReport[];  
-  location = [];  
+  data: CompanyReport[];  
+  Company = [];  
   vacancy = [];  
   barchart = []; 
-
-  
   constructor(private ReportServe: ReportService) { }
 
   ngOnInit(): void {
-    this.ReportServe.getVacancyReport().subscribe((result: any) => {  
+    this.ReportServe.getCompanyReport().subscribe((result: any) => {  
       result.forEach(x => {  
-        this.location.push(x.Location);  
+        this.Company.push(x.Company);  
         this.vacancy.push(x.Vacancy);  
       });  
       this  
       this.barchart = new Chart('canvas', {  
         type: 'bar',  
         data: {  
-          labels: this.location,  
+          labels: this.Company,  
           datasets: [  
             {  
               data: this.vacancy,  
@@ -65,7 +63,6 @@ export class VacancyReportComponent implements OnInit {
         }  
       });  
     });  
-  
   }
 
 }
