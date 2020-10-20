@@ -19,6 +19,7 @@ import { ApproveuserComponent } from './approveuser/approveuser.component';
 import { ApproveadminComponent } from './approveadmin/approveadmin.component';
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ReferraljobapplicationComponent } from './referraljobapplication/referraljobapplication.component';
+import { RateskillsComponent } from './rateskills/rateskills.component';
 
 
 
@@ -34,6 +35,7 @@ import { ReferraljobapplicationComponent } from './referraljobapplication/referr
     ApproveuserComponent,
     ApproveadminComponent,
     ReferraljobapplicationComponent,
+    RateskillsComponent,
   ],
   imports: [
     CommonModule,

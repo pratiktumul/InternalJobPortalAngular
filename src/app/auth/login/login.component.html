@@ -6,7 +6,7 @@
         </div>
         <!--Email Input-->
         <div class="form-group">
-            <label class="txt font-weight-bold">User Name</label>
+            <label class="txt font-weight-bold">Employee Number</label>
             <input [class.is-invalid]="loginForm.get('UserName').invalid && loginForm.get('UserName').touched" type="text font-weight-bold" class="form-input" formControlName="UserName" />
             <small class="text-danger" [class.d-none]="loginForm.get('UserName').valid || loginForm.get('UserName').untouched">Username is mandatory*</small>
         </div>

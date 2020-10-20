@@ -13,7 +13,8 @@ import { forkJoin } from 'rxjs';
 export class JobapplicationService {
   webapiservice = 'https://localhost:44325/api/employeejobapplication';
   requestURL = 'https://localhost:44325/api/User_Image';
-  refURL = "https://localhost:44325/api/JobReferal"
+  refURL = "https://localhost:44325/api/JobReferal";
+  SkillLevelUrl = "https://localhost:44325/api/EmployeeSkills";
   constructor(private _http: HttpClient) { }
 
   downloadFile(): Observable<any> {
@@ -124,5 +125,15 @@ export class JobapplicationService {
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),
     });
+  }
+  addSkillLevel(refForm: any){
+
+    console.log(refForm);
+    return this._http.post(this.SkillLevelUrl, refForm, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    });
+
   }
 }

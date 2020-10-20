@@ -25,12 +25,13 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
     this.registerForm = this.fb.group(
       {
-        UserName: ['', Validators.required, Validators.pattern(this.unamePattern)],
+        UserName: ['', Validators.required],
         UserEmail: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
         UserPassword: ['', Validators.required],
         RoleId: ['', Validators.required],
         confirmPassword: ['', Validators.required],
-        Fullname: ['', Validators.required]
+        Fullname: ['', Validators.required],
+        EmpId: ['', Validators.required]
       },
       { validator: PasswordValidator }
     );
@@ -38,10 +39,19 @@ export class RegisterComponent implements OnInit {
 
   Roles = [{ roleid: '1', role: 'Admin' }, { roleid: '2', role: 'User' },{ roleid: '4', role: 'HR' }];
 
+  CheckDomain(email:string){
+    let domain = 'gyansys.com';
+    let indexOfAt = email.indexOf('@');
+    let extractDomain = email.substring(indexOfAt + 1);
+    return domain == extractDomain;
+  }
+
   submitDetails() {
+    const email = this.registerForm.get('UserEmail').value.toString();
+    if(this.CheckDomain(email)){
     this.rsvc.registerUser(this.registerForm.value).subscribe(
       (_data) => {
-        this.tstr.success("Application Submitted Successfully", "Congratulations");
+        this.tstr.success("Registration Done Successfully", "Congratulations");
         this.registerForm.reset();
         this.userExists = false;
         this.router.navigate(['/login']);
@@ -50,6 +60,10 @@ export class RegisterComponent implements OnInit {
         this.userExists = true;
       }
     );
+  }
+  else{
+    this.tstr.error("Please Use GyanSys Email Only");
+  }
   }
 
   get UserEmail() {

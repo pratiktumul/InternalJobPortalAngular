@@ -1,6 +1,7 @@
 <div class="card">
-    <img [src]="imageToShow" style="width:100%">
-    <form [formGroup]="imageForm" (ngSubmit)="uploadImage()">
+    <i *ngIf="errorCheck" class="fa fa-user fa-4x"></i>
+    <img *ngIf="!errorCheck" [src]="imageToShow" style="width:100%">
+    <form [formGroup]="imageForm" (ngSubmit)="uploadImage()"> 
         <label> Change Photo<input type="file" size="60" formContolName="imageFile" (change)="handleImageUpload($event.target.files)"></label>
     </form>
     <br>

@@ -8,9 +8,11 @@ import { ReportsDashboardComponent } from './reports-dashboard/reports-dashboard
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ReportService } from './report.service';
 import { ChartsModule } from 'ng2-charts';
+import { LastLoginReportComponent } from './last-login-report/last-login-report.component';
+import { EmpApplicationTrackReportComponent } from './emp-application-track-report/emp-application-track-report.component';
 
 @NgModule({
-  declarations: [VacancyReportComponent, ReportsDashboardComponent],
+  declarations: [VacancyReportComponent, ReportsDashboardComponent, LastLoginReportComponent, EmpApplicationTrackReportComponent],
   imports: [
     CommonModule,
     HRReportsRoutingModule,

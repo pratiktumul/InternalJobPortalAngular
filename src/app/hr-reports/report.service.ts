@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { GeneralReport } from './Models/general-report';
 import { VacancyReport } from './Models/vacancy-report';
 import { CompanyReport } from './Models/company-report';
+import { Loginmodel } from './Models/loginmodel';
 
 
 @Injectable({
@@ -13,6 +14,7 @@ export class ReportService {
 
   generalReportURI = "https://localhost:44325/api/generalreport";
   vacancyReportURI = "https://localhost:44325/api/VacancyReport";
+  empstatusURI = "https://localhost:44325/api/statushistory";
   constructor(private _http: HttpClient) { }
 
   getGeneralReport(): Observable<GeneralReport> {
@@ -37,5 +39,13 @@ export class ReportService {
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),
     });
+  }
+
+  getLoginHistory(): Observable<Loginmodel> {
+    return this._http.get<Loginmodel>(this.empstatusURI + "/loginhistory", {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    })
   }
 }
