@@ -29,14 +29,16 @@
 
             <li class="nav-item">
                 <a class="nav-link sidesecnd" routerLink="./lastloginreports" routerLinkActive="active">
-                    <span class="textside"><i class="fas fa-chart-bar"></i> Login History</span>
+                    <span class="textside"><i class="fa fa-table" aria-hidden="true"></i> Login History</span>
                 </a>
             </li>
-            <!-- <li class="nav-item">
-                <a class="nav-link sidesthrd" routerLink="./suggestedjobs" routerLinkActive="active">
-                    <span class="textside"><i class="fas fa-briefcase"></i> Suggested Jobs</span>
+
+            <li class="nav-item">
+                <a class="nav-link sidesecnd" routerLink="../applicationtrackreports" routerLinkActive="active">
+                    <span class="textside"><i class="fa fa-table" aria-hidden="true"></i> Jobs Applied</span>
                 </a>
-            </li> -->
+            </li>
+
         </ul>
     </div>
 </nav>
@@ -47,30 +49,37 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-2 mt-4">
                 <table class="table">
                     <thead class="thead-dark">
-                      <tr>
-                        <th scope="col">EmpID</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Last Login Date</th>
-                      </tr>
+                        <tr>
+                            <th scope="col">EmpID</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Last Login Date</th>
+                        </tr>
                     </thead>
                     <tbody>
-                      <tr class="bg-warning">
-                        <th scope="row">112</th>
-                        <td>Mark Otto</td>
-                        <td>30-05-2020</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">123</th>
-                        <td>Jacob Thornton</td>
-                        <td>20-05-2020</td>
-                      </tr>
-                      <tr class="bg-warning">
-                        <th scope="row">144</th>
-                        <td>Larry</td>
-                        <td>12-05-2020</td>
-                      </tr>
+                        <tr class="bg-warning" *ngFor="let item of loginData | paginate: {
+                            id:'loginhistory',
+                            itemsPerPage: 7,
+                            currentPage: page,
+                            totalItems: ttlrecords}">
+                            <th scope="row">{{item.EmpId}}</th>
+                            <td>{{item.FullName}}</td>
+                            <td>{{item.LastLogin | date}}</td>
+                        </tr>
                     </tbody>
-                  </table>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="pagination-area pb-115 text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="single-wrap d-flex justify-content-center">
+                    <nav aria-label="Page navigation example">
+                        <pagination-controls id="loginhistory" (pageChange)="page=$event" previousLabel="" nextLabel=""></pagination-controls>
+                    </nav>
+                </div>
             </div>
         </div>
     </div>

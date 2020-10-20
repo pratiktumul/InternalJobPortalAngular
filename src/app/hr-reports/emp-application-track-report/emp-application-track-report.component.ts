@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeApplicationTrack } from '../Models/employee-application-track';
+import { ReportService } from '../report.service';
 
 @Component({
   selector: 'app-emp-application-track-report',
@@ -7,9 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpApplicationTrackReportComponent implements OnInit {
 
-  constructor() { }
+  isNavbarCollapsed: boolean = true;
+  userName: string;
+  currDate: Date;
+  applicationData: EmployeeApplicationTrack[];
+  ttlrecords: number;
+  page: number = 1;
+  constructor(private ReportServe: ReportService) { }
 
   ngOnInit(): void {
+    this.userName = localStorage.getItem('userName');
+    this.currDate = new Date();
+    this.getEmployeeApplicationHistory();
   }
 
+  getEmployeeApplicationHistory() {
+    this.ReportServe.getJobApplications().subscribe((res) => {
+      this.applicationData = res;
+      console.log(this.applicationData);
+    });
+  }
 }

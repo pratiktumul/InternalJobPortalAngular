@@ -5,6 +5,7 @@ import { GeneralReport } from './Models/general-report';
 import { VacancyReport } from './Models/vacancy-report';
 import { CompanyReport } from './Models/company-report';
 import { Loginmodel } from './Models/loginmodel';
+import { EmployeeApplicationTrack } from './Models/employee-application-track';
 
 
 @Injectable({
@@ -41,8 +42,16 @@ export class ReportService {
     });
   }
 
-  getLoginHistory(): Observable<Loginmodel> {
-    return this._http.get<Loginmodel>(this.empstatusURI + "/loginhistory", {
+  getLoginHistory(): Observable<Loginmodel[]> {
+    return this._http.get<Loginmodel[]>(this.empstatusURI + "/loginhistory", {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    })
+  }
+
+  getJobApplications(): Observable<EmployeeApplicationTrack[]> {
+    return this._http.get<EmployeeApplicationTrack[]>(this.empstatusURI + "/applicationhistory", {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),

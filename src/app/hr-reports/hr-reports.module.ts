@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { HRReportsRoutingModule } from './hr-reports-routing.module';
 import { VacancyReportComponent } from './vacancy-report/vacancy-report.component';
@@ -18,7 +19,8 @@ import { EmpApplicationTrackReportComponent } from './emp-application-track-repo
     HRReportsRoutingModule,
     NgbModule,
     HttpClientModule,
-    ChartsModule
+    ChartsModule,
+    NgxPaginationModule
   ],
   providers: [
     ReportService
