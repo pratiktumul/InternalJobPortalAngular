@@ -11,6 +11,7 @@ import { SuggestedjobsComponent } from './suggestedjobs/suggestedjobs.component'
 import { ApproveuserComponent } from './approveuser/approveuser.component';
 import { ApproveadminComponent } from './approveadmin/approveadmin.component';
 import { ReferraljobapplicationComponent } from './referraljobapplication/referraljobapplication.component';
+import { RateskillsComponent } from './rateskills/rateskills.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,12 @@ const routes: Routes = [
       {
         path: 'suggestedjobs',
         component: SuggestedjobsComponent,
+        canActivate: [AuthGuard],
+        data: { role: ['User'] },
+      },
+      {
+        path: 'rateskills',
+        component: RateskillsComponent,
         canActivate: [AuthGuard],
         data: { role: ['User'] },
       },

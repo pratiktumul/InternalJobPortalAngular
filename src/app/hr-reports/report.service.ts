@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GeneralReport } from './Models/general-report';
 import { VacancyReport } from './Models/vacancy-report';
 import { CompanyReport } from './Models/company-report';
 import { Loginmodel } from './Models/loginmodel';
 import { EmployeeApplicationTrack } from './Models/employee-application-track';
+import { EmployeeSkillLevel } from './Models/employee-skill-level';
 
 
 @Injectable({
@@ -16,6 +17,7 @@ export class ReportService {
   generalReportURI = "https://localhost:44325/api/generalreport";
   vacancyReportURI = "https://localhost:44325/api/VacancyReport";
   empstatusURI = "https://localhost:44325/api/statushistory";
+  empSkillURI = 'https://localhost:44325/api/EmployeeSkillReport';
   constructor(private _http: HttpClient) { }
 
   getGeneralReport(): Observable<GeneralReport> {
@@ -56,5 +58,16 @@ export class ReportService {
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),
     })
+  }
+
+  getEmployeeSkill(id: number): Observable<EmployeeSkillLevel[]> {
+    return this._http.get<EmployeeSkillLevel[]>(this.empSkillURI + '/' + id, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    }).catch(this.handleError);
+  }
+  private handleError(error: HttpErrorResponse) {
+    return Observable.throw(error.message || "Server Error");
   }
 }

@@ -1,6 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { JobapplicationService } from '../jobapplication.service';
 import { Skillrate } from './skillrate';
@@ -16,18 +16,17 @@ export class RateskillsComponent implements OnInit {
   lastLogin: string;
   userName: string;
   rateskillModel = new Skillrate();
-  dataarray=[];
-  
-  newskillsarray=[];
- 
-  isNavbarCollapsed:boolean = true;
+  dataarray = [];
+
+  newskillsarray = [];
+
+  isNavbarCollapsed: boolean = true;
   constructor(
-    //private dashboardService: DashboardService,
     private jobservice: JobapplicationService,
     private fb: FormBuilder,
     private tstr: ToastrService,
-    private changeDetector : ChangeDetectorRef
-    ) { }
+    private changeDetector: ChangeDetectorRef
+  ) { }
   ngAfterContentChecked(): void {
     this.changeDetector.detectChanges();
   }
@@ -39,7 +38,7 @@ export class RateskillsComponent implements OnInit {
     { name: "Vue JS", id: 5 },
     { name: "Oracle", id: 6 },
     { name: "Other MS Technologies", id: 7 },
-   
+
   ];
   Rateing = [
     '1',
@@ -51,46 +50,37 @@ export class RateskillsComponent implements OnInit {
     '7',
     '8',
     '9',
-    '10'  ];
+    '10'];
 
   ngOnInit(): void {
+    this.lastLogin = localStorage.getItem('lastlogin');
+    this.userName = localStorage.getItem('userName');
     this.SubmitSkillLevel = this.fb.group({
       EmpId: ['', Validators.required],
       skill_set_id: ['', Validators.required],
       skill_level: ['', Validators.required],
-      
-
     });
-    this.rateskillModel= new Skillrate()
-    this.dataarray.push(this.rateskillModel);
-    this.lastLogin = localStorage.getItem('lastlogin');
-    this.userName = localStorage.getItem('userName');
-  }
-  addRow()
-  {
     this.rateskillModel = new Skillrate()
     this.dataarray.push(this.rateskillModel);
   }
-  removeRow(index){
-   this.dataarray.splice(index,1);
+  addRow() {
+    this.rateskillModel = new Skillrate()
+    this.dataarray.push(this.rateskillModel);
   }
- 
-  SubmitSkillLevelForm(){
-    //console.log(this.dataarray);
-    this.dataarray.forEach(element => {
-      //element = this.dataarray;
-      this.jobservice.addSkillLevel(element).subscribe(
-        (_data: any) => {
-          this.tstr.success("Submitted Succesfully", "Great");
-          this.SubmitSkillLevel.reset(); 
-        },
-        (_error: HttpErrorResponse) => {
-          this.tstr.error("There was an error.");
-        }
-      );
-    }); 
- 
-
+  removeRow(index) {
+    this.dataarray.splice(index, 1);
   }
 
+  SubmitSkillLevelForm(skillForm:NgForm) {
+    console.log(this.dataarray);
+    this.jobservice.addSkillLevel(this.dataarray).subscribe(
+      (_data: any) => {
+        this.tstr.success("Skills Updated Succesfully");
+        skillForm.resetForm();
+      },
+      (_error: HttpErrorResponse) => {
+        this.tstr.error("Sorry for the inconvenience","Error");
+      }
+    );
+  }
 }

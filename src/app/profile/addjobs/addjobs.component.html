@@ -4,7 +4,7 @@
             <h3>Add Job Details Here</h3>
             <hr>
         </div>
-
+ 
         <div class="form-group">
             <label class="txt3 font-weight-bold">Job Title</label>
             <input [class.is-invalid]="jobForm.get('JobTitle').invalid && jobForm.get('JobTitle').touched" type="text" class="form-control" formControlName="JobTitle" />
@@ -27,6 +27,17 @@
                                 <option *ngFor="let slist of Location" value={{slist}}>{{slist}}</option>
                             </select>
             <small class="text-danger" [class.d-none]="jobForm.get('Location').valid || jobForm.get('Location').untouched">*Select a Location</small>
+        </div>
+
+        <div class="form-group">
+            <label class="txt font-weight-bold">Skills</label>
+            <select [class.is-invalid]="jobForm.get('skill').invalid && jobForm.get('skill').touched"
+                class="form-control" multiple formControlName="skill">
+                <option *ngFor="let slist of Skills" value={{slist}}>{{slist}}</option>
+                <small class="text-danger"
+                    [class.d-none]="jobForm.get('skill').valid || jobForm.get('skill').untouched">Skill
+                    is mandatory*</small>
+            </select>
         </div>
 
         <div class="form-group">

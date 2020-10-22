@@ -14,7 +14,7 @@ export class JobapplicationService {
   webapiservice = 'https://localhost:44325/api/employeejobapplication';
   requestURL = 'https://localhost:44325/api/User_Image';
   refURL = "https://localhost:44325/api/JobReferal";
-  SkillLevelUrl = "https://localhost:44325/api/EmployeeSkills";
+  SkillLevelUrl = "https://localhost:44325/api/addSkillLevel";
   constructor(private _http: HttpClient) { }
 
   downloadFile(): Observable<any> {
@@ -126,10 +126,9 @@ export class JobapplicationService {
       }),
     });
   }
-  addSkillLevel(refForm: any){
-
-    console.log(refForm);
-    return this._http.post(this.SkillLevelUrl, refForm, {
+  addSkillLevel(skillsRating: any[]) {
+    console.log(skillsRating);
+    return this._http.post(this.SkillLevelUrl, skillsRating, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),

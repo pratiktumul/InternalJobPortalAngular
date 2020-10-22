@@ -2,7 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from '../Guards/auth.guard';
 import { EmpApplicationTrackReportComponent } from './emp-application-track-report/emp-application-track-report.component';
+import { EmpSkillReportComponent } from './emp-skill-report/emp-skill-report.component';
 import { LastLoginReportComponent } from './last-login-report/last-login-report.component';
+import { EmployeeApplicationTrack } from './Models/employee-application-track';
 import { ReportsDashboardComponent } from './reports-dashboard/reports-dashboard.component';
 import { VacancyReportComponent } from './vacancy-report/vacancy-report.component';
 
@@ -27,6 +29,12 @@ const routes: Routes = [
       {
         path: 'applicationtrackreports',
         component: EmpApplicationTrackReportComponent,
+        canActivate: [AuthGuard],
+        data: { role: ['HR'] },
+      },
+      {
+        path: 'empskillreport',
+        component: EmpSkillReportComponent,
         canActivate: [AuthGuard],
         data: { role: ['HR'] },
       },      

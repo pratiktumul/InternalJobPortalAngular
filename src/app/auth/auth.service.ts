@@ -9,7 +9,7 @@ import 'rxjs/add/observable/throw'
 })
 export class AuthService {
   apiUrl = 'https://localhost:44325';
-
+  
   constructor(private _http: HttpClient) {}
 
   registerUser(regForm: any): Observable<any> {

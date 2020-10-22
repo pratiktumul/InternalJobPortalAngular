@@ -32,7 +32,7 @@ export class JobapplicationComponent implements OnInit {
       ename: ['', Validators.required],
       empid: ['', Validators.required],
       curLoc: ['', Validators.required],
-      skill: ['', Validators.required],
+      skill: ['', Validators.required], 
       year: ['', Validators.required],
       // AppType: ['',Validators.required],
       month: ['', Validators.required],
