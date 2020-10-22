@@ -47,36 +47,27 @@
 </nav>
 <div class="content-wrapper">
     <div class="container-fluid">
-        <div class="row">
-            <!-- Icon Cards-->
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-2 mt-4">
-                <table class="table">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th scope="col">EmpID</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Last Login Date</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="bg-warning">
-                        <th scope="row">112</th>
-                        <td>Mark Otto</td>
-                        <td>30-05-2020</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">123</th>
-                        <td>Jacob Thornton</td>
-                        <td>20-05-2020</td>
-                      </tr>
-                      <tr class="bg-warning">
-                        <th scope="row">144</th>
-                        <td>Larry</td>
-                        <td>12-05-2020</td>
-                      </tr>
-                    </tbody>
-                  </table>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-12 mb-2 mt-4">
+            <div class="row">
+                <form [formGroup]="submitCompanyName" #formDirective="ngForm" (ngSubmit)="createCompanyVacancyChart()">
+                    <label>Company: &nbsp;</label>
+                    <select formControlName="company_name">
+                        <option disabled value="0">Select</option>
+                        <option *ngFor="let company of companyName" value={{company.company_name}}> 
+                            {{company.company_name}}
+                        </option>
+                    </select> &nbsp;
+                    <button class="btn text-white font-weight-bold" type="submit">Submit</button> &nbsp;
+                </form>
+
             </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-12 mb-2 mt-4">
+                <div class="chart-container">
+                    <h4><b>Company-Wise Vacancies</b></h4>
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

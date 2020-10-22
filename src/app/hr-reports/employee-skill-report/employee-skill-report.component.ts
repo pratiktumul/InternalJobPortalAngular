@@ -34,7 +34,9 @@ export class EmployeeSkillReportComponent implements OnInit {
     this.getEmployeeSkillLevel();
   }
   getEmployeeSkillLevel() {
-  const empid: number = this.EnterEmpId.controls['EmpId'].value;
+    this.Skillname = [];
+    this.SkillLevel = [];
+    const empid: number = this.EnterEmpId.controls['EmpId'].value;
     this.ReportServe.getEmployeeSkillLevelService(empid).subscribe((result: any) => {
       result.forEach(x => {
         this.SkillLevel.push(x.SkillLevel);
@@ -69,19 +71,15 @@ export class EmployeeSkillReportComponent implements OnInit {
           }
         },
       });
+    
     });
 
 
 
 
   }
-  removeData(chart) {
-    chart.data.labels.pop();
-    chart.data.datasets.forEach((dataset) => {
-      dataset.data.pop();
-    });
-    chart.update();
-  }
+
+  
 
 }
 

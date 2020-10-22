@@ -6,6 +6,7 @@ import { EmployeeSkillReportComponent } from './employee-skill-report/employee-s
 import { LastLoginReportComponent } from './last-login-report/last-login-report.component';
 import { ReportsDashboardComponent } from './reports-dashboard/reports-dashboard.component';
 import { VacancyReportComponent } from './vacancy-report/vacancy-report.component';
+import { VacancybycompanyComponent } from './vacancybycompany/vacancybycompany.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,12 @@ const routes: Routes = [
       {
         path: 'EmployeeSkillReport',
         component: EmployeeSkillReportComponent,
+        canActivate: [AuthGuard],
+        data: { role: ['HR'] },
+      },
+      {
+        path: 'VacancyByCompany',
+        component: VacancybycompanyComponent,
         canActivate: [AuthGuard],
         data: { role: ['HR'] },
       }   
