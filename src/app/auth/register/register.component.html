@@ -35,14 +35,7 @@
                 <small>Email Id is not valid.</small>
             </div>
         </div>
-        <div class="form-group">
-            <label class="txt3 font-weight-bold">Your Role</label>
-            <select [class.is-invalid]="registerForm.get('RoleId').invalid && registerForm.get('RoleId').touched" class="form-input" formControlName="RoleId">
-                <option value="" disabled>Select Role</option>
-                <option *ngFor="let slist of Roles" value={{slist.roleid}}>{{slist.role}}</option>
-            </select>
-            <small class="text-danger" [class.d-none]="registerForm.get('RoleId').valid || registerForm.get('RoleId').untouched">Select a role*</small>
-        </div>
+        
         <div class="form-group">
             <label class="txt4 font-weight-bold">Password</label><br>
             <input [class.is-invalid]="registerForm.get('UserPassword').invalid && registerForm.get('UserPassword').touched" type="password" class="form-input" formControlName="UserPassword" />

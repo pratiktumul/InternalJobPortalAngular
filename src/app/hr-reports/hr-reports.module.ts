@@ -13,9 +13,10 @@ import { ChartsModule } from 'ng2-charts';
 import { LastLoginReportComponent } from './last-login-report/last-login-report.component';
 import { EmpApplicationTrackReportComponent } from './emp-application-track-report/emp-application-track-report.component';
 import { EmpSkillReportComponent } from './emp-skill-report/emp-skill-report.component';
+import { VacancydetailComponent } from './vacancydetail/vacancydetail.component';
 
 @NgModule({
-  declarations: [VacancyReportComponent, ReportsDashboardComponent, LastLoginReportComponent, EmpApplicationTrackReportComponent, EmpSkillReportComponent],
+  declarations: [VacancyReportComponent, ReportsDashboardComponent, LastLoginReportComponent, EmpApplicationTrackReportComponent, EmpSkillReportComponent, VacancydetailComponent],
   imports: [
     CommonModule,
     HRReportsRoutingModule,

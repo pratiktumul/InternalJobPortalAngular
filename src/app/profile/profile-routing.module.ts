@@ -12,6 +12,7 @@ import { ApproveuserComponent } from './approveuser/approveuser.component';
 import { ApproveadminComponent } from './approveadmin/approveadmin.component';
 import { ReferraljobapplicationComponent } from './referraljobapplication/referraljobapplication.component';
 import { RateskillsComponent } from './rateskills/rateskills.component';
+import { AdminregisterComponent } from './adminregister/adminregister.component';
 
 const routes: Routes = [
   {
@@ -73,6 +74,12 @@ const routes: Routes = [
   {
     path: 'approveadmin',
     component: ApproveadminComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['Superadmin'] },
+  },
+  {
+    path: 'registernewadmin',
+    component: AdminregisterComponent,
     canActivate: [AuthGuard],
     data: { role: ['Superadmin'] },
   },

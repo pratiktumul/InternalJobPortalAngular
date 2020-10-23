@@ -7,6 +7,8 @@ import { CompanyReport } from './Models/company-report';
 import { Loginmodel } from './Models/loginmodel';
 import { EmployeeApplicationTrack } from './Models/employee-application-track';
 import { EmployeeSkillLevel } from './Models/employee-skill-level';
+import { Vacancydetailmodel } from './Models/vacancydetailmodel';
+import { CompanyModel } from './Models/company-model';
 
 
 @Injectable({
@@ -18,6 +20,7 @@ export class ReportService {
   vacancyReportURI = "https://localhost:44325/api/VacancyReport";
   empstatusURI = "https://localhost:44325/api/statushistory";
   empSkillURI = 'https://localhost:44325/api/EmployeeSkillReport';
+  vacancyDetailURI = 'https://localhost:44325/api/VacancyDetail';
   constructor(private _http: HttpClient) { }
 
   getGeneralReport(): Observable<GeneralReport> {
@@ -69,5 +72,29 @@ export class ReportService {
   }
   private handleError(error: HttpErrorResponse) {
     return Observable.throw(error.message || "Server Error");
+  }
+
+  getVacancyDetail(id: number): Observable<Vacancydetailmodel[]> {
+    return this._http.get<Vacancydetailmodel[]>(this.vacancyDetailURI + '/' + id, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    });
+  }
+
+  // getAllCompanies(): Observable<CompanyModel[]> {
+  //   return this._http.get<CompanyModel[]>(this.vacancyDetailURI, {
+  //     headers: new HttpHeaders({
+  //       Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+  //     }),
+  //   });
+  // }
+
+  getCompanies(): Observable<CompanyModel[]> {
+    return this._http.get<CompanyModel[]>(this.vacancyDetailURI, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    });
   }
 }

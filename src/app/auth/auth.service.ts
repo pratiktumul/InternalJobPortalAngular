@@ -9,8 +9,8 @@ import 'rxjs/add/observable/throw'
 })
 export class AuthService {
   apiUrl = 'https://localhost:44325';
-  
-  constructor(private _http: HttpClient) {}
+
+  constructor(private _http: HttpClient) { }
 
   registerUser(regForm: any): Observable<any> {
     const httpOption = {
@@ -20,6 +20,20 @@ export class AuthService {
       .post<any>(this.apiUrl + '/api/register', regForm, httpOption)
       .catch(this.handleError);
   }
+
+  registerAdminHR(regForm: any): Observable<any> {
+    const httpOption = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('userToken')
+      }
+      ),
+    };
+    return this._http
+      .post<any>(this.apiUrl + '/api/SuperAdmin', regForm, httpOption)
+      .catch(this.handleError);
+  }
+
   private handleError(error: HttpErrorResponse) {
     return Observable.throw(error.message || "Server Error");
   }

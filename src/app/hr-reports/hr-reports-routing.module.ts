@@ -5,8 +5,10 @@ import { EmpApplicationTrackReportComponent } from './emp-application-track-repo
 import { EmpSkillReportComponent } from './emp-skill-report/emp-skill-report.component';
 import { LastLoginReportComponent } from './last-login-report/last-login-report.component';
 import { EmployeeApplicationTrack } from './Models/employee-application-track';
+import { Vacancydetailmodel } from './Models/vacancydetailmodel';
 import { ReportsDashboardComponent } from './reports-dashboard/reports-dashboard.component';
 import { VacancyReportComponent } from './vacancy-report/vacancy-report.component';
+import { VacancydetailComponent } from './vacancydetail/vacancydetail.component';
 
 
 const routes: Routes = [
@@ -35,6 +37,12 @@ const routes: Routes = [
       {
         path: 'empskillreport',
         component: EmpSkillReportComponent,
+        canActivate: [AuthGuard],
+        data: { role: ['HR'] },
+      },
+      {
+        path: 'jobvacancyreport',
+        component: VacancydetailComponent,
         canActivate: [AuthGuard],
         data: { role: ['HR'] },
       },      
