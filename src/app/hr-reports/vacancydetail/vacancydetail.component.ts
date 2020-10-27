@@ -20,10 +20,11 @@ export class VacancydetailComponent implements OnInit {
   JobTitle: any = [];
   CompanyReport: FormGroup;
   empty: any = [];
-  public barChart: any = [];
+  //public barChart: any = [];
   heading: string = 'Company-Job Title Wise Report';
   isTrue: boolean = true;
   companies: CompanyModel[];
+  bar_chart;
   constructor(private _rs: ReportService, private fb: FormBuilder, private tstr: ToastrService) { }
 
   ngOnInit(): void {
@@ -42,7 +43,6 @@ export class VacancydetailComponent implements OnInit {
   }
 
   getCompanyVacanyByJobs() {
-    let bar_chart;
     this.Vacancy = [];
     this.JobTitle = [];
     const companyid: number = this.CompanyReport.controls['CompanyId'].value;
@@ -51,11 +51,11 @@ export class VacancydetailComponent implements OnInit {
         this.Vacancy.push(x.vacancy);
         this.JobTitle.push(x.JobTitle);
       });
-      if (bar_chart) {
-        bar_chart.destroy();
+      if (this.bar_chart) {
+        this.bar_chart.destroy();
       }
-      //var ctx = document.getElementById("bar_chart").getContext("2d");
-      bar_chart = new Chart('bar_chart', {
+      
+      this.bar_chart = new Chart('bar_chart', {
         type: 'bar',
         data: {
           labels: this.JobTitle,
@@ -64,17 +64,17 @@ export class VacancydetailComponent implements OnInit {
               data: this.Vacancy,
               borderColor: '#000000',
               backgroundColor: [
-                "#01579B",  
-                "#0277BD",  
-                "#288D1",  
-                "#39BE5",  
-                "#03A9F4",  
-                "#29B6F6",  
-                "#4FC3F7",  
-                "#81D4FA",  
-                "#B3E5FC",  
-                "#E1F5FE",  
-                "#E1F5FE"  
+                "#01579B",
+                "#0277BD",
+                "#288D1",
+                "#39BE5",
+                "#03A9F4",
+                "#29B6F6",
+                "#4FC3F7",
+                "#81D4FA",
+                "#B3E5FC",
+                "#E1F5FE",
+                "#E1F5FE"
               ],
               fill: true
             }
@@ -89,12 +89,15 @@ export class VacancydetailComponent implements OnInit {
               display: true
             }],
             yAxes: [{
-              display: true
+              display: true,
+              ticks: {
+                suggestedMin: 0,
+                suggestedMax: this.Vacancy.length
+              },
             }],
           }
         }
       });
-      //this.barChart.destroy();
     });
   }
 }
