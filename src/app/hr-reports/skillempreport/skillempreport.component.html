@@ -22,7 +22,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link sidesecnd" routerLink="../vacancyreports" routerLinkActive="active">
+                <a class="nav-link sidesecnd" routerLink="./vacancyreports" routerLinkActive="active">
                     <span class="textside"><i class="fas fa-chart-bar"></i> Vacancy Report</span>
                 </a>
             </li>
@@ -40,7 +40,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link sidesecnd" routerLink="./applicationtrackreports" routerLinkActive="active">
+                <a class="nav-link sidesecnd" routerLink="../applicationtrackreports" routerLinkActive="active">
                     <span class="textside"><i class="fa fa-table" aria-hidden="true"></i> Jobs Applied</span>
                 </a>
             </li>
@@ -62,54 +62,26 @@
                     <span class="textside"><i class="fas fa-briefcase"></i> Trending Skills</span>
                 </a>
             </li>
+            
+            <!-- <li class="nav-item">
+                <a class="nav-link sidesthrd" routerLink="./suggestedjobs" routerLinkActive="active">
+                    <span class="textside"><i class="fas fa-briefcase"></i> Suggested Jobs</span>
+                </a>
+            </li> -->
         </ul>
     </div>
 </nav>
+
 <div class="content-wrapper">
     <div class="container-fluid">
         <div class="row">
             <!-- Icon Cards-->
-            <div class="col-lg-12 col-md-12 col-sm-12 col-12 mb-2 mt-4">
-                <table class="table">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Employee Id</th>
-                            <th scope="col">Employee Name</th>
-                            <th scope="col">Current Location</th>
-                            <th scope="col">Project</th>
-                            <th scope="col">Company Name</th>
-                            <th scope="col">Job Title</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="bg-warning" *ngFor="let item of applicationData | paginate: {
-                            id:'applicationhistory',
-                            itemsPerPage: 7,
-                            currentPage: page,
-                            totalItems: ttlrecords}">
-                            <th scope="row">{{item.EmpId}}</th>
-                            <td>{{item.EmpName}}</td>
-                            <td>{{item.CurrentLocation}}</td>
-                            <td>{{item.LastProject}}</td>
-                            <td>{{item.CompanyName}}</td>
-                            <td>{{item.JobTitle}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="pagination-area pb-115 text-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="single-wrap d-flex justify-content-center">
-                    <nav aria-label="Page navigation example">
-                        <pagination-controls id="applicationhistory" (pageChange)="page=$event" previousLabel="" nextLabel=""></pagination-controls>
-                    </nav>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-8 mb-2 mt-4">
+                <div class="chart-container">
+                    <h4><b>Skill-Wise Employee Report</b></h4>
+                    <canvas id="canvas"></canvas>
                 </div>
-            </div>
+            </div>            
         </div>
     </div>
 </div>

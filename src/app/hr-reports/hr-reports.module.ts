@@ -14,9 +14,11 @@ import { LastLoginReportComponent } from './last-login-report/last-login-report.
 import { EmpApplicationTrackReportComponent } from './emp-application-track-report/emp-application-track-report.component';
 import { EmpSkillReportComponent } from './emp-skill-report/emp-skill-report.component';
 import { VacancydetailComponent } from './vacancydetail/vacancydetail.component';
+import { SkilltrendsReportComponent } from './skilltrends-report/skilltrends-report.component';
+import { SkillempreportComponent } from './skillempreport/skillempreport.component';
 
 @NgModule({
-  declarations: [VacancyReportComponent, ReportsDashboardComponent, LastLoginReportComponent, EmpApplicationTrackReportComponent, EmpSkillReportComponent, VacancydetailComponent],
+  declarations: [VacancyReportComponent, ReportsDashboardComponent, LastLoginReportComponent, EmpApplicationTrackReportComponent, EmpSkillReportComponent, VacancydetailComponent, SkilltrendsReportComponent, SkillempreportComponent],
   imports: [
     CommonModule,
     HRReportsRoutingModule,

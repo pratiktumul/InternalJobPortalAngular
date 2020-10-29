@@ -9,6 +9,7 @@ import { EmployeeApplicationTrack } from './Models/employee-application-track';
 import { EmployeeSkillLevel } from './Models/employee-skill-level';
 import { Vacancydetailmodel } from './Models/vacancydetailmodel';
 import { CompanyModel } from './Models/company-model';
+import { Skilltrendmodel } from './Models/skilltrendmodel';
 
 
 @Injectable({
@@ -21,6 +22,8 @@ export class ReportService {
   empstatusURI = "https://localhost:44325/api/statushistory";
   empSkillURI = 'https://localhost:44325/api/EmployeeSkillReport';
   vacancyDetailURI = 'https://localhost:44325/api/VacancyDetail';
+  skillTrendURI = 'https://localhost:44325/api/skilltrend';
+  skillEmpURI = 'https://localhost:44325/api/SkillEmployeeReport';
   constructor(private _http: HttpClient) { }
 
   getGeneralReport(): Observable<GeneralReport> {
@@ -82,16 +85,24 @@ export class ReportService {
     });
   }
 
-  // getAllCompanies(): Observable<CompanyModel[]> {
-  //   return this._http.get<CompanyModel[]>(this.vacancyDetailURI, {
-  //     headers: new HttpHeaders({
-  //       Authorization: 'Bearer ' + localStorage.getItem('userToken'),
-  //     }),
-  //   });
-  // }
-
   getCompanies(): Observable<CompanyModel[]> {
     return this._http.get<CompanyModel[]>(this.vacancyDetailURI, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    });
+  }
+
+  getTrendingSkills(): Observable<Skilltrendmodel[]> {
+    return this._http.get<Skilltrendmodel[]>(this.skillTrendURI, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    });
+  }
+
+  getSkillEmpReport(): Observable<any[]> {
+    return this._http.get<any[]>(this.skillEmpURI, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),

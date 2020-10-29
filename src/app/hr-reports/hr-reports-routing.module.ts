@@ -7,6 +7,8 @@ import { LastLoginReportComponent } from './last-login-report/last-login-report.
 import { EmployeeApplicationTrack } from './Models/employee-application-track';
 import { Vacancydetailmodel } from './Models/vacancydetailmodel';
 import { ReportsDashboardComponent } from './reports-dashboard/reports-dashboard.component';
+import { SkillempreportComponent } from './skillempreport/skillempreport.component';
+import { SkilltrendsReportComponent } from './skilltrends-report/skilltrends-report.component';
 import { VacancyReportComponent } from './vacancy-report/vacancy-report.component';
 import { VacancydetailComponent } from './vacancydetail/vacancydetail.component';
 
@@ -37,6 +39,18 @@ const routes: Routes = [
       {
         path: 'empskillreport',
         component: EmpSkillReportComponent,
+        canActivate: [AuthGuard],
+        data: { role: ['HR'] },
+      },
+      {
+        path: 'trendingskills',
+        component: SkilltrendsReportComponent,
+        canActivate: [AuthGuard],
+        data: { role: ['HR'] },
+      },
+      {
+        path: 'skillempreport',
+        component: SkillempreportComponent,
         canActivate: [AuthGuard],
         data: { role: ['HR'] },
       },
