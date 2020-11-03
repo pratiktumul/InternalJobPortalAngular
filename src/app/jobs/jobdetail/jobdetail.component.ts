@@ -32,6 +32,6 @@ export class JobdetailComponent implements OnInit {
   }
   goToRefApplication() {
     let id = this.JobId;
-    this.router.navigate(['referraljobapplication'])
+    this.router.navigate(['referraljobapplication', btoa(JSON.stringify(id))])
   }
 }

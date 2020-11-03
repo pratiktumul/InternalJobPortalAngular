@@ -84,7 +84,7 @@ const routes: Routes = [
     data: { role: ['Superadmin'] },
   },
   {
-    path: 'referraljobapplication',
+    path: 'referraljobapplication/:id',
     component: ReferraljobapplicationComponent,
     canActivate: [AuthGuard]
   }

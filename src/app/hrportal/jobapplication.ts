@@ -5,4 +5,5 @@ export interface Jobapplication {
     JobTitle: string;
     UserId: number;
     JobId: number;
+    Skills: string;
 }

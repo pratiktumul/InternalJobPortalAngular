@@ -28,7 +28,7 @@ export class HrService {
   }
   downloadFile(id: number): Observable<any> {
     return this._http
-      .get(this.uri+'/findresume/'+ id, {
+      .get(this.uri + '/findresume/' + id, {
         responseType: 'blob' as 'json',
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + localStorage.getItem('userToken'),
@@ -42,6 +42,22 @@ export class HrService {
   }
   updateApplicationStatus(id: number, appForm: any): Observable<any> {
     return this._http.put<any>(this.uri + '/' + id, appForm, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    });
+  }
+
+  getJobReferals(): Observable<any[]> {
+    return this._http.get<any>(this.uri + '/jobreferals', {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    });
+  }
+
+  deleteJobReferal(id: number): Observable<any> {
+    return this._http.delete<any>(this.uri +'/'+ id, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),
       }),

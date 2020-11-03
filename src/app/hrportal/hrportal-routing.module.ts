@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HrpanelComponent } from './hrpanel/hrpanel.component';
 import { AuthGuard } from '../Guards/auth.guard';
 import { ApplicationdetailComponent } from './applicationdetail/applicationdetail.component';
+import { JobreferalsComponent } from './jobreferals/jobreferals.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,12 @@ const routes: Routes = [
   {
     path: 'ApplicationDetails/:applicationId',
     component: ApplicationdetailComponent,
+    canActivate: [AuthGuard],
+    data: { role: ['HR'] }
+  },
+  {
+    path: 'jobreferals',
+    component: JobreferalsComponent,
     canActivate: [AuthGuard],
     data: { role: ['HR'] }
   },

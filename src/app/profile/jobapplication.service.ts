@@ -102,24 +102,7 @@ export class JobapplicationService {
     });
   }
 
-  SubmitRefApplication(
-    // pname: string,
-    // pemail:string,
-    // pphonum: string,
-    // pjobloc: string,
-    // pjobname: string,
-    // pskillset: string   
-    refForm: any
-  ) {
-    console.log(refForm);
-    //const formData: FormData = new FormData();
-    // formData.append('pName', pname);
-    // formData.append('pEmail',pemail);
-    // formData.append('pPhoneNo', pphonum);
-    // formData.append('pJobLoc', pjobloc);
-    // formData.append('pJobName', pjobname);
-    // formData.append('pSkillSet', pskillset);
-
+  SubmitRefApplication(refForm: any) {
     return this._http.post(this.refURL, refForm, {
       headers: new HttpHeaders({
         Authorization: 'Bearer ' + localStorage.getItem('userToken'),

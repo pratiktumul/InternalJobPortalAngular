@@ -191,7 +191,6 @@
                                         <select name="select" (change)="capture($event.target.value)">
                                             <option value="">None</option>
                                             <option *ngFor="let data of sort" value={{data.id}}>{{data.value}}</option>
-                                            <!-- <option value="asc" (click)="capture(asc)">Asc</option> -->
                                         </select>
                                     </div>
                                     <!--  Select job items End-->
@@ -202,7 +201,7 @@
                         <!-- single-job-content -->
                         <div class="single-job-items mb-30" *ngFor="let data of (jobs | filter:filterVal | order:sortVal | paginate: {
                             id:'joblist',
-                            itemsPerPage: 7,
+                            itemsPerPage: 7, 
                             currentPage: page,
                             totalItems: ttlrecords})"> 
                             <div class="job-items">
@@ -220,7 +219,7 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="items-link items-link2 f-right">
+                             <div class="items-link items-link2 f-right">
                                 <a (click)="getJobDetails(data.JobId)">{{data.JobType}}</a>
                                 <span>{{data.TimeDiff}} hours ago</span>
                             </div>

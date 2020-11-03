@@ -11,4 +11,4 @@ export class FilterPipe implements PipeTransform {
     }
     return value.filter(job => job.Location.toLowerCase().indexOf(args.toLowerCase()) !== -1);
   }
-}
+} 

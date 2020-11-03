@@ -52,14 +52,14 @@
                     <input
                         [class.is-invalid]="registerRefForm.get('pLocation').invalid && registerRefForm.get('pLocation').touched"
                         type="text" class="form-control" placeholder="Enter Job Location" formControlName="pLocation" />
-                    <small class="text-danger" 
+                    <small class="text-danger"
                         [class.d-none]="registerRefForm.get('pLocation').valid || registerRefForm.get('pLocation').untouched">Job
                         name
                         is mandatory*</small>
                 </div>
 
                 <div class="form-group">
-                    <label class="txt font-weight-bold">Skills set</label>
+                    <label class="txt font-weight-bold">Job Description</label>
                     <input
                         [class.is-invalid]="registerRefForm.get('pSkillSet').invalid && registerRefForm.get('pSkillSet').touched"
                         type="text" class="form-control" placeholder="Enter skill set" formControlName="pSkillSet" />
@@ -67,13 +67,6 @@
                         [class.d-none]="registerRefForm.get('pSkillSet').valid || registerRefForm.get('pSkillSet').untouched">skills
                         is mandatory*</small>
                 </div>
-
-
-
-
-
-
-
                 <button class="btn text-white font-weight-bold" type="submit">Submit</button> &nbsp;
                 <br><br>
                 <br><br>

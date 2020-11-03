@@ -27,7 +27,7 @@ export class JoblistComponent implements OnInit {
       this.jobs = data;
       this.totalJobs = data.length;
       this.ttlrecords = data.length;
-    });
+    }); 
   }
   capture(val: string) {
     this.sortVal = val;
