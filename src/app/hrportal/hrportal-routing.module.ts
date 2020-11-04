@@ -20,7 +20,7 @@ const routes: Routes = [
     data: { role: ['HR'] }
   },
   {
-    path: 'jobreferals',
+    path: 'jobreferrals',
     component: JobreferalsComponent,
     canActivate: [AuthGuard],
     data: { role: ['HR'] }

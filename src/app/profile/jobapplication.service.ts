@@ -109,6 +109,15 @@ export class JobapplicationService {
       }),
     });
   }
+
+  GetJobDetailsReferral(id: number): Observable<any> {
+    return this._http.get<any>(this.refURL + '/' + id, {
+      headers: new HttpHeaders({
+        Authorization: 'Bearer ' + localStorage.getItem('userToken'),
+      }),
+    });
+  }
+
   addSkillLevel(skillsRating: any[]) {
     console.log(skillsRating);
     return this._http.post(this.SkillLevelUrl, skillsRating, {

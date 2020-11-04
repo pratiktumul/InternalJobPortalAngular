@@ -8,7 +8,7 @@
         <div class="col-lg-6 col-md-6 col-sm-6 col-6 mb-2 mt-4">
             <form [hidden]="isDisplayed" class="job-form" [formGroup]="emailForm" (ngSubmit)="sendEmail()">
                 <div class="form-group">
-                    <label class="txt3 font-weight-bold">To:</label>
+                    <label class="txt3 font-weight-bold"><b>To:</b></label>
                     <input [class.is-invalid]="emailForm.get('To').invalid && emailForm.get('To').touched"
                         type="text" class="form-control" formControlName="To" />
                     <small class="text-danger"
@@ -16,7 +16,7 @@
                         is mandatory</small>
                 </div>
                 <div class="form-group">
-                    <label class="txt3 font-weight-bold">From:</label>
+                    <label class="txt3 font-weight-bold"><b>From:</b></label>
                     <input [class.is-invalid]="emailForm.get('From').invalid && emailForm.get('From').touched"
                         type="text" class="form-control" formControlName="From" />
                     <small class="text-danger"
@@ -24,21 +24,21 @@
                         is mandatory</small>
                 </div>
                 <div class="form-group">
-                    <label class="txt3 font-weight-bold">Subject</label>
+                    <label class="txt3 font-weight-bold"><b>Subject:</b></label>
                     <input [class.is-invalid]="emailForm.get('Subject').invalid && emailForm.get('Subject').touched"
                         type="text" class="form-control" formControlName="Subject" />
                     <small class="text-danger"
                         [class.d-none]="emailForm.get('Subject').valid || emailForm.get('Subject').untouched">*Subject is mandatory</small>
                 </div>
                 <div class="form-group">
-                    <label class="txt3 font-weight-bold">Body</label>
+                    <label class="txt3 font-weight-bold"><b>Body:</b></label>
                     <textarea class="form-control" formControlName="Body" row="5"></textarea>
                     <small class="text-danger"
                         [class.d-none]="emailForm.get('Body').valid || emailForm.get('Body').untouched">*Body is mandatory</small>
                 </div>
                 <div class="form-group">
                     <button [disabled]="emailForm.invalid" class="btn" type="submit">Send</button>
-                    <button class="btn" type="button" (click)="resetAll()">Reset</button>
+                    <button class="btn" type="button" (click)="resetAll()">Clear</button>
                 </div>
                 <!-- <div class="form-footer">
                     Don't have an account? <a href="#">Sign Up</a>

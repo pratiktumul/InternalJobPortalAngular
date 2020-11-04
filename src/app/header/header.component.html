@@ -54,7 +54,7 @@
                                                     <li *ngIf="job.roleMatch(['Superadmin'])"><a routerLink="/approveadmin" routerLinkActive="active"><i class="fas fa-user-circle"></i>Approve Admin</a></li>
                                                     <li *ngIf="job.roleMatch(['Superadmin'])"><a routerLink="/registernewadmin" routerLinkActive="active"><i class="fa fa-users" aria-hidden="true"></i>Register User</a></li>
                                                     <li *ngIf="job.roleMatch(['HR'])"><a routerLink="/HRPanel" routerLinkActive="active"><i class="fas fa-briefcase"></i>Job Applications</a></li>
-                                                    <li *ngIf="job.roleMatch(['HR'])"><a routerLink="/jobreferals" routerLinkActive="active"><i class="fas fa-briefcase"></i>Job Referals</a></li>
+                                                    <li *ngIf="job.roleMatch(['HR'])"><a routerLink="/jobreferrals" routerLinkActive="active"><i class="fas fa-briefcase"></i>Job referrals</a></li>
                                                     <li *ngIf="job.roleMatch(['HR'])"><a routerLink="/reports" routerLinkActive="active"><i class="fas fa-chart-line"></i>Reports</a></li>
                                                     
                                                 </ul>
