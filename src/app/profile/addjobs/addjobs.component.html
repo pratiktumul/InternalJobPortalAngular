@@ -54,11 +54,11 @@
             <textarea [class.is-invalid]="jobForm.get('JobDescription').invalid && jobForm.get('JobDescription').touched" type="text font-weight-bold" class="form-control" formControlName="JobDescription"></textarea>
             <small class="text-danger" [class.d-none]="jobForm.get('JobDescription').valid || jobForm.get('JobDescription').untouched">*Job Description is mandatory</small>
         </div>
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label class="txt3 font-weight-bold">Salary</label>
             <input [class.is-invalid]="jobForm.get('Salary').invalid && jobForm.get('Salary').touched" type="text" class="form-control" formControlName="Salary" />
             <small class="text-danger" [class.d-none]="jobForm.get('Salary').valid || jobForm.get('Salary').untouched">*Salary is mandatory</small>
-        </div>
+        </div> -->
         <div class="form-group">
             <label class="txt3 font-weight-bold">Last Date To Apply</label>
             <input [class.is-invalid]="jobForm.get('LastApplyDate').invalid && jobForm.get('LastApplyDate').touched" type="date" class="form-control" formControlName="LastApplyDate" />

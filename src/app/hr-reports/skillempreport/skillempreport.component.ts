@@ -25,7 +25,7 @@ export class SkillempreportComponent implements OnInit {
   }
 
   getSkillEmpreport() {
-    this._rs.getSkillEmpReport().subscribe((res) => {
+    this._rs.getSkillEmpReport().subscribe((res) => { 
       this.skillEmpData = res;
       console.log(res);
       res.forEach(data => {
@@ -42,7 +42,7 @@ export class SkillempreportComponent implements OnInit {
               data: this.EmpCount,
               backgroundColor: ['rgba(255,192,203)', 'rgba(243, 156, 18, 1)', 'rgba(82, 179, 217, 1)', 'rgba(41, 241, 195, 1)']
             }],
-          labels: this.skills
+          labels: this.skills 
         }
       });
     });
